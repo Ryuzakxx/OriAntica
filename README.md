@@ -1,0 +1,33 @@
+# Oria Medievale 🏰
+
+Sito web dedicato alla storia, alle leggende e alla cultura medievale di **Oria (BR)**, città messapica della Puglia meridionale. Un progetto per raccogliere e tramandare la memoria storica della città.
+
+---
+
+## 📄 Pagine
+
+| Pagina | Descrizione |
+|---|---|
+| **Home** | Carousel fotografico, statistiche storiche, anteprima leggende e luoghi |
+| **Leggende** | Griglia completa di tutte le leggende e racconti popolari |
+| **Luoghi** | Luoghi storici del centro storico e dei dintorni |
+| **Storia** | Narrazione della storia di Oria dalle origini messapiche ad oggi |
+| **Torneo** | Il Torneo dei Rioni — i tre rioni, il programma e la rievocazione |
+| **Corteo** | Il Corteo Storico — l'ordine della sfilata e i costumi d'epoca |
+| **Idee** | Form per inviare contributi, correzioni e suggerimenti al sito |
+
+---
+
+## ⚙️ Tecnologie
+
+Il sito è interamente statico, costruito con HTML, CSS e JavaScript, senza framework o dipendenze esterne. Utilizza Google Fonts (Merriweather) e supporta tema chiaro e scuro.
+
+---
+
+## 🤝 Contribuire
+
+Hai fotografie storiche, una leggenda da aggiungere o hai trovato un errore? Apri una **Issue** su GitHub oppure usa la pagina **Idee e Feedback** direttamente dal sito.
+
+---
+
+_Oria (BR) — Puglia · Francesco Moretto_

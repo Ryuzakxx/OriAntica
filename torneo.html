@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Torneo dei Rioni — Oria Medievale</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="torneo">
+
+  <nav>
+    <div class="nav-wrap">
+      <a class="nav-logo" href="index.html">Oria Medievale</a>
+      <ul class="nav-links">
+        <li><a href="index.html" data-page="home">Home</a></li>
+        <li><a href="leggende.html" data-page="leggende">Leggende</a></li>
+        <li><a href="luoghi.html" data-page="luoghi">Luoghi</a></li>
+        <li><a href="storia.html" data-page="storia">Storia</a></li>
+        <li><a href="torneo.html" data-page="torneo">Torneo</a></li>
+        <li><a href="corteo.html" data-page="corteo">Corteo</a></li>
+        <li><a href="feedback.html" data-page="feedback">Idee</a></li>
+        <li><button class="theme-btn" id="theme-btn">☾</button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="content">
+
+    <div class="page-top">
+      <span class="page-kicker">Rievocazione Storica · Ogni Agosto</span>
+      <h1>Torneo dei Rioni</h1>
+      <p>Tre rioni in sfida per la gloria di Oria medievale</p>
+    </div>
+
+    <!-- CAROUSEL TORNEO -->
+    <div class="carousel carousel-page reveal" style="max-width:var(--max-w);margin:0 auto;margin-top:2rem;">
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <!-- Inserisci qui URL foto del torneo -->
+          <img src="https://www.sanlu.it/wp-content/uploads/2019/05/castello-svevo-oria-puglia.jpg" alt="Torneo dei Rioni di Oria">
+          <div class="carousel-caption">
+            <h3>L'Arrivo dei Cavalieri</h3>
+            <p>I tre rioni si sfidano davanti al castello di Federico II</p>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <img src="https://pugliapassion.com/wp-content/uploads/2015/01/castello-1024x679.webp" alt="Castello durante il torneo">
+          <div class="carousel-caption">
+            <h3>Il Campo del Torneo</h3>
+            <p>La piazza del castello si trasforma in arena medievale ogni agosto</p>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <img src="https://www.laterradipuglia.it/wp-content/uploads/Castello_svevo_di_Oria-Laterradipuglia.it_.jpeg" alt="Costumi storici">
+          <div class="carousel-caption">
+            <h3>Costumi d'Epoca</h3>
+            <p>Centinaia di figuranti vestono abiti fedelmente ricostruiti</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-prev" aria-label="Precedente">‹</button>
+      <button class="carousel-next" aria-label="Successivo">›</button>
+      <div class="carousel-dots"></div>
+    </div>
+
+    <!-- INTRO -->
+    <div class="torneo-intro">
+      <div class="torneo-intro-text">
+        <h2>La Rievocazione</h2>
+        <p>Il Torneo dei Rioni è la manifestazione storica più attesa dell'anno a Oria. Ogni agosto, la città torna indietro di settecento anni: le strade si riempiono di gonfaloni, tamburi, costumi di broccato e acciaio, e tre rioni si sfidano in gare di abilità medievale per aggiudicarsi il titolo di campioni.</p>
+        <p>La rievocazione è ambientata nel 1227, anno in cui Federico II di Svevia soggiornò a Oria prima della sua Crociata in Terrasanta. È proprio l'imperatore — rappresentato da un figurante in costume — a presiedere il torneo e a consegnare il trofeo al rione vincitore.</p>
+        <p>La manifestazione dura quattro giorni e si conclude con la grande serata del torneo vero e proprio nella piazza antistante il castello, davanti a migliaia di spettatori.</p>
+      </div>
+      <div class="torneo-intro-img">
+        <img src="https://www.lagazzettadelmezzogiorno.it/resizer/-1/-1/true/2022_02_19/c2cd3538-3160-45d3-a8a8-4e6c221456f7-1645266492274.jpg--.jpg?1645266492519" alt="Oria durante il torneo">
+      </div>
+    </div>
+
+    <!-- I RIONI -->
+    <div class="sec">
+      <span class="sec-label">I Contendenti</span>
+      <h2>I Tre Rioni</h2>
+      <div class="rioni-grid">
+        <div class="rione-card reveal">
+          <div class="rione-colore" style="background:#c8a02a;"></div>
+          <h3>Rione Lama</h3>
+          <p>Il rione che occupa la parte bassa della città storica, con il suo quartiere artigiano e la tradizione popolare più autentica. I colori sono l'oro e il nero.</p>
+        </div>
+        <div class="rione-card reveal">
+          <div class="rione-colore" style="background:#2a5fc8;"></div>
+          <h3>Rione Judea</h3>
+          <p>Prende il nome dall'antico quartiere ebraico medievale, cuore intellettuale e commerciale della città. I colori sono il blu e l'argento.</p>
+        </div>
+        <div class="rione-card reveal">
+          <div class="rione-colore" style="background:#c83a2a;"></div>
+          <h3>Rione Castello</h3>
+          <p>Il rione della parte alta della città, sotto l'ombra della fortezza federiciana. Colori rosso e bianco, emblema del potere e della nobiltà medievale.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROGRAMMA -->
+    <div class="programma">
+      <span class="sec-label" style="display:block;margin-bottom:.45rem;">Ogni anno ad agosto</span>
+      <h2>Il Programma Tipo</h2>
+      <div class="programma-grid">
+        <div class="programma-item reveal">
+          <span class="ora">Primo giorno</span>
+          <h3>Apertura della Manifestazione</h3>
+          <p>Cerimonia inaugurale in piazza con presentazione dei tre rioni, alzabandiera e prima sfilata dei figuranti in costume.</p>
+        </div>
+        <div class="programma-item reveal">
+          <span class="ora">Secondo giorno</span>
+          <h3>Gare Preliminari</h3>
+          <p>Gare di tiro con l'arco, giochi storici medievali e prove di abilità equestre. I punti si accumulano per la serata finale.</p>
+        </div>
+        <div class="programma-item reveal">
+          <span class="ora">Terzo giorno</span>
+          <h3>Il Corteo Storico</h3>
+          <p>Il grande corteo per le vie del centro storico con centinaia di figuranti, sbandieratori, musici e il corteo imperiale di Federico II.</p>
+        </div>
+        <div class="programma-item reveal">
+          <span class="ora">Quarto giorno</span>
+          <h3>Il Torneo</h3>
+          <p>La serata conclusiva con il torneo vero e proprio davanti al castello. Sfide tra i campioni dei tre rioni, spettacolo di fuoco e consegna del trofeo.</p>
+        </div>
+        <div class="programma-item reveal">
+          <span class="ora">Tutte le sere</span>
+          <h3>Taverne Medievali</h3>
+          <p>Ogni rione gestisce la propria taverna con cucina tipica pugliese, vini locali e animazione folcloristica.</p>
+        </div>
+        <div class="programma-item reveal">
+          <span class="ora">Tutto il periodo</span>
+          <h3>Mercato Medievale</h3>
+          <p>Banchi di artigianato storico, calzolai, armaioli, ceramisti e tessitori ricostruiscono l'atmosfera di un mercato del '200.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- NOTE A PIÈ DI PAGINA -->
+    <div class="sec" style="padding-top:1rem;">
+      <span class="sec-label">Informazioni pratiche</span>
+      <h2>Come Partecipare</h2>
+      <div class="prose" style="padding:0;max-width:100%;">
+        <p>Il Torneo dei Rioni si svolge ogni anno nella seconda o terza settimana di agosto. Le date esatte vengono comunicate sul sito ufficiale del Comune di Oria e sui canali social della manifestazione. L'ingresso al corteo storico è solitamente gratuito per chi si dispone lungo il percorso. La serata del torneo prevede invece acquisto del biglietto.</p>
+        <p>Per chi vuole partecipare come figurante, è possibile contattare i singoli rioni nei mesi precedenti la manifestazione. I costumi vengono forniti e la partecipazione è aperta anche ai visitatori.</p>
+        <blockquote>Aggiungi qui i link ufficiali, i contatti dei rioni, le date della prossima edizione e il regolamento del torneo.</blockquote>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-inner">
+        <span>Oria (BR) — Puglia</span>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="leggende.html">Leggende</a></li>
+          <li><a href="luoghi.html">Luoghi</a></li>
+          <li><a href="storia.html">Storia</a></li>
+          <li><a href="torneo.html">Torneo</a></li>
+          <li><a href="corteo.html">Corteo</a></li>
+          <li><a href="feedback.html">Idee</a></li>
+        </ul>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="shared.js"></script>
+</body>
+</html>

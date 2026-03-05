@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Idee e Feedback — Oria Medievale</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="feedback">
+
+  <nav>
+    <div class="nav-wrap">
+      <a class="nav-logo" href="index.html">Oria Medievale</a>
+      <ul class="nav-links">
+        <li><a href="index.html" data-page="home">Home</a></li>
+        <li><a href="leggende.html" data-page="leggende">Leggende</a></li>
+        <li><a href="luoghi.html" data-page="luoghi">Luoghi</a></li>
+        <li><a href="storia.html" data-page="storia">Storia</a></li>
+        <li><a href="torneo.html" data-page="torneo">Torneo</a></li>
+        <li><a href="corteo.html" data-page="corteo">Corteo</a></li>
+        <li><a href="feedback.html" data-page="feedback">Idee</a></li>
+        <li><button class="theme-btn" id="theme-btn">☾</button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="content">
+
+    <div class="page-top">
+      <span class="page-kicker">Partecipa · Contribuisci · Migliora</span>
+      <h1>Idee e Feedback</h1>
+      <p>Questo sito è in costruzione — il tuo contributo è prezioso</p>
+    </div>
+
+    <div class="feedback-wrap">
+
+      <h2>Hai qualcosa da aggiungere?</h2>
+      <p>
+        Se sei di Oria, se conosci una leggenda non ancora raccontata, se hai fotografie storiche, se vuoi segnalare un errore o proporre una nuova sezione — questo è il posto giusto.
+        Il sito è un progetto in continua evoluzione, nato per raccogliere e tramandare la memoria di Oria.
+      </p>
+      <p>
+        Compila il modulo qui sotto e il tuo messaggio arriverà direttamente ai curatori del sito.
+      </p>
+
+      <form id="feedback-form" novalidate>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" placeholder="Il tuo nome">
+          </div>
+          <div class="form-group">
+            <label for="email">Email (facoltativa)</label>
+            <input type="email" id="email" name="email" placeholder="Per ricevere una risposta">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="tipo">Tipo di contributo</label>
+          <select id="tipo" name="tipo">
+            <option value="">— Seleziona —</option>
+            <option value="leggenda">Nuova leggenda o racconto</option>
+            <option value="foto">Foto o materiale storico</option>
+            <option value="correzione">Correzione di un errore</option>
+            <option value="luogo">Luogo non ancora presente</option>
+            <option value="torneo">Informazione sul Torneo o Corteo</option>
+            <option value="idea">Idea per il sito</option>
+            <option value="altro">Altro</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="messaggio">Il tuo messaggio</label>
+          <textarea id="messaggio" name="messaggio" placeholder="Scrivi qui la tua idea, la leggenda che conosci, la correzione che vuoi segnalare…"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="fonte">Fonte o riferimento (facoltativo)</label>
+          <input type="text" id="fonte" name="fonte" placeholder="Es: anziano di Oria, libro X, archivio parrocchiale…">
+        </div>
+
+        <button type="submit" class="btn btn-solid" style="margin-top:.5rem;">Invia il contributo</button>
+
+      </form>
+
+      <div class="feedback-success" id="success-msg">
+        Grazie per il tuo contributo. Il tuo messaggio è stato ricevuto e verrà valutato dai curatori del sito. Oria ti ringrazia.
+      </div>
+
+      <hr style="border:none;border-top:1px solid var(--border);margin:3rem 0;">
+
+      <h2>Idee già raccolte</h2>
+      <p>
+        Queste sono alcune delle sezioni che stiamo pianificando di aggiungere, in base ai suggerimenti ricevuti. Se vuoi contribuire a una di queste aree, segnalacelo nel modulo sopra.
+      </p>
+
+      <div class="grid" style="margin-top:1.5rem;">
+        <div class="card" style="cursor:default;">
+          <span class="card-kicker">In sviluppo</span>
+          <h3>Galleria Fotografica Storica</h3>
+          <p>Una raccolta di fotografie d'archivio di Oria dall'Ottocento ad oggi, con didascalie storiche e georeferenziazione.</p>
+        </div>
+        <div class="card" style="cursor:default;">
+          <span class="card-kicker">In sviluppo</span>
+          <h3>Mappa Interattiva</h3>
+          <p>Una mappa cliccabile del centro storico con i punti di interesse, le leggende localizzate e il percorso del corteo.</p>
+        </div>
+        <div class="card" style="cursor:default;">
+          <span class="card-kicker">Proposto dalla comunità</span>
+          <h3>Dialetto Oritano</h3>
+          <p>Un glossario del dialetto locale con proverbi, espressioni tipiche e la loro traduzione e origine storica.</p>
+        </div>
+        <div class="card" style="cursor:default;">
+          <span class="card-kicker">Proposto dalla comunità</span>
+          <h3>Ricette Storiche</h3>
+          <p>Le ricette della tradizione oritana, alcune risalenti al periodo medievale, tramandate nelle famiglie del paese.</p>
+        </div>
+        <div class="card" style="cursor:default;">
+          <span class="card-kicker">Proposto dalla comunità</span>
+          <h3>Archivio del Torneo</h3>
+          <p>L'albo d'oro delle edizioni passate del Torneo dei Rioni, con i vincitori anno per anno e le fotografie.</p>
+        </div>
+        <div class="card" style="cursor:default;">
+          <span class="card-kicker">Da valutare</span>
+          <h3>Sezione Multilingua</h3>
+          <p>Traduzione del sito in inglese e spagnolo per raggiungere i turisti e la diaspora pugliese nel mondo.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <footer>
+      <div class="footer-inner">
+        <span>Oria (BR) — Puglia</span>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="leggende.html">Leggende</a></li>
+          <li><a href="luoghi.html">Luoghi</a></li>
+          <li><a href="storia.html">Storia</a></li>
+          <li><a href="torneo.html">Torneo</a></li>
+          <li><a href="corteo.html">Corteo</a></li>
+          <li><a href="feedback.html">Idee</a></li>
+        </ul>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="shared.js"></script>
+  <script>
+    document.getElementById('feedback-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // In produzione: invia i dati a un backend o servizio come Formspree
+      // Per ora mostra solo il messaggio di successo
+      this.style.opacity = '.4';
+      this.style.pointerEvents = 'none';
+      document.getElementById('success-msg').classList.add('show');
+      window.scrollTo({ top: document.getElementById('success-msg').offsetTop - 100, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

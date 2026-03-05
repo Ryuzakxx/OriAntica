@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oria — Città Medievale di Puglia</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="home">
+
+  <nav>
+    <div class="nav-wrap">
+      <a class="nav-logo" href="index.html">Oria Medievale</a>
+      <ul class="nav-links">
+        <li><a href="index.html" data-page="home">Home</a></li>
+        <li><a href="leggende.html" data-page="leggende">Leggende</a></li>
+        <li><a href="luoghi.html" data-page="luoghi">Luoghi</a></li>
+        <li><a href="storia.html" data-page="storia">Storia</a></li>
+        <li><a href="torneo.html" data-page="torneo">Torneo</a></li>
+        <li><a href="corteo.html" data-page="corteo">Corteo</a></li>
+        <li><a href="feedback.html" data-page="feedback">Idee</a></li>
+        <li><button class="theme-btn" id="theme-btn">☾</button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="content">
+
+    <!-- HERO -->
+    <div class="hero">
+      <span class="hero-kicker">Puglia · Provincia di Brindisi</span>
+      <h1>Oria</h1>
+      <p class="hero-sub">Urìa — Città millenaria</p>
+      <p class="hero-desc">
+        Eretta su un colle messapico, custodisce tra le sue pietre
+        secoli di storia, leggende di vergini sacrificate,
+        reliquie prodigiose e castelli che sfidano il tempo.
+      </p>
+      <div class="hero-btns">
+        <a class="btn btn-solid" href="luoghi.html">Esplora i luoghi</a>
+        <a class="btn btn-ghost" href="leggende.html">Leggende e miti</a>
+      </div>
+    </div>
+
+    <!-- CAROUSEL PRINCIPALE -->
+    <div class="carousel carousel-home reveal" style="max-width:var(--max-w);margin:0 auto;margin-top:2.5rem;margin-bottom:0;">
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <img src="https://www.sanlu.it/wp-content/uploads/2019/05/castello-svevo-oria-puglia.jpg" alt="Castello Svevo di Oria">
+          <div class="carousel-caption">
+            <h3>Castello Svevo di Oria</h3>
+            <p>Voluto da Federico II nel XIII secolo, domina ancora la pianura messapica</p>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <img src="https://pugliapassion.com/wp-content/uploads/2015/01/castello-1024x679.webp" alt="Oria dall'alto">
+          <div class="carousel-caption">
+            <h3>Il Colle del Vaglio</h3>
+            <p>Oria sorge su un colle strategico abitato sin dall'VIII secolo a.C.</p>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <img src="https://www.lagazzettadelmezzogiorno.it/resizer/-1/-1/true/2022_02_19/c2cd3538-3160-45d3-a8a8-4e6c221456f7-1645266492274.jpg--.jpg?1645266492519" alt="Centro storico di Oria">
+          <div class="carousel-caption">
+            <h3>Centro Storico</h3>
+            <p>Uno dei centri storici più intatti della Puglia meridionale</p>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <img src="https://www.qrtour.it/wp-content/uploads/2023/10/Oria-Chiesa-madonna-Gallana.jpeg" alt="Chiesa di Santa Maria di Gallana">
+          <div class="carousel-caption">
+            <h3>Santa Maria di Gallana</h3>
+            <p>Antico oratorio campestre, meta del pellegrinaggio delle 100 croci</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-prev" aria-label="Precedente">‹</button>
+      <button class="carousel-next" aria-label="Successivo">›</button>
+      <div class="carousel-dots"></div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats-band" style="margin-top:2.5rem;">
+      <div class="stats-inner">
+        <div><span class="stat-n">VIII</span><span class="stat-l">Sec. a.C. — Prime tracce</span></div>
+        <div><span class="stat-n">1743</span><span class="stat-l">Grande terremoto</span></div>
+        <div><span class="stat-n">22</span><span class="stat-l">Mummie nella cripta</span></div>
+        <div><span class="stat-n">4</span><span class="stat-l">Torri del castello</span></div>
+        <div><span class="stat-n">3</span><span class="stat-l">Rioni del Torneo</span></div>
+      </div>
+    </div>
+
+    <!-- LEGGENDE PREVIEW -->
+    <div class="sec">
+      <span class="sec-label">Racconti del passato</span>
+      <h2>Le Leggende</h2>
+      <div class="grid" id="home-leggende-grid"></div>
+      <div class="sec-more">
+        <a class="btn btn-ghost" href="leggende.html">Tutte le leggende →</a>
+      </div>
+    </div>
+
+    <!-- FOTO DUO -->
+    <div class="home-photo-duo" style="margin-bottom:2rem;">
+      <img src="https://pugliapassion.com/wp-content/uploads/2015/01/castello-1024x679.webp" alt="Castello di Oria">
+      <img src="https://www.lagazzettadelmezzogiorno.it/resizer/-1/-1/true/2022_02_19/c2cd3538-3160-45d3-a8a8-4e6c221456f7-1645266492274.jpg--.jpg?1645266492519" alt="Centro storico">
+    </div>
+
+    <!-- LUOGHI PREVIEW -->
+    <div class="sec">
+      <span class="sec-label">Patrimonio storico</span>
+      <h2>I Luoghi da Visitare</h2>
+      <div class="grid" id="home-luoghi-grid"></div>
+      <div class="sec-more">
+        <a class="btn btn-ghost" href="luoghi.html">Tutti i luoghi →</a>
+      </div>
+    </div>
+
+    <!-- TORNEO + CORTEO PROMO -->
+    <div class="stats-band">
+      <div class="stats-inner" style="flex-direction:column; gap:1rem;">
+        <span class="sec-label">Ogni agosto ad Oria</span>
+        <h2 style="font-size:1.15rem; font-weight:400; border:none; padding:0; margin:0;">Il Torneo dei Rioni e il Corteo Storico</h2>
+        <p style="font-size:.92rem; line-height:1.8; color:var(--text-dim); max-width:580px;">
+          Una rievocazione medievale che trasforma Oria in un palcoscenico di sfide, costumi d'epoca e suoni di tamburi. Tre rioni si affrontano per la gloria e il titolo di campioni.
+        </p>
+        <div style="display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.5rem;">
+          <a class="btn btn-solid" href="torneo.html">Il Torneo</a>
+          <a class="btn btn-ghost" href="corteo.html">Il Corteo Storico</a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-inner">
+        <span>Oria (BR) — Puglia</span>
+        <ul class="footer-links">
+          <li><a href="index.html" data-page="home">Home</a></li>
+          <li><a href="leggende.html" data-page="leggende">Leggende</a></li>
+          <li><a href="luoghi.html" data-page="luoghi">Luoghi</a></li>
+          <li><a href="storia.html" data-page="storia">Storia</a></li>
+          <li><a href="torneo.html" data-page="torneo">Torneo</a></li>
+          <li><a href="corteo.html" data-page="corteo">Corteo</a></li>
+          <li><a href="feedback.html" data-page="feedback">Idee</a></li>
+        </ul>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="data.js"></script>
+  <script src="shared.js"></script>
+  <script>
+    // Preview cards
+    document.addEventListener('DOMContentLoaded', () => {
+      const lgGrid = document.getElementById('home-leggende-grid');
+      const luGrid = document.getElementById('home-luoghi-grid');
+      if (lgGrid) lgGrid.innerHTML = LEGGENDE.slice(0,3).map(cardHTML).join('');
+      if (luGrid) luGrid.innerHTML = LUOGHI.slice(0,3).map(luogoCardHTML).join('');
+    });
+
+    function cardHTML(item) {
+      const thumb = item.img
+        ? `<img src="${item.img}" alt="${item.title}">`
+        : `<span class="ph-icon">${item.icon}</span><span class="ph-txt">${item.imgAlt || ''}</span>`;
+      return `<a class="card reveal" href="detail-leggenda.html?id=${item.id}">
+        <div class="card-thumb">${thumb}</div>
+        <span class="card-kicker">${item.tag}</span>
+        <h3>${item.title}</h3>
+        <p>${item.excerpt}</p>
+        <div class="card-more">Leggi la storia →</div>
+      </a>`;
+    }
+    function luogoCardHTML(item) {
+      const thumb = item.img
+        ? `<img src="${item.img}" alt="${item.title}">`
+        : `<span class="ph-icon">${item.icon}</span><span class="ph-txt">${item.imgAlt || ''}</span>`;
+      return `<a class="card reveal" href="detail-luogo.html?id=${item.id}">
+        <div class="card-thumb">${thumb}</div>
+        <span class="card-kicker">${item.tag}</span>
+        <h3>${item.title}</h3>
+        <p>${item.excerpt}</p>
+        <div class="card-more">Scopri il luogo →</div>
+      </a>`;
+    }
+  </script>
+</body>
+</html>

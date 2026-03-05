@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luogo — Oria Medievale</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="luoghi">
+
+  <nav>
+    <div class="nav-wrap">
+      <a class="nav-logo" href="index.html">Oria Medievale</a>
+      <ul class="nav-links">
+        <li><a href="index.html" data-page="home">Home</a></li>
+        <li><a href="leggende.html" data-page="leggende">Leggende</a></li>
+        <li><a href="luoghi.html" data-page="luoghi">Luoghi</a></li>
+        <li><a href="storia.html" data-page="storia">Storia</a></li>
+        <li><a href="torneo.html" data-page="torneo">Torneo</a></li>
+        <li><a href="corteo.html" data-page="corteo">Corteo</a></li>
+        <li><a href="feedback.html" data-page="feedback">Idee</a></li>
+        <li><button class="theme-btn" id="theme-btn">☾</button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="content">
+
+    <div class="page-top">
+      <span class="page-kicker" id="detail-kicker">—</span>
+      <h1 id="detail-title">—</h1>
+    </div>
+
+    <div class="detail">
+      <main class="detail-main" id="detail-main"></main>
+      <aside class="sidebar" id="detail-side"></aside>
+    </div>
+
+    <footer>
+      <div class="footer-inner">
+        <span>Oria (BR) — Puglia</span>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="leggende.html">Leggende</a></li>
+          <li><a href="luoghi.html">Luoghi</a></li>
+          <li><a href="storia.html">Storia</a></li>
+          <li><a href="torneo.html">Torneo</a></li>
+          <li><a href="corteo.html">Corteo</a></li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="shared.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(location.search);
+      const id = params.get('id');
+      const item = LUOGHI.find(x => x.id === id);
+      if (!item) { document.getElementById('detail-title').textContent = 'Luogo non trovato'; return; }
+
+      document.title = item.title + ' — Oria Medievale';
+      document.getElementById('detail-kicker').textContent = item.tag;
+      document.getElementById('detail-title').textContent = item.title;
+
+      const mainImgHTML = item.img
+        ? `<div class="detail-img"><img src="${item.img}" alt="${item.title}"></div>`
+        : `<div class="detail-img"><span class="ph-icon">${item.icon}</span><span class="ph-txt">${item.imgAlt || ''}</span></div>`;
+
+      const img2HTML = item.img2
+        ? `<div class="img2"><img src="${item.img2}" alt="${item.title}"></div>`
+        : '';
+
+      const relLuoStr = (item.relLuoghi || []).map(rid => {
+        const r = LUOGHI.find(x => x.id === rid);
+        return r ? `<li><button onclick="location.href='detail-luogo.html?id=${rid}'">→ ${r.title}</button></li>` : '';
+      }).join('');
+
+      const relLegStr = (item.relLeggende || []).map(rid => {
+        const r = LEGGENDE.find(x => x.id === rid);
+        return r ? `<li><button onclick="location.href='detail-leggenda.html?id=${rid}'">→ ${r.title}</button></li>` : '';
+      }).join('');
+
+      document.getElementById('detail-main').innerHTML = `
+        <a class="back-btn" href="luoghi.html">← Torna ai Luoghi Storici</a>
+        ${mainImgHTML}
+        <span class="detail-kicker">${item.tag}</span>
+        <h2>${item.title}</h2>
+        <div class="body-text">${item.body}${img2HTML}</div>
+      `;
+
+      document.getElementById('detail-side').innerHTML = `
+        <div class="sbox">
+          <span class="sbox-title">Informazioni</span>
+          <ul class="sinfo">
+            ${(item.sideInfo || []).map(([k,v]) => `<li><strong>${k}</strong>${v}</li>`).join('')}
+          </ul>
+        </div>
+        ${relLuoStr ? `<div class="sbox"><span class="sbox-title">Luoghi Collegati</span><ul class="snav">${relLuoStr}</ul></div>` : ''}
+        ${relLegStr ? `<div class="sbox"><span class="sbox-title">Leggende Collegate</span><ul class="snav">${relLegStr}</ul></div>` : ''}
+      `;
+    });
+  </script>
+</body>
+</html>

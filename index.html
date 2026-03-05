@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+  <script>
+  (function() {
+    const theme = localStorage.getItem('oria-theme');
+    if (theme) document.documentElement.dataset.theme = theme;
+  })();
+  </script>
+  <style id="theme-fix">
+    html, body, nav, footer { transition: none !important; }
+  </style>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Oria — Città Medievale di Puglia</title>
@@ -30,7 +39,7 @@
     <div class="hero">
       <span class="hero-kicker">Puglia · Provincia di Brindisi</span>
       <h1>Oria</h1>
-      <p class="hero-sub">Urìa — Città millenaria</p>
+      <p class="hero-sub">Hyria — Città millenaria</p>
       <p class="hero-desc">
         Eretta su un colle messapico, custodisce tra le sue pietre
         secoli di storia, leggende di vergini sacrificate,

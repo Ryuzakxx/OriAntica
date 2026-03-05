@@ -90,10 +90,15 @@ function initCarousel(wrapper) {
   goTo(0);
 }
 
+// When the DOM is ready we can do the rest of the setup.
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   setTimeout(initReveal, 80);
   document.querySelectorAll('.carousel').forEach(initCarousel);
+
+  // remove the temporary no-transition style used to prevent flash
+  const fix = document.getElementById('theme-fix');
+  if (fix) fix.remove();
 
   // Nav active link
   const page = document.body.dataset.page;

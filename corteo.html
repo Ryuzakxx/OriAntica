@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
-  <meta charset="UTF-8" />
+<head>  <script>
+  (function() {
+    const theme = localStorage.getItem('oria-theme');
+    if (theme) document.documentElement.dataset.theme = theme;
+  })();
+  </script>
+  <style id="theme-fix">
+    html, body, nav, footer { transition: none !important; }
+  </style>  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Il Corteo Storico — Oria Medievale</title>
   <link rel="stylesheet" href="style.css" />
@@ -37,28 +44,28 @@
       <div class="carousel-track">
         <div class="carousel-slide">
           <!-- Inserisci URL foto del corteo -->
-          <img src="https://pugliapassion.com/wp-content/uploads/2015/01/castello-1024x679.webp" alt="Il corteo per le vie di Oria">
+          <img src="https://www.brindisireport.it/~media/horizontal-hi/43188358054386/il-palio-di-oria-foto-dalla-pagina-facebook.jpg" alt="Il corteo per le vie di Oria">
           <div class="carousel-caption">
             <h3>Il Corteo entra in città</h3>
             <p>Il lungo serpente di figuranti attraversa il centro storico</p>
           </div>
         </div>
         <div class="carousel-slide">
-          <img src="https://www.laterradipuglia.it/wp-content/uploads/Castello_svevo_di_Oria-Laterradipuglia.it_.jpeg" alt="Sbandieratori">
+          <img src="https://lh3.googleusercontent.com/proxy/-tfxyg-wN95spQTZ25StYwP_4p-QxE6qk0SrzZ4PRinXVjoweZqYGa4j1gGNyUu8sw5Ds2RBUGKBgQ3QS3z6Z5v-Bj3v1yQh9hy8yPaXMBuJiQ0QuxC5AjCGrisqTZwpWe4Spp3BOPwN0vyz7yM" alt="Sbandieratori">
           <div class="carousel-caption">
             <h3>Gli Sbandieratori</h3>
             <p>I gruppi dei tre rioni eseguono le loro evoluzioni davanti al pubblico</p>
           </div>
         </div>
         <div class="carousel-slide">
-          <img src="https://www.sanlu.it/wp-content/uploads/2019/05/castello-svevo-oria-puglia.jpg" alt="Il corteo imperiale">
+          <img src="https://lh5.googleusercontent.com/proxy/AGobEaBo5PwiSUtfwtX0iflDRL-kqX9eET3KUyHZXXjxNtMNctXOAe3ROw5WDV5lUvItfV8UklK7tihjrZTYEJalxJeCtS_656Hk7i8PNzS9CRdFL1ZnKDR-37CJ7kqRO8TlLrA" alt="Il corteo imperiale">
           <div class="carousel-caption">
             <h3>Federico II e la Corte Imperiale</h3>
             <p>L'imperatore svevo apre il corteo a cavallo, circondato dai suoi dignitari</p>
           </div>
         </div>
         <div class="carousel-slide">
-          <img src="https://www.lagazzettadelmezzogiorno.it/resizer/-1/-1/true/2022_02_19/c2cd3538-3160-45d3-a8a8-4e6c221456f7-1645266492274.jpg--.jpg?1645266492519" alt="Musici medievali">
+          <img src="https://www.orianotizie.it/wp-content/uploads/2023/04/ALMIENTO-1ok.jpg" alt="Musici medievali">
           <div class="carousel-caption">
             <h3>I Musici e i Tamburi</h3>
             <p>Il ritmo dei tamburi medievali risuona tra le mura di pietra calcarea</p>

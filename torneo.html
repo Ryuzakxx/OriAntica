@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+  <script>
+  (function() {
+    const theme = localStorage.getItem('oria-theme');
+    if (theme) document.documentElement.dataset.theme = theme;
+  })();
+  </script>
+  <style id="theme-fix">
+    html, body, nav, footer { transition: none !important; }
+  </style>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Torneo dei Rioni — Oria Medievale</title>
@@ -29,7 +38,7 @@
     <div class="page-top">
       <span class="page-kicker">Rievocazione Storica · Ogni Agosto</span>
       <h1>Torneo dei Rioni</h1>
-      <p>Tre rioni in sfida per la gloria di Oria medievale</p>
+      <p>I quattro rioni in sfida per la gloria di Oria medievale e la conquista del Palio.</p>
     </div>
 
     <!-- CAROUSEL TORNEO -->
@@ -37,21 +46,21 @@
       <div class="carousel-track">
         <div class="carousel-slide">
           <!-- Inserisci qui URL foto del torneo -->
-          <img src="https://www.sanlu.it/wp-content/uploads/2019/05/castello-svevo-oria-puglia.jpg" alt="Torneo dei Rioni di Oria">
+          <img src="https://www.newspam.it/media/uploads/2020/06/torneo-dei-rioni.jpg" alt="Torneo dei Rioni di Oria">
           <div class="carousel-caption">
             <h3>L'Arrivo dei Cavalieri</h3>
             <p>I tre rioni si sfidano davanti al castello di Federico II</p>
           </div>
         </div>
         <div class="carousel-slide">
-          <img src="https://pugliapassion.com/wp-content/uploads/2015/01/castello-1024x679.webp" alt="Castello durante il torneo">
+          <img src="https://www.newspam.it/media/uploads/2019/08/torneo-dei-rioni-oria.jpg" alt="Castello durante il torneo">
           <div class="carousel-caption">
             <h3>Il Campo del Torneo</h3>
             <p>La piazza del castello si trasforma in arena medievale ogni agosto</p>
           </div>
         </div>
         <div class="carousel-slide">
-          <img src="https://www.laterradipuglia.it/wp-content/uploads/Castello_svevo_di_Oria-Laterradipuglia.it_.jpeg" alt="Costumi storici">
+          <img src="https://placeinpuglia.com/wp-content/uploads/2016/06/Torneo-del-Rioni-3-1920x1280.jpg" alt="Costumi storici">
           <div class="carousel-caption">
             <h3>Costumi d'Epoca</h3>
             <p>Centinaia di figuranti vestono abiti fedelmente ricostruiti</p>
@@ -72,19 +81,19 @@
         <p>La manifestazione dura quattro giorni e si conclude con la grande serata del torneo vero e proprio nella piazza antistante il castello, davanti a migliaia di spettatori.</p>
       </div>
       <div class="torneo-intro-img">
-        <img src="https://www.lagazzettadelmezzogiorno.it/resizer/-1/-1/true/2022_02_19/c2cd3538-3160-45d3-a8a8-4e6c221456f7-1645266492274.jpg--.jpg?1645266492519" alt="Oria durante il torneo">
+        <img src="https://www.paliodioria.net/wp-content/uploads/2024/03/img_palio_home.jpg" alt="Oria durante il torneo">
       </div>
     </div>
 
     <!-- I RIONI -->
     <div class="sec">
       <span class="sec-label">I Contendenti</span>
-      <h2>I Tre Rioni</h2>
+      <h2>I Quattro Rioni</h2>
       <div class="rioni-grid">
         <div class="rione-card reveal">
-          <div class="rione-colore" style="background:#c8a02a;"></div>
+          <div class="rione-colore" style="background:#15b100;"></div>
           <h3>Rione Lama</h3>
-          <p>Il rione che occupa la parte bassa della città storica, con il suo quartiere artigiano e la tradizione popolare più autentica. I colori sono l'oro e il nero.</p>
+          <p>Il rione che occupa la parte bassa della città storica, con il suo quartiere artigiano e la tradizione popolare più autentica. I colori sono l'oro e il verde.</p>
         </div>
         <div class="rione-card reveal">
           <div class="rione-colore" style="background:#2a5fc8;"></div>
@@ -95,6 +104,11 @@
           <div class="rione-colore" style="background:#c83a2a;"></div>
           <h3>Rione Castello</h3>
           <p>Il rione della parte alta della città, sotto l'ombra della fortezza federiciana. Colori rosso e bianco, emblema del potere e della nobiltà medievale.</p>
+        </div>
+        <div class="rione-card reveal">
+          <div class="rione-colore" style="background:#c8a02a;"></div>
+          <h3>Rione San Basilio</h3>
+          <p>Il rione che occupa la parte centrale della città storica, con la sua piazza e la chiesa di San Domenico. I colori sono l'oro e il nero.</p>
         </div>
       </div>
     </div>
@@ -144,7 +158,7 @@
       <div class="prose" style="padding:0;max-width:100%;">
         <p>Il Torneo dei Rioni si svolge ogni anno nella seconda o terza settimana di agosto. Le date esatte vengono comunicate sul sito ufficiale del Comune di Oria e sui canali social della manifestazione. L'ingresso al corteo storico è solitamente gratuito per chi si dispone lungo il percorso. La serata del torneo prevede invece acquisto del biglietto.</p>
         <p>Per chi vuole partecipare come figurante, è possibile contattare i singoli rioni nei mesi precedenti la manifestazione. I costumi vengono forniti e la partecipazione è aperta anche ai visitatori.</p>
-        <blockquote>Aggiungi qui i link ufficiali, i contatti dei rioni, le date della prossima edizione e il regolamento del torneo.</blockquote>
+        <blockquote>Per maggiori informazioni, visita il <a href="https://www.paliodioria.net" target="_blank">sito ufficiale del Palio di Oria</a></blockquote>
       </div>
     </div>
 

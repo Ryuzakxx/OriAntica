@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
-  <meta charset="UTF-8" />
+<head>  <script>
+  (function() {
+    const theme = localStorage.getItem('oria-theme');
+    if (theme) document.documentElement.dataset.theme = theme;
+  })();
+  </script>
+  <style id="theme-fix">
+    html, body, nav, footer { transition: none !important; }
+  </style>  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Idee e Feedback — Oria Medievale</title>
   <link rel="stylesheet" href="style.css" />

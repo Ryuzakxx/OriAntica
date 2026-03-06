@@ -1,19 +1,564 @@
-<!DOCTYPE html>
+ù<!DOCTYPE html>
 <html lang="it">
 <head>
   <script>
-  (function() {
-    const theme = localStorage.getItem('oria-theme');
-    if (theme) document.documentElement.dataset.theme = theme;
-  })();
+    (function () {
+      const t = localStorage.getItem('oria-theme');
+      if (t) document.documentElement.dataset.theme = t;
+    })();
   </script>
-  <style id="theme-fix">
-    html, body, nav, footer { transition: none !important; }
-  </style>
+  <style id="theme-fix">html,body,nav,footer{transition:none!important}</style>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>La Storia di Oria</title>
+  <title>La Storia di Oria | OriAntica</title>
   <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .storia-page{
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 3rem 2rem 6rem;
+    }
+
+    .tl-container{
+      position: relative;
+      padding-left: 130px;
+    }
+
+    .tl-container::before{
+      content: "";
+      position: absolute;
+      left: 95px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+
+    .tl-progress{
+      position: absolute;
+      left: 95px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .tl-progress-fill{
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 0;
+      background: var(--accent);
+      transition: height .12s linear;
+    }
+
+    .tl-section{
+      position: relative;
+      margin-bottom: 4.5rem;
+      padding-left: 0;
+    }
+
+    .tl-section:last-child{
+      margin-bottom: 0;
+    }
+
+    .tl-marker{
+      position: absolute;
+      left: -130px;
+      top: 0;
+      width: 82px;
+      text-align: right;
+    }
+
+    .tl-marker-year{
+      display: block;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      line-height: 1.2;
+    }
+
+    .tl-marker-arm{
+      display: none;
+    }
+
+    .tl-dot{
+      position: absolute;
+      left: -41px;
+      top: .45rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--accent);
+      z-index: 3;
+    }
+
+    .tl-heading{
+      margin-bottom: 1.3rem;
+      padding-bottom: .75rem;
+      border-bottom: 1px solid var(--border);
+      display: block;
+    }
+
+    .tl-period-label{
+      display: block;
+      font-size: .58rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: .35rem;
+    }
+
+    .tl-heading h2{
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--text);
+      border: 0;
+      padding: 0;
+    }
+
+    .tl-body{
+      position: relative;
+      z-index: 1;
+    }
+
+    .tl-body p{
+      font-size: .97rem;
+      line-height: 1.95;
+      color: var(--text-dim);
+      margin: 0 0 1.1rem;
+    }
+
+    .tl-body p:first-of-type::first-letter{
+      font-size: 2.6rem;
+      float: left;
+      line-height: .88;
+      margin: .08rem .35rem 0 0;
+      color: var(--accent);
+    }
+
+    .tl-body h3{
+      font-size: .93rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 1.8rem 0 .6rem;
+    }
+
+    .tl-body blockquote{
+      border-left: 2px solid var(--accent);
+      padding: .65rem 1.1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text);
+      font-size: .93rem;
+    }
+
+    .s-img{
+      width: 100%;
+      border: 1px solid var(--border);
+      margin: 1.8rem 0;
+      overflow: hidden;
+      background: var(--bg-alt);
+    }
+
+    .s-img img{
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .s-img figcaption{
+      font-size: .67rem;
+      letter-spacing: .04em;
+      color: var(--text-dim);
+      padding: .55rem .8rem;
+      border-top: 1px solid var(--border);
+      font-style: italic;
+    }
+
+    .s-duo{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.8rem 0;
+    }
+
+    .s-duo figure{
+      border: 1px solid var(--border);
+      overflow: hidden;
+      background: var(--bg-alt);
+      margin: 0;
+    }
+
+    .s-duo img{
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+    }
+
+    .s-duo figcaption{
+      font-size: .64rem;
+      color: var(--text-dim);
+      padding: .45rem .7rem;
+      border-top: 1px solid var(--border);
+      font-style: italic;
+    }
+
+    .s-car{
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      margin: 1.8rem 0;
+      background: #000;
+    }
+
+    .s-car .car-track{
+      display: flex;
+      transition: transform .5s cubic-bezier(.4,0,.2,1);
+    }
+
+    .s-car .car-slide{
+      position: relative;
+      flex: 0 0 100%;
+      min-width: 100%;
+    }
+
+    .s-car .car-slide img{
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      display: block;
+      opacity: .92;
+    }
+
+    .s-car .car-cap{
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 1rem 1.2rem 1.4rem;
+      background: linear-gradient(to top, rgba(0,0,0,.78), rgba(0,0,0,.18), transparent);
+      z-index: 2;
+    }
+
+    .s-car .car-cap p{
+      margin: 0;
+      font-size: .78rem;
+      line-height: 1.45;
+      font-style: italic;
+      color: #fff !important;
+    }
+
+    .s-car .car-cap p::first-letter{
+      all: unset;
+    }
+
+    .s-car .car-prev,
+    .s-car .car-next{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,.38);
+      border: 1px solid rgba(255,255,255,.18);
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      padding: .45rem .75rem;
+      z-index: 5;
+      line-height: 1;
+      transition: background .2s;
+    }
+
+    .s-car .car-prev{ left: .8rem; }
+    .s-car .car-next{ right: .8rem; }
+
+    .s-car .car-prev:hover,
+    .s-car .car-next:hover{
+      background: rgba(0,0,0,.68);
+    }
+
+    .s-car .car-dots{
+      position: absolute;
+      left: 50%;
+      bottom: .7rem;
+      transform: translateX(-50%);
+      display: flex;
+      gap: .35rem;
+      z-index: 6;
+    }
+
+    .s-car .car-dot{
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.35);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background .2s, transform .2s;
+    }
+
+    .s-car .car-dot.on{
+      background: #fff;
+      transform: scale(1.2);
+    }
+
+    .s-fact{
+      border: 1px solid var(--border);
+      background: var(--bg-alt);
+      padding: 1rem 1.3rem;
+      margin: 1.5rem 0;
+    }
+
+    .s-fact-lbl{
+      font-size: .54rem;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: block;
+      margin-bottom: .45rem;
+    }
+
+    .s-fact p{
+      font-size: .87rem !important;
+      margin: 0 !important;
+      color: var(--text) !important;
+    }
+
+    .s-fact p::first-letter{
+      all: unset !important;
+    }
+
+    .gallery-wrap{
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .gallery-wrap h2{
+      font-size: 1.05rem;
+      font-weight: 400;
+      padding-bottom: .75rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .gallery-kicker{
+      font-size: .57rem;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      display: block;
+      margin-bottom: .4rem;
+    }
+
+    .gallery-grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .g-item{
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--bg-alt);
+    }
+
+    .g-item img{
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+      transition: transform .4s, opacity .3s;
+    }
+
+    .g-item:hover img{
+      transform: scale(1.06);
+      opacity: .82;
+    }
+
+    .g-item-cap{
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,.75));
+      color: #fff;
+      padding: .7rem .65rem .45rem;
+      font-size: .63rem;
+      font-style: italic;
+      opacity: 0;
+      transition: opacity .22s;
+    }
+
+    .g-item:hover .g-item-cap{
+      opacity: 1;
+    }
+
+    .g-item.wide{
+      grid-column: span 2;
+    }
+
+    .g-item.wide img{
+      aspect-ratio: 2 / 1;
+    }
+
+    .lightbox{
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.93);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 2rem;
+    }
+
+    .lightbox.open{
+      display: flex;
+    }
+
+    .lightbox img{
+      max-width: 90vw;
+      max-height: 80vh;
+      object-fit: contain;
+    }
+
+    .lb-cap{
+      color: rgba(255,255,255,.6);
+      font-size: .73rem;
+      font-style: italic;
+      margin-top: .75rem;
+    }
+
+    .lb-close{
+      position: fixed;
+      top: 1.1rem;
+      right: 1.4rem;
+      background: none;
+      border: 1px solid rgba(255,255,255,.3);
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      padding: .28rem .65rem;
+    }
+
+    .lb-prev,
+    .lb-next{
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.2);
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: .65rem .95rem;
+    }
+
+    .lb-prev{ left: .8rem; }
+    .lb-next{ right: .8rem; }
+
+    .rev{
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity .45s ease, transform .45s ease;
+    }
+
+    .rev.in{
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (max-width: 900px){
+      .tl-container{
+        padding-left: 100px;
+      }
+
+      .tl-container::before,
+      .tl-progress{
+        left: 72px;
+      }
+
+      .tl-marker{
+        left: -100px;
+        width: 60px;
+      }
+
+      .tl-dot{
+        left: -34px;
+      }
+    }
+
+    @media (max-width: 680px){
+      .storia-page,
+      .gallery-wrap{
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .tl-container{
+        padding-left: 56px;
+      }
+
+      .tl-container::before,
+      .tl-progress{
+        left: 18px;
+      }
+
+      .tl-marker{
+        left: -56px;
+        width: 42px;
+      }
+
+      .tl-marker-year{
+        font-size: .56rem;
+        letter-spacing: .04em;
+      }
+
+      .tl-dot{
+        left: -44px;
+        top: .38rem;
+        width: 10px;
+        height: 10px;
+      }
+
+      .s-duo{
+        grid-template-columns: 1fr;
+      }
+
+      .s-car .car-slide img{
+        height: 260px;
+      }
+
+      .gallery-grid{
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .g-item.wide{
+        grid-column: span 1;
+      }
+
+      .g-item.wide img{
+        aspect-ratio: 1;
+      }
+    }
+  </style>
 </head>
 <body data-page="storia">
 
@@ -28,68 +573,532 @@
         <li><a href="torneo.html" data-page="torneo">Torneo</a></li>
         <li><a href="corteo.html" data-page="corteo">Corteo</a></li>
         <li><a href="feedback.html" data-page="feedback">Idee</a></li>
-        <li><button class="theme-btn" id="theme-btn">☾</button></li>
+        <li><button class="theme-btn" id="theme-btn"></button></li>
       </ul>
     </div>
   </nav>
 
   <div class="content">
     <div class="page-top">
-      <span class="page-kicker">Dalle origini messapiche al XIX secolo</span>
+      <span class="page-kicker">Dalle origini messapiche al XX secolo</span>
       <h1>La Storia di Oria</h1>
       <p>Duemila anni sul colle del Vaglio</p>
     </div>
 
-    <div class="prose">
+    <div class="storia-page">
+      <div class="tl-container">
+        <div class="tl-progress"><span class="tl-progress-fill"></span></div>
 
-      <div class="prose-img">
-        <img src="https://www.sanlu.it/wp-content/uploads/2019/05/castello-svevo-oria-puglia.jpg">
+        <div class="tl-section rev" id="messapici">
+          <div class="tl-marker">
+            <span class="tl-marker-year">VIII a.C.</span>
+            <div class="tl-marker-arm"></div>
+          </div>
+          <div class="tl-dot"></div>
+          <div class="tl-heading">
+            <span class="tl-period-label">Preistoria</span>
+            <h2>Le Origini Messapiche</h2>
+          </div>
+          <div class="tl-body">
+            <p>Inserire testo sulle origini messapiche di Oria. I Messapi, popolo di origine illirica, fondarono <em>Uria</em> sul colle del Vaglio nell'VIII secolo a.C. Descrivere la struttura urbana, le mura, i riti funerari...</p>
+            <p>Continuare con l'area archeologica Ing. S. Pasculli: stratigrafie, tombe a grotticella, fornaci, abitazioni e tratti delle antiche mura messapiche...</p>
+
+            <figure class="s-img">
+              <img src="https://www.sanlu.it/wp-content/uploads/2019/05/castello-svevo-oria-puglia.jpg" alt="Veduta di Oria" />
+              <figcaption>Veduta del colle del Vaglio — sostituire con immagine di reperti messapici</figcaption>
+            </figure>
+
+            <div class="s-fact">
+              <span class="s-fact-lbl">Da sapere</span>
+              <p>Il nome <em>Uria</em> compare nelle fonti greche e latine già nel VI secolo a.C. Inserire qui curiosità o dati archeologici chiave.</p>
+            </div>
+
+            <p>Aggiungere sezione sulle relazioni commerciali con Taranto e le colonie greche dell'area ionica...</p>
+          </div>
+        </div>
+
+        <div class="tl-section rev" id="romani">
+          <div class="tl-marker">
+            <span class="tl-marker-year">III a.C.</span>
+            <div class="tl-marker-arm"></div>
+          </div>
+          <div class="tl-dot"></div>
+          <div class="tl-heading">
+            <span class="tl-period-label">Antichità</span>
+            <h2>Età Romana</h2>
+          </div>
+          <div class="tl-body">
+            <p>Inserire testo sulla conquista romana e l'integrazione di Uria nella rete stradale e amministrativa romana. La via Appia e i suoi rami collegavano Oria ai grandi centri...</p>
+
+            <div class="s-car" data-car>
+              <div class="car-track">
+                <div class="car-slide">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Oriacentonze.jpg" alt="Oria romana" />
+                  <div class="car-cap"><p>Sostituire con immagini di reperti romani rinvenuti ad Oria</p></div>
+                </div>
+                <div class="car-slide">
+                  <img src="https://www.sanlu.it/wp-content/uploads/2019/05/castello-svevo-oria-puglia.jpg" alt="Area archeologica" />
+                  <div class="car-cap"><p>Area archeologica — aggiungere didascalia precisa</p></div>
+                </div>
+                <div class="car-slide">
+                  <img src="https://comune.oria.br.it/wp-content/uploads/2023/11/catt-scaled.jpg" alt="Oria panorama" />
+                  <div class="car-cap"><p>Aggiungere terza immagine del periodo romano</p></div>
+                </div>
+              </div>
+              <button class="car-prev">‹</button>
+              <button class="car-next">›</button>
+              <div class="car-dots">
+                <button class="car-dot on"></button>
+                <button class="car-dot"></button>
+                <button class="car-dot"></button>
+              </div>
+            </div>
+
+            <p>Continuare con la vita quotidiana, le ville rustiche nella campagna oritana, i culti religiosi romani...</p>
+          </div>
+        </div>
+
+        <div class="tl-section rev" id="bizantini">
+          <div class="tl-marker">
+            <span class="tl-marker-year">VI d.C.</span>
+            <div class="tl-marker-arm"></div>
+          </div>
+          <div class="tl-dot"></div>
+          <div class="tl-heading">
+            <span class="tl-period-label">Tardo Antico</span>
+            <h2>Il Periodo Bizantino</h2>
+          </div>
+          <div class="tl-body">
+            <p>Inserire testo sulla presenza bizantina in Puglia e ad Oria in particolare. Il tema greco-orientale nell'architettura religiosa, le cripte rupestri, i monaci basiliani...</p>
+            <p>Parlare di San Barsanofio di Gaza e del suo legame con la tradizione orientale cristiana, arrivata ad Oria attraverso i monaci italo-greci...</p>
+
+            <figure class="s-img">
+              <img src="https://www.padreannibale.altervista.org/PadreAnnibale/SanBarsanofio02.jpg" alt="San Barsanofio" />
+              <figcaption>San Barsanofio di Gaza, patrono di Oria, legato alla tradizione monastica orientale</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="tl-section rev" id="ebrei">
+          <div class="tl-marker">
+            <span class="tl-marker-year">IX-XI Sec.</span>
+            <div class="tl-marker-arm"></div>
+          </div>
+          <div class="tl-dot"></div>
+          <div class="tl-heading">
+            <span class="tl-period-label">Alto Medioevo</span>
+            <h2>La Comunità Ebraica</h2>
+          </div>
+          <div class="tl-body">
+            <p>Inserire testo sulla fiorente comunità ebraica medievale di Oria, una delle più importanti dell'Italia meridionale. Descrivere il quartiere ebraico, il ruolo nella trasmissione della cultura filosofica e scientifica nel Mediterraneo...</p>
+            <p>Parlare di Shabbetai Donnolo, medico e filosofo ebreo di Oria (913–982 circa), uno dei più grandi intellettuali dell'epoca nell'Italia meridionale...</p>
+
+            <blockquote>Inserire citazione storica o testimonianza sulla comunità ebraica di Oria.</blockquote>
+
+            <div class="s-duo">
+              <figure>
+                <img src="https://catalogazione.cartapulia.it/resource/imagefiles/68258/SBAAASBA131243_201447868178.jpg" alt="Porta Taranto" />
+                <figcaption>Porta Taranto, detta Porta degli Ebrei</figcaption>
+              </figure>
+              <figure>
+                <img src="https://www.sanlu.it/wp-content/uploads/2019/05/castello-svevo-oria-puglia.jpg" alt="Quartiere ebraico" />
+                <figcaption>Sostituire con immagine del quartiere ebraico</figcaption>
+              </figure>
+            </div>
+
+            <p>Aggiungere la sezione sulle persecuzioni del 925 d.C. e la diaspora della comunità ebraica oritana...</p>
+          </div>
+        </div>
+
+        <div class="tl-section rev" id="normanni">
+          <div class="tl-marker">
+            <span class="tl-marker-year">XI Sec.</span>
+            <div class="tl-marker-arm"></div>
+          </div>
+          <div class="tl-dot"></div>
+          <div class="tl-heading">
+            <span class="tl-period-label">Medioevo</span>
+            <h2>I Normanni</h2>
+          </div>
+          <div class="tl-body">
+            <p>Inserire testo sulla conquista normanna della Puglia e la trasformazione di Oria in centro feudale. Roberto il Guiscardo e la ristrutturazione del potere locale...</p>
+            <p>Descrivere il primo nucleo normanno del castello sul colle del Vaglio, le chiese romaniche erette in questo periodo, la nuova organizzazione ecclesiastica...</p>
+
+            <div class="s-car" data-car>
+              <div class="car-track">
+                <div class="car-slide">
+                  <img src="https://www.laterradipuglia.it/wp-content/uploads/CastellosvevodiOria-Laterradipuglia.it_.jpeg" alt="Castello di Oria" />
+                  <div class="car-cap"><p>Il castello — le fondamenta normanne sotto la struttura federiciana</p></div>
+                </div>
+                <div class="car-slide">
+                  <img src="https://www.sigecweb.beniculturali.it/images/fullsize/ICCD1033054/ICCD11972818_SBAAASBA131485.jpg" alt="Chiesa San Francesco" />
+                  <div class="car-cap"><p>Chiesa di San Francesco — eredità dell'architettura medievale oritana</p></div>
+                </div>
+              </div>
+              <button class="car-prev">‹</button>
+              <button class="car-next">›</button>
+              <div class="car-dots">
+                <button class="car-dot on"></button>
+                <button class="car-dot"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-section rev" id="federico">
+          <div class="tl-marker">
+            <span class="tl-marker-year">XIII Sec.</span>
+            <div class="tl-marker-arm"></div>
+          </div>
+          <div class="tl-dot"></div>
+          <div class="tl-heading">
+            <span class="tl-period-label">Medioevo</span>
+            <h2>Federico II e il Castello Svevo</h2>
+          </div>
+          <div class="tl-body">
+            <p>Inserire testo su Federico II di Svevia e la sua visione del castello di Oria come baluardo della pianura messapica. La planimetria triangolare con le quattro torri: la Torre Maestra, la Torre del Cavaliere, la Torre di San Basilio e la Torre del Salto...</p>
+            <p>Descrivere il contesto politico: le lotte tra l'impero e il papato, il ruolo strategico della Puglia nell'amministrazione federiciana, la presenza di Federico stesso ad Oria...</p>
+
+            <figure class="s-img">
+              <img src="https://www.laterradipuglia.it/wp-content/uploads/CastellosvevodiOria-Laterradipuglia.it_.jpeg" alt="Castello Svevo di Oria" />
+              <figcaption>Il Castello Svevo di Oria, costruito da Federico II nel XIII secolo sulla sommità del colle del Vaglio</figcaption>
+            </figure>
+
+            <blockquote>Federico volle che questo castello guardasse tutta la pianura, perché chi comanda deve vedere lontano.</blockquote>
+
+            <div class="s-fact">
+              <span class="s-fact-lbl">Architettura</span>
+              <p>Il castello ha pianta triangolare con quattro torri. Le mura in pietra calcarea locale, spesse fino a 3 metri, erano progettate per resistere agli assedi medievali.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-section rev" id="angioini">
+          <div class="tl-marker">
+            <span class="tl-marker-year">XIV-XV Sec.</span>
+            <div class="tl-marker-arm"></div>
+          </div>
+          <div class="tl-dot"></div>
+          <div class="tl-heading">
+            <span class="tl-period-label">Basso Medioevo</span>
+            <h2>Angioini e Aragonesi</h2>
+          </div>
+          <div class="tl-body">
+            <p>Inserire testo sulla transizione dal dominio svevo a quello angioino dopo la battaglia di Benevento (1266). Come cambiò Oria sotto i nuovi signori francesi...</p>
+            <p>Descrivere il periodo aragonese nel XV secolo: le trasformazioni urbanistiche, le chiese costruite o ampliate, la vita culturale della città...</p>
+
+            <div class="s-duo">
+              <figure>
+                <img src="https://www.lalanternadelpopolo.it/Oria%20-%20Castello%20di%20Oria.jpg" alt="Castello interno" />
+                <figcaption>Interno del castello — stratificazioni storiche tra XIV e XV sec.</figcaption>
+              </figure>
+              <figure>
+                <img src="https://www.sigecweb.beniculturali.it/images/fullsize/ICCD1033054/ICCD11972818_SBAAASBA131485.jpg" alt="Portale gotico" />
+                <figcaption>Portale gotico di San Francesco</figcaption>
+              </figure>
+            </div>
+
+            <p>Aggiungere la sezione sull'assedio spagnolo del 1504 e il miracolo di San Barsanofio che salvò la città...</p>
+          </div>
+        </div>
+
+        <div class="tl-section rev" id="seicento">
+          <div class="tl-marker">
+            <span class="tl-marker-year">XVII Sec.</span>
+            <div class="tl-marker-arm"></div>
+          </div>
+          <div class="tl-dot"></div>
+          <div class="tl-heading">
+            <span class="tl-period-label">Età Moderna</span>
+            <h2>Il Seicento Barocco e Devozione</h2>
+          </div>
+          <div class="tl-body">
+            <p>Inserire testo sulla fioritura barocca nel Seicento oritano. Le confraternite religiose, la costruzione o il rifacimento di chiese e palazzi, l'arte sacra...</p>
+            <p>Descrivere l'Arciconfraternita della Morte e le sue origini seicentesche, il culto dei morti e la processione dello Scenni Cristu...</p>
+
+            <div class="s-car" data-car>
+              <div class="car-track">
+                <div class="car-slide">
+                  <img src="https://comune.oria.br.it/wp-content/uploads/2023/11/catt-scaled.jpg" alt="Cattedrale di Oria" />
+                  <div class="car-cap"><p>La Cattedrale — ricostruita nel Settecento ma custode di tradizioni seicentesche</p></div>
+                </div>
+                <div class="car-slide">
+                  <img src="https://i0.wp.com/www.saralessandrini.it/wp-content/uploads/2019/10/Facciata-Santuario-San-Cosimo-alla-Macchia.jpg?fit=896%2C600&ssl=1" alt="Santuario San Cosimo" />
+                  <div class="car-cap"><p>Santuario SS. Cosma e Damiano alla Macchia — eretto nel XVII secolo</p></div>
+                </div>
+              </div>
+              <button class="car-prev">‹</button>
+              <button class="car-next">›</button>
+              <div class="car-dots">
+                <button class="car-dot on"></button>
+                <button class="car-dot"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-section rev" id="terremoto">
+          <div class="tl-marker">
+            <span class="tl-marker-year">1743</span>
+            <div class="tl-marker-arm"></div>
+          </div>
+          <div class="tl-dot"></div>
+          <div class="tl-heading">
+            <span class="tl-period-label">XVIII Sec.</span>
+            <h2>Il Terremoto del 20 Febbraio 1743</h2>
+          </div>
+          <div class="tl-body">
+            <p>Inserire testo sul violento terremoto del 20 febbraio 1743 che devastò il Salento. Descrivere i danni ad Oria: quali edifici crollarono, quante vittime, come la città reagì alla catastrofe...</p>
+
+            <div class="s-fact">
+              <span class="s-fact-lbl">Il sisma</span>
+              <p>Il terremoto del 20 febbraio 1743 fu uno dei più devastanti nella storia del Salento. Inserire dati precisi: magnitudo stimata, epicentro, numero di vittime, edifici distrutti ad Oria.</p>
+            </div>
+
+            <figure class="s-img">
+              <img src="https://comune.oria.br.it/wp-content/uploads/2023/11/catt-scaled.jpg" alt="Cattedrale di Oria" />
+              <figcaption>La Cattedrale di Santa Maria Assunta, ricostruita dopo il terremoto del 1743, completata nel 1769</figcaption>
+            </figure>
+
+            <p>Aggiungere informazioni sulla ricostruzione degli altri edifici civili e religiosi distrutti dal sisma...</p>
+          </div>
+        </div>
+
+        <div class="tl-section rev" id="ottocento">
+          <div class="tl-marker">
+            <span class="tl-marker-year">XIX Sec.</span>
+            <div class="tl-marker-arm"></div>
+          </div>
+          <div class="tl-dot"></div>
+          <div class="tl-heading">
+            <span class="tl-period-label">Età Contemporanea</span>
+            <h2>L'Ottocento e l'Unità d'Italia</h2>
+          </div>
+          <div class="tl-body">
+            <p>Inserire testo sull'Ottocento oritano: le trasformazioni sociali, le famiglie nobili che dominavano la vita cittadina, il passaggio dal feudalesimo alla società moderna...</p>
+            <p>L'Unità d'Italia (1861): come Oria visse il Risorgimento, la soppressione dei conventi, gli edifici ecclesiastici passati al demanio, il castello ceduto ai Martini...</p>
+
+            <blockquote>Inserire citazione storica o letteraria sul passaggio di Oria dal regno borbonico all'Italia unita.</blockquote>
+
+            <p>Descrivere la vita agricola ottocentesca, l'economia fondata sull'ulivo e la vite, le condizioni dei contadini e i rapporti con i proprietari terrieri...</p>
+          </div>
+        </div>
+
+        <div class="tl-section rev" id="novecento">
+          <div class="tl-marker">
+            <span class="tl-marker-year">XX Sec.</span>
+            <div class="tl-marker-arm"></div>
+          </div>
+          <div class="tl-dot"></div>
+          <div class="tl-heading">
+            <span class="tl-period-label">Storia Recente</span>
+            <h2>Il Novecento</h2>
+          </div>
+          <div class="tl-body">
+            <p>Inserire testo sul Novecento oritano: le due guerre mondiali, il bombardamento del 7 settembre 1943 sventato da San Barsanofio, la Liberazione...</p>
+            <p>Il castello torna al Comune. La nascita del Torneo dei Rioni (1967) come momento di recupero dell'identità storica cittadina. La valorizzazione del centro storico...</p>
+
+            <div class="s-car" data-car>
+              <div class="car-track">
+                <div class="car-slide">
+                  <img src="https://www.sanlu.it/wp-content/uploads/2019/05/castello-svevo-oria-puglia.jpg" alt="Castello oggi" />
+                  <div class="car-cap"><p>Il castello — restituito alla comunità nel Novecento, oggi museo</p></div>
+                </div>
+                <div class="car-slide">
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqEWTexC6m7e6Pa3QJ20qFj9KOO2MyiBE1Ngs" alt="Processione storica" />
+                  <div class="car-cap"><p>La tradizione religiosa oritana continua nel Novecento</p></div>
+                </div>
+              </div>
+              <button class="car-prev">‹</button>
+              <button class="car-next">›</button>
+              <div class="car-dots">
+                <button class="car-dot on"></button>
+                <button class="car-dot"></button>
+              </div>
+            </div>
+
+            <p>Aggiungere la sezione finale sull'Oria contemporanea: il turismo culturale, le iniziative di recupero del patrimonio...</p>
+          </div>
+        </div>
+
       </div>
-
-      <h2>Le Origini Messapiche</h2>
-      <p>La storia di Oria affonda le radici nell'VIII secolo avanti Cristo, quando le prime comunità messapiche si insediarono sul colle del Vaglio. I Messapi, popolo di origine illirica, fondarono qui uno dei loro centri più importanti, chiamato <em>Uria</em>.</p>
-      <p>L'area archeologica "Ing. S. Pasculli" ha restituito stratigrafie che coprono otto secoli ininterrotti di frequentazione urbana: strade, tombe a grotticella, fornaci, abitazioni e tratti delle antiche mura messapiche.</p>
-
-      <hr>
-
-      <h2>La Comunità Ebraica (IX–XI Secolo)</h2>
-      <p>Nel Medioevo alto, Oria fu sede di una delle comunità ebraiche più importanti dell'Italia meridionale, attiva nella trasmissione della cultura e del pensiero filosofico nel Mediterraneo. La Porta Taranto, nota come "Porta degli Ebrei", ne custodisce ancora il ricordo.</p>
-
-      <hr>
-
-      <h2>Normanni, Svevi e Federico II</h2>
-      <p>Con i Normanni nell'XI secolo nacque il primo nucleo del castello sul colle del Vaglio. Fu Federico II di Svevia nel XIII secolo a dargli la sua conformazione triangolare definitiva, con le quattro torri che ancora dominano la pianura pugliese.</p>
-      <div class="prose-img">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Oria_centonze.jpg">
-      </div>
-
-      <h2>Il Terremoto del 1743</h2>
-      <p>Il 20 febbraio 1743 un violento sisma colpì il Salento. La cattedrale fu interamente ricostruita tra il 1750 e il 1769 in stile barocco, su progetto di Giustino Lombardi, con la grande cupola ancora visibile oggi.</p>
-
-      <hr>
-
-      <h2>Dall'Unità d'Italia ad Oggi</h2>
-      <p>Con l'Unità d'Italia molti edifici passarono al demanio. Il castello, ceduto ai Martini, tornò al Comune nel Novecento. Oggi Oria conserva uno dei centri storici più intatti della Puglia meridionale.</p>
-
-      <blockquote>«Oria è una città che sa tenere i suoi segreti. Bisogna viverla lentamente, pietra per pietra.»</blockquote>
-
     </div>
 
-    <footer>
-      <div class="footer-inner">
-        <span>Oria (BR) — Puglia</span>
-        <ul class="footer-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="leggende.html">Leggende</a></li>
-          <li><a href="luoghi.html">Luoghi</a></li>
-          <li><a href="storia.html">Storia</a></li>
-          <li><a href="torneo.html">Torneo</a></li>
-          <li><a href="corteo.html">Corteo</a></li>
-        </ul>
+    <div class="gallery-wrap rev">
+      <span class="gallery-kicker">Immagini</span>
+      <h2>Galleria Fotografica</h2>
+
+      <div class="gallery-grid">
+        <div class="g-item wide">
+          <img src="https://www.laterradipuglia.it/wp-content/uploads/CastellosvevodiOria-Laterradipuglia.it_.jpeg" alt="Castello Svevo" />
+          <div class="g-item-cap">Castello Svevo — XIII secolo</div>
+        </div>
+
+        <div class="g-item">
+          <img src="https://comune.oria.br.it/wp-content/uploads/2023/11/catt-scaled.jpg" alt="Cattedrale" />
+          <div class="g-item-cap">Cattedrale di Santa Maria Assunta</div>
+        </div>
+
+        <div class="g-item">
+          <img src="https://catalogazione.cartapulia.it/resource/imagefiles/68258/SBAAASBA131243_201447868178.jpg" alt="Porta Taranto" />
+          <div class="g-item-cap">Porta Taranto — Porta degli Ebrei</div>
+        </div>
+
+        <div class="g-item">
+          <img src="https://www.sigecweb.beniculturali.it/images/fullsize/ICCD1033054/ICCD11972818_SBAAASBA131485.jpg" alt="San Francesco" />
+          <div class="g-item-cap">Chiesa di San Francesco d'Assisi</div>
+        </div>
+
+        <div class="g-item wide">
+          <img src="https://www.sanlu.it/wp-content/uploads/2019/05/castello-svevo-oria-puglia.jpg" alt="Panorama Oria" />
+          <div class="g-item-cap">Panorama di Oria dalla pianura messapica</div>
+        </div>
+
+        <div class="g-item">
+          <img src="https://i0.wp.com/www.saralessandrini.it/wp-content/uploads/2019/10/Facciata-Santuario-San-Cosimo-alla-Macchia.jpg?fit=896%2C600&ssl=1" alt="San Cosimo" />
+          <div class="g-item-cap">Santuario SS. Cosma e Damiano</div>
+        </div>
+
+        <div class="g-item">
+          <img src="https://fai-platform.imgix.net/media/puglia/br/5073/chiesa-madonna-di-gallana.jpg" alt="Gallana" />
+          <div class="g-item-cap">Santa Maria di Gallana — XI sec.</div>
+        </div>
+
+        <div class="g-item">
+          <img src="https://www.padreannibale.altervista.org/PadreAnnibale/SanBarsanofio02.jpg" alt="San Barsanofio" />
+          <div class="g-item-cap">San Barsanofio, patrono di Oria</div>
+        </div>
+
+        <div class="g-item">
+          <img src="https://www.lalanternadelpopolo.it/Oria%20-%20Castello%20di%20Oria.jpg" alt="Interno castello" />
+          <div class="g-item-cap">Interno del castello</div>
+        </div>
       </div>
-    </footer>
+    </div>
   </div>
 
+  <div class="lightbox" id="lightbox">
+    <button class="lb-close" id="lb-close">✕</button>
+    <button class="lb-prev" id="lb-prev">‹</button>
+    <img id="lb-img" src="" alt="" />
+    <p class="lb-cap" id="lb-cap"></p>
+    <button class="lb-next" id="lb-next">›</button>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <span>Oria (BR), Puglia</span>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="leggende.html">Leggende</a></li>
+        <li><a href="luoghi.html">Luoghi</a></li>
+        <li><a href="storia.html">Storia</a></li>
+        <li><a href="torneo.html">Torneo</a></li>
+        <li><a href="corteo.html">Corteo</a></li>
+      </ul>
+    </div>
+  </footer>
+
   <script src="shared.js"></script>
+  <script>
+    document.querySelectorAll('[data-car]').forEach(car => {
+      const track = car.querySelector('.car-track');
+      const slides = car.querySelectorAll('.car-slide');
+      const dots = car.querySelectorAll('.car-dot');
+      let cur = 0;
+
+      function go(n){
+        cur = (n + slides.length) % slides.length;
+        track.style.transform = `translateX(-${cur * 100}%)`;
+        dots.forEach((d, i) => d.classList.toggle('on', i === cur));
+      }
+
+      car.querySelector('.car-prev').addEventListener('click', () => go(cur - 1));
+      car.querySelector('.car-next').addEventListener('click', () => go(cur + 1));
+      dots.forEach((d, i) => d.addEventListener('click', () => go(i)));
+    });
+
+    const gItems = document.querySelectorAll('.g-item');
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lb-img');
+    const lbCap = document.getElementById('lb-cap');
+    let lbCur = 0;
+
+    const gData = Array.from(gItems).map(el => ({
+      src: el.querySelector('img').src,
+      alt: el.querySelector('img').alt,
+      cap: el.querySelector('.g-item-cap')?.textContent || ''
+    }));
+
+    const openLb = i => {
+      lbCur = i;
+      lbImg.src = gData[i].src;
+      lbImg.alt = gData[i].alt;
+      lbCap.textContent = gData[i].cap;
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeLb = () => {
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+    };
+
+    const navLb = d => {
+      lbCur = (lbCur + d + gData.length) % gData.length;
+      lbImg.src = gData[lbCur].src;
+      lbImg.alt = gData[lbCur].alt;
+      lbCap.textContent = gData[lbCur].cap;
+    };
+
+    gItems.forEach((el, i) => el.addEventListener('click', () => openLb(i)));
+    document.getElementById('lb-close').addEventListener('click', closeLb);
+    document.getElementById('lb-prev').addEventListener('click', () => navLb(-1));
+    document.getElementById('lb-next').addEventListener('click', () => navLb(1));
+
+    lb.addEventListener('click', e => {
+      if (e.target === lb) closeLb();
+    });
+
+    document.addEventListener('keydown', e => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLb();
+      if (e.key === 'ArrowLeft') navLb(-1);
+      if (e.key === 'ArrowRight') navLb(1);
+    });
+
+    const ro = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          ro.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.06 });
+
+    document.querySelectorAll('.rev').forEach(el => ro.observe(el));
+
+    const tlContainer = document.querySelector('.tl-container');
+    const tlFill = document.querySelector('.tl-progress-fill');
+
+    function updateTimelineProgress() {
+      if (!tlContainer || !tlFill) return;
+
+      const rect = tlContainer.getBoundingClientRect();
+      const vh = window.innerHeight;
+
+      const start = vh * 0.2;
+      const end = rect.height - vh * 0.35;
+
+      let progress = (start - rect.top) / Math.max(end, 1);
+      progress = Math.max(0, Math.min(1, progress));
+
+      tlFill.style.height = `${progress * 100}%`;
+    }
+
+    window.addEventListener('scroll', updateTimelineProgress, { passive: true });
+    window.addEventListener('resize', updateTimelineProgress);
+    updateTimelineProgress();
+  </script>
 </body>
 </html>

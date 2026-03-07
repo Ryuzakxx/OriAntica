@@ -3,17 +3,682 @@
 <head>
   <script>
   (function() {
-    const theme = localStorage.getItem('oria-theme');
-    if (theme) document.documentElement.dataset.theme = theme;
+    const t = localStorage.getItem('oria-theme');
+    if (t) document.documentElement.dataset.theme = t;
   })();
   </script>
-  <style id="theme-fix">
-    html, body, nav, footer { transition: none !important; }
+  <style id="theme-fix">html,body,nav,footer{transition:none!important}</style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>OriAntica — Oria, Città Millenaria</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet"/>
+  <style>
+
+  /* ═══════════════════════════════
+     RESET & BASE
+  ═══════════════════════════════ */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #faf8f3;
+    --bg-alt: #f2ede2;
+    --border: #d8cdb8;
+    --text: #1c1610;
+    --text-dim: #6b5e4a;
+    --accent: #7a3010;
+    --accent2: #c05828;
+    --max-w: 1100px;
+    --nav-h: 57px;
+  }
+  [data-theme="dark"] {
+    --bg: #0e0c08;
+    --bg-alt: #181410;
+    --border: #2e2416;
+    --text: #ede5d0;
+    --text-dim: #8a7a62;
+    --accent: #c05828;
+    --accent2: #e07840;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Merriweather', Georgia, serif;
+    overflow-x: hidden;
+    transition: background .3s, color .3s;
+  }
+
+  /* ═══════════════════════════════
+     HERO — full viewport, immagine + overlay + tipo enorme
+  ═══════════════════════════════ */
+  .hero-full {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 5rem;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/9/9e/Castello_di_Oria_al_Tramonto.jpg');
+    background-size: cover;
+    background-position: center 30%;
+    transform: scale(1.05);
+    transition: transform 8s ease;
+  }
+  .hero-full.loaded .hero-bg { transform: scale(1); }
+
+  /* Overlay a gradiente */
+  .hero-full::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(14,12,8,.15) 0%,
+      rgba(14,12,8,.1) 30%,
+      rgba(14,12,8,.65) 65%,
+      rgba(14,12,8,.92) 100%
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 2.5rem;
+    width: 100%;
+  }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    margin-bottom: 1.2rem;
+  }
+  .hero-eyebrow span {
+    font-size: .58rem;
+    letter-spacing: .35em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.55);
+    font-family: 'Merriweather', serif;
+    font-weight: 300;
+  }
+  .hero-eyebrow::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: rgba(255,255,255,.25);
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(5rem, 14vw, 11rem);
+    font-weight: 300;
+    line-height: .92;
+    color: #fff;
+    letter-spacing: -.02em;
+    margin-bottom: .6rem;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--accent2);
+  }
+
+  .hero-subtitle {
+    font-size: clamp(.8rem, 1.5vw, .95rem);
+    color: rgba(255,255,255,.5);
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-desc-col {
+    max-width: 460px;
+  }
+  .hero-desc {
+    font-size: .9rem;
+    line-height: 1.85;
+    color: rgba(255,255,255,.6);
+    font-weight: 300;
+    margin-bottom: 1.8rem;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: .75rem;
+    flex-wrap: wrap;
+  }
+  .btn-hero-solid {
+    background: var(--accent2);
+    color: #fff;
+    border: 1px solid var(--accent2);
+    padding: .7rem 1.6rem;
+    font-size: .7rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: 'Merriweather', serif;
+    font-weight: 400;
+    transition: background .2s, transform .15s;
+    display: inline-block;
+  }
+  .btn-hero-solid:hover { background: #a04020; transform: translateY(-1px); }
+  .btn-hero-ghost {
+    background: transparent;
+    color: rgba(255,255,255,.75);
+    border: 1px solid rgba(255,255,255,.3);
+    padding: .7rem 1.6rem;
+    font-size: .7rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: 'Merriweather', serif;
+    font-weight: 400;
+    transition: border-color .2s, color .2s, transform .15s;
+    display: inline-block;
+  }
+  .btn-hero-ghost:hover { border-color: rgba(255,255,255,.7); color: #fff; transform: translateY(-1px); }
+
+  .hero-stats-col {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+    text-align: right;
+  }
+  .hero-stat {
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-end;
+    gap: .7rem;
+  }
+  .hero-stat-n {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: #fff;
+    line-height: 1;
+  }
+  .hero-stat-l {
+    font-size: .57rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.4);
+  }
+
+  /* Scroll indicator */
+  .hero-scroll {
+    position: absolute;
+    bottom: 1.8rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .4rem;
+    opacity: .45;
+  }
+  .hero-scroll span {
+    font-size: .5rem;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .hero-scroll-line {
+    width: 1px;
+    height: 40px;
+    background: #fff;
+    animation: scrollDown 1.8s ease-in-out infinite;
+  }
+  @keyframes scrollDown {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    51% { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  /* ═══════════════════════════════
+     INTRO CITAZIONE
+  ═══════════════════════════════ */
+  .intro-band {
+    background: var(--bg-alt);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 4rem 2.5rem;
+    transition: background .3s;
+  }
+  .intro-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .intro-label-col {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+  }
+  .intro-kicker {
+    font-size: .55rem;
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .intro-year-big {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    font-weight: 300;
+    line-height: 1;
+    color: var(--border);
+    letter-spacing: -.02em;
+  }
+  .intro-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.3rem, 2.8vw, 1.9rem);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--text);
+    border-left: 2px solid var(--accent);
+    padding-left: 1.8rem;
+  }
+  .intro-quote strong { font-weight: 600; font-style: normal; color: var(--accent); }
+
+  /* ═══════════════════════════════
+     SEZIONE TIPO — ETICHETTA + GRIGLIA
+  ═══════════════════════════════ */
+  .home-section {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 5rem 2.5rem;
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .section-head-left { display: flex; flex-direction: column; gap: .3rem; }
+  .section-kicker {
+    font-size: .55rem;
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.1;
+  }
+  .section-link {
+    font-size: .62rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color .2s;
+    white-space: nowrap;
+    align-self: flex-end;
+  }
+  .section-link:hover { border-color: var(--accent); }
+
+  /* ═══════════════════════════════
+     CARDS LEGGENDE — layout editoriale
+  ═══════════════════════════════ */
+  .cards-editorial {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .card-ed {
+    background: var(--bg);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: background .2s;
+    position: relative;
+  }
+  .card-ed:hover { background: var(--bg-alt); }
+  .card-ed:first-child .card-ed-thumb { aspect-ratio: 3/2; }
+  .card-ed-thumb {
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: var(--bg-alt);
+    flex-shrink: 0;
+  }
+  .card-ed-thumb img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .5s ease, opacity .3s;
+  }
+  .card-ed:hover .card-ed-thumb img { transform: scale(1.04); opacity: .88; }
+  .card-ed-thumb .card-ph {
+    width: 100%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    background: var(--bg-alt);
+  }
+  .card-ph-icon { font-size: 2.2rem; opacity: .35; }
+  .card-ph-txt { font-size: .65rem; color: var(--text-dim); letter-spacing: .1em; opacity: .6; }
+  .card-ed-body {
+    padding: 1.4rem 1.5rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .card-ed-tag {
+    font-size: .52rem;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .5rem;
+  }
+  .card-ed-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: .7rem;
+  }
+  .card-ed:first-child .card-ed-title { font-size: 1.45rem; }
+  .card-ed-excerpt {
+    font-size: .78rem;
+    line-height: 1.7;
+    color: var(--text-dim);
+    flex: 1;
+  }
+  .card-ed-more {
+    font-size: .57rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-top: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+  }
+  .card-ed-more::after {
+    content: '→';
+    transition: transform .2s;
+  }
+  .card-ed:hover .card-ed-more::after { transform: translateX(4px); }
+
+  /* ═══════════════════════════════
+     DIVISORE CON TESTO CENTRATO
+  ═══════════════════════════════ */
+  .divider-text {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0 2.5rem;
+    max-width: var(--max-w);
+    margin: 0 auto;
+  }
+  .divider-text::before, .divider-text::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .divider-text span {
+    font-size: .52rem;
+    letter-spacing: .35em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+
+  /* ═══════════════════════════════
+     CARDS LUOGHI — lista orizzontale
+  ═══════════════════════════════ */
+  .luoghi-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .luogo-card {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: .9rem;
+    position: relative;
+  }
+  .luogo-card-img {
+    width: 100%;
+    aspect-ratio: 5/3;
+    overflow: hidden;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+  }
+  .luogo-card-img img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    transition: transform .5s ease, opacity .3s;
+  }
+  .luogo-card:hover .luogo-card-img img { transform: scale(1.04); opacity: .85; }
+  .luogo-card-img .card-ph {
+    width: 100%; height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: .4rem;
+  }
+  .luogo-card-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: .75rem;
+    color: var(--border);
+    font-weight: 300;
+    letter-spacing: .1em;
+  }
+  .luogo-card-tag {
+    font-size: .5rem;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .luogo-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.25;
+  }
+  .luogo-card-excerpt {
+    font-size: .75rem;
+    line-height: 1.7;
+    color: var(--text-dim);
+  }
+  .luogo-card-more {
+    font-size: .55rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+    transition: gap .2s;
+  }
+  .luogo-card:hover .luogo-card-more { gap: .55rem; }
+
+  /* ═══════════════════════════════
+     TORNEO — full-width banner
+  ═══════════════════════════════ */
+  .torneo-banner {
+    position: relative;
+    overflow: hidden;
+    margin-top: 3rem;
+    min-height: 420px;
+    display: flex;
+    align-items: flex-end;
+  }
+  .torneo-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://www.viaggiareinpuglia.it/at/9/territorio/6/it/Il-Torneo-dei-Rioni-di-Oria');
+    background-size: cover;
+    background-position: center;
+    transition: transform .6s ease;
+  }
+  .torneo-banner:hover .torneo-bg { transform: scale(1.03); }
+  .torneo-banner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(14,12,8,.9) 0%,
+      rgba(14,12,8,.7) 40%,
+      rgba(14,12,8,.2) 100%
+    );
+  }
+  .torneo-content {
+    position: relative;
+    z-index: 2;
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 4rem 2.5rem;
+    width: 100%;
+    max-width: 560px;
+  }
+  .torneo-kicker {
+    font-size: .55rem;
+    letter-spacing: .35em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.45);
+    margin-bottom: .8rem;
+    display: block;
+  }
+  .torneo-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 1.1rem;
+  }
+  .torneo-desc {
+    font-size: .85rem;
+    line-height: 1.85;
+    color: rgba(255,255,255,.55);
+    font-weight: 300;
+    margin-bottom: 2rem;
+  }
+  .torneo-btns { display: flex; gap: .7rem; flex-wrap: wrap; }
+
+  /* ═══════════════════════════════
+     FOOTER PERSONALIZZATO HOME
+  ═══════════════════════════════ */
+  .home-footer {
+    background: var(--bg-alt);
+    border-top: 1px solid var(--border);
+    padding: 3rem 2.5rem 2.5rem;
+    transition: background .3s;
+  }
+  .home-footer-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--text);
+    letter-spacing: .05em;
+  }
+  .footer-logo span { color: var(--accent); }
+  .home-footer-links {
+    display: flex;
+    gap: 1.8rem;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+  .home-footer-links a {
+    font-size: .58rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .home-footer-links a:hover { color: var(--accent); }
+  .footer-copy {
+    font-size: .62rem;
+    color: var(--text-dim);
+    opacity: .5;
+  }
+
+  /* ═══════════════════════════════
+     REVEAL
+  ═══════════════════════════════ */
+  .rev { opacity: 0; transform: translateY(16px); transition: opacity .55s ease, transform .55s ease; }
+  .rev.in { opacity: 1; transform: none; }
+  .rev-delay-1 { transition-delay: .1s; }
+  .rev-delay-2 { transition-delay: .2s; }
+  .rev-delay-3 { transition-delay: .3s; }
+
+  /* ═══════════════════════════════
+     RESPONSIVE
+  ═══════════════════════════════ */
+  @media (max-width: 900px) {
+    .cards-editorial { grid-template-columns: 1fr 1fr; }
+    .cards-editorial .card-ed:first-child { grid-column: span 2; }
+    .intro-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+    .intro-year-big { font-size: 4rem; }
+    .luoghi-strip { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .cards-editorial { grid-template-columns: 1fr; }
+    .cards-editorial .card-ed:first-child { grid-column: span 1; }
+    .luoghi-strip { grid-template-columns: 1fr; }
+    .hero-stats-col { display: none; }
+    .hero-title { font-size: 4.5rem; }
+    .torneo-banner::after {
+      background: linear-gradient(to bottom, rgba(14,12,8,.3) 0%, rgba(14,12,8,.85) 70%);
+    }
+  }
   </style>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OriAntica</title>
-  <link rel="stylesheet" href="style.css" />
 </head>
 <body data-page="home">
 
@@ -35,109 +700,133 @@
 
   <div class="content">
 
-    <!-- HERO -->
-    <div class="hero">
-      <span class="hero-kicker">Puglia · Provincia di Brindisi</span>
-      <h1>Oria</h1>
-      <p class="hero-sub">Hyria — Città millenaria</p>
-      <p class="hero-desc">
-        Eretta sul colle del Vaglio, custodisce tra le sue pietre
-        secoli di storia, leggende tramandate e tradizioni ancora vive. Un viaggio alla scoperta di una delle città medievali più affascinanti della Puglia e della provincia di Brindisi.
-      </p>
-      <div class="hero-btns">
-        <a class="btn btn-solid" href="luoghi.html">Esplora i luoghi</a>
-        <a class="btn btn-ghost" href="leggende.html">Leggende e miti</a>
+    <!-- ══ HERO ══ -->
+    <div class="hero-full" id="hero">
+      <div class="hero-bg" id="hero-bg"></div>
+
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span>Puglia · Provincia di Brindisi · VIII secolo a.C.</span>
+        </div>
+        <h1 class="hero-title">
+          Oria<br><em>Millenaria</em>
+        </h1>
+        <p class="hero-subtitle">Hyria — Uria — Orra</p>
+
+        <div class="hero-row">
+          <div class="hero-desc-col">
+            <p class="hero-desc">
+              Eretta sul colle del Vaglio, custodisce tra le sue pietre
+              tremila anni di storia. Capitale dei Messapi, fortezza di Federico II,
+              città di San Barsanofio — un viaggio nel cuore della Puglia più antica.
+            </p>
+            <div class="hero-btns">
+              <a class="btn-hero-solid" href="storia.html">Scopri la storia</a>
+              <a class="btn-hero-ghost" href="luoghi.html">I luoghi</a>
+            </div>
+          </div>
+          <div class="hero-stats-col">
+            <div class="hero-stat">
+              <span class="hero-stat-l">Sec. fondazione</span>
+              <span class="hero-stat-n">VIII a.C.</span>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat-l">Terremoto</span>
+              <span class="hero-stat-n">1743</span>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat-l">Torri del castello</span>
+              <span class="hero-stat-n">4</span>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat-l">Mummie nella cripta</span>
+              <span class="hero-stat-n">22</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-scroll">
+        <span>Scorri</span>
+        <div class="hero-scroll-line"></div>
       </div>
     </div>
 
-    <!-- CAROUSEL PRINCIPALE -->
-    <div class="carousel carousel-home reveal" style="max-width:var(--max-w);margin:0 auto;margin-top:2.5rem;margin-bottom:0;">
-      <div class="carousel-track">
-        <div class="carousel-slide">
-          <img src="https://www.sanlu.it/wp-content/uploads/2019/05/castello-svevo-oria-puglia.jpg">
+    <!-- ══ INTRO CITAZIONE ══ -->
+    <div class="intro-band">
+      <div class="intro-inner">
+        <div class="intro-label-col rev">
+          <span class="intro-kicker">Le origini</span>
+          <div class="intro-year-big">VIII<br>a.C.</div>
         </div>
-        <div class="carousel-slide">
-          <img src="./images/piazza-manfredi.JPG">
-        </div>
-        <div class="carousel-slide">
-          <img src="https://www.lagazzettadelmezzogiorno.it/resizer/-1/-1/true/2022_02_19/c2cd3538-3160-45d3-a8a8-4e6c221456f7-1645266492274.jpg--.jpg?1645266492519">
-        </div>
-        <div class="carousel-slide">
-          <img src="https://www.puglia.com/wp-content/uploads/2015/07/oria-1.jpg">
-        </div>
-        <div class="carousel-slide">
-          <img src="https://www.italia.it/content/dam/tdh/it/destinations/puglia/oria/media/1240X500_oria_destination.jpg">
-        </div>
-      </div>
-      <button class="carousel-prev" aria-label="Precedente">‹</button>
-      <button class="carousel-next" aria-label="Successivo">›</button>
-      <div class="carousel-dots"></div>
-    </div>
-
-    <!-- STATS -->
-    <div class="stats-band" style="margin-top:2.5rem;">
-      <div class="stats-inner">
-        <div><span class="stat-n">VIII</span><span class="stat-l">Sec. a.C. — Prime tracce</span></div>
-        <div><span class="stat-n">1743</span><span class="stat-l">Grande terremoto</span></div>
-        <div><span class="stat-n">22</span><span class="stat-l">Mummie nella cripta</span></div>
-        <div><span class="stat-n">4</span><span class="stat-l">Torri del castello</span></div>
-        <div><span class="stat-n">4</span><span class="stat-l">Rioni del Torneo</span></div>
+        <blockquote class="intro-quote rev rev-delay-1">
+          Secondo il racconto di Erodoto, la città sarebbe nata dall'arrivo di
+          <strong>Cretesi naufragati</strong> lungo le coste del Salento, che scelsero
+          il colle più alto per fondare un primo nucleo chiamato <strong>Hyria</strong> —
+          diventata poi la capitale politica della civiltà messapica.
+        </blockquote>
       </div>
     </div>
 
-    <!-- LEGGENDE PREVIEW -->
-    <div class="sec">
-      <span class="sec-label">Racconti del passato</span>
-      <h2>Le Leggende</h2>
-      <div class="grid" id="home-leggende-grid"></div>
-      <div class="sec-more">
-        <a class="btn btn-ghost" href="leggende.html">Tutte le leggende →</a>
+    <!-- ══ LEGGENDE ══ -->
+    <div class="home-section">
+      <div class="section-head rev">
+        <div class="section-head-left">
+          <span class="section-kicker">Racconti del passato</span>
+          <h2 class="section-title">Le Leggende di Oria</h2>
+        </div>
+        <a class="section-link" href="leggende.html">Tutte le leggende →</a>
       </div>
+      <div class="cards-editorial rev rev-delay-1" id="leggende-grid"></div>
     </div>
 
-    <!-- FOTO DUO -->
-    <div class="home-photo-duo" style="margin-bottom:2rem;">
-      <img src="https://pugliapassion.com/wp-content/uploads/2015/01/castello-1024x679.webp" alt="Castello di Oria">
-      <img src="https://www.lagazzettadelmezzogiorno.it/resizer/-1/-1/true/2022_02_19/c2cd3538-3160-45d3-a8a8-4e6c221456f7-1645266492274.jpg--.jpg?1645266492519" alt="Centro storico">
+    <div class="divider-text rev">
+      <span>Patrimonio storico</span>
     </div>
 
-    <!-- LUOGHI PREVIEW -->
-    <div class="sec">
-      <span class="sec-label">Patrimonio storico</span>
-      <h2>I Luoghi da Visitare</h2>
-      <div class="grid" id="home-luoghi-grid"></div>
-      <div class="sec-more">
-        <a class="btn btn-ghost" href="luoghi.html">Tutti i luoghi →</a>
+    <!-- ══ LUOGHI ══ -->
+    <div class="home-section">
+      <div class="section-head rev">
+        <div class="section-head-left">
+          <span class="section-kicker">Da visitare</span>
+          <h2 class="section-title">I Luoghi</h2>
+        </div>
+        <a class="section-link" href="luoghi.html">Tutti i luoghi →</a>
       </div>
+      <div class="luoghi-strip rev rev-delay-1" id="luoghi-grid"></div>
     </div>
 
-    <!-- TORNEO + CORTEO PROMO -->
-    <div class="stats-band">
-      <div class="stats-inner" style="flex-direction:column; gap:1rem;">
-        <span class="sec-label">Ogni agosto ad Oria</span>
-        <h2 style="font-size:1.15rem; font-weight:400; border:none; padding:0; margin:0;">Il Torneo dei Rioni e il Corteo Storico</h2>
-        <p style="font-size:.92rem; line-height:1.8; color:var(--text-dim); max-width:580px;">
-          Una rievocazione medievale che trasforma Oria in un palcoscenico medievale di sfide, costumi d'epoca e suoni di tamburi e trombe. Quattro rioni si affrontano per la gloria e la conquista del Palio.
+    <!-- ══ TORNEO BANNER ══ -->
+    <div class="torneo-banner rev">
+      <div class="torneo-bg" style="background-image: url('./images/torneo.jpg');"></div>
+      <div class="torneo-content">
+        <span class="torneo-kicker">Ogni agosto ad Oria</span>
+        <h2 class="torneo-title">Il Torneo<br>dei Rioni</h2>
+        <p class="torneo-desc">
+          Una rievocazione medievale che trasforma Oria in un palcoscenico
+          di sfide e costumi d'epoca. Quattro rioni si affrontano per la gloria
+          e la conquista del Palio.
         </p>
-        <div style="display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.5rem;">
-          <a class="btn btn-solid" href="torneo.html">Il Torneo</a>
-          <a class="btn btn-ghost" href="corteo.html">Il Corteo Storico</a>
+        <div class="torneo-btns">
+          <a class="btn-hero-solid" href="torneo.html">Il Torneo</a>
+          <a class="btn-hero-ghost" href="corteo.html">Il Corteo Storico</a>
         </div>
       </div>
     </div>
 
-    <footer>
-      <div class="footer-inner">
-        <span>Oria (BR) — Puglia</span>
-        <ul class="footer-links">
-          <li><a href="index.html" data-page="home">Home</a></li>
-          <li><a href="leggende.html" data-page="leggende">Leggende</a></li>
-          <li><a href="luoghi.html" data-page="luoghi">Luoghi</a></li>
-          <li><a href="storia.html" data-page="storia">Storia</a></li>
-          <li><a href="torneo.html" data-page="torneo">Torneo</a></li>
-          <li><a href="corteo.html" data-page="corteo">Corteo</a></li>
-          <li><a href="feedback.html" data-page="feedback">Idee</a></li>
+    <!-- ══ FOOTER ══ -->
+    <footer class="home-footer">
+      <div class="home-footer-inner">
+        <div class="footer-logo">Ori<span>Antica</span></div>
+        <ul class="home-footer-links">
+          <li><a href="leggende.html">Leggende</a></li>
+          <li><a href="luoghi.html">Luoghi</a></li>
+          <li><a href="storia.html">Storia</a></li>
+          <li><a href="torneo.html">Torneo</a></li>
+          <li><a href="corteo.html">Corteo</a></li>
+          <li><a href="feedback.html">Idee</a></li>
         </ul>
+        <span class="footer-copy">Oria (BR) — Puglia</span>
       </div>
     </footer>
 
@@ -146,38 +835,67 @@
   <script src="data.js"></script>
   <script src="shared.js"></script>
   <script>
-    // Preview cards
-    document.addEventListener('DOMContentLoaded', () => {
-      const lgGrid = document.getElementById('home-leggende-grid');
-      const luGrid = document.getElementById('home-luoghi-grid');
-      if (lgGrid) lgGrid.innerHTML = LEGGENDE.slice(0,3).map(cardHTML).join('');
-      if (luGrid) luGrid.innerHTML = LUOGHI.slice(0,3).map(luogoCardHTML).join('');
-    });
+  // ── Hero parallax leggero ──
+  const heroBg = document.getElementById('hero-bg');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (heroBg && y < window.innerHeight) {
+      heroBg.style.transform = `translateY(${y * 0.25}px)`;
+    }
+  }, { passive: true });
+  document.getElementById('hero').classList.add('loaded');
 
-    function cardHTML(item) {
-      const thumb = item.img
-        ? `<img src="${item.img}" alt="${item.title}">`
-        : `<span class="ph-icon">${item.icon}</span><span class="ph-txt">${item.imgAlt || ''}</span>`;
-      return `<a class="card reveal" href="detail-leggenda.html?id=${item.id}">
-        <div class="card-thumb">${thumb}</div>
-        <span class="card-kicker">${item.tag}</span>
-        <h3>${item.title}</h3>
-        <p>${item.excerpt}</p>
-        <div class="card-more">Leggi la storia →</div>
-      </a>`;
+  // ── Genera cards leggende ──
+  function cardLeggenda(item, i) {
+    const isFirst = i === 0;
+    const thumb = item.img
+      ? `<img src="${item.img}" alt="${item.title}" loading="lazy">`
+      : `<div class="card-ph"><span class="card-ph-icon">${item.icon || '⚑'}</span><span class="card-ph-txt">${item.imgAlt || ''}</span></div>`;
+    return `<a class="card-ed" href="detail-leggenda.html?id=${item.id}">
+      <div class="card-ed-thumb">${thumb}</div>
+      <div class="card-ed-body">
+        <span class="card-ed-tag">${item.tag || 'Leggenda'}</span>
+        <h3 class="card-ed-title">${item.title}</h3>
+        <p class="card-ed-excerpt">${item.excerpt}</p>
+        <span class="card-ed-more">Leggi la storia</span>
+      </div>
+    </a>`;
+  }
+
+  // ── Genera cards luoghi ──
+  function cardLuogo(item, i) {
+    const num = String(i + 1).padStart(2, '0');
+    const thumb = item.img
+      ? `<img src="${item.img}" alt="${item.title}" loading="lazy">`
+      : `<div class="card-ph"><span class="card-ph-icon">${item.icon || '⚑'}</span><span class="card-ph-txt">${item.imgAlt || ''}</span></div>`;
+    return `<a class="luogo-card" href="detail-luogo.html?id=${item.id}">
+      <div class="luogo-card-img">${thumb}</div>
+      <span class="luogo-card-num">${num}</span>
+      <span class="luogo-card-tag">${item.tag || 'Luogo'}</span>
+      <h3 class="luogo-card-title">${item.title}</h3>
+      <p class="luogo-card-excerpt">${item.excerpt}</p>
+      <span class="luogo-card-more">Scopri →</span>
+    </a>`;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const lgGrid = document.getElementById('leggende-grid');
+    const luGrid = document.getElementById('luoghi-grid');
+    if (lgGrid && typeof LEGGENDE !== 'undefined') {
+      lgGrid.innerHTML = LEGGENDE.slice(0, 3).map(cardLeggenda).join('');
     }
-    function luogoCardHTML(item) {
-      const thumb = item.img
-        ? `<img src="${item.img}" alt="${item.title}">`
-        : `<span class="ph-icon">${item.icon}</span><span class="ph-txt">${item.imgAlt || ''}</span>`;
-      return `<a class="card reveal" href="detail-luogo.html?id=${item.id}">
-        <div class="card-thumb">${thumb}</div>
-        <span class="card-kicker">${item.tag}</span>
-        <h3>${item.title}</h3>
-        <p>${item.excerpt}</p>
-        <div class="card-more">Scopri il luogo →</div>
-      </a>`;
+    if (luGrid && typeof LUOGHI !== 'undefined') {
+      luGrid.innerHTML = LUOGHI.slice(0, 3).map(cardLuogo).join('');
     }
+  });
+
+  // ── Reveal ──
+  const ro = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); }
+    });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.rev').forEach(el => ro.observe(el));
   </script>
 </body>
 </html>

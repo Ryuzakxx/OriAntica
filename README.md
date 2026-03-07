@@ -1,4 +1,4 @@
-# Oria Medievale 🏰
+# OriAntica 🏰
 
 Sito web dedicato alla storia, alle leggende e alla cultura medievale di **Oria (BR)**, città messapica della Puglia meridionale. Un progetto per raccogliere e tramandare la memoria storica della città.
 

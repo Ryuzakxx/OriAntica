@@ -37,7 +37,7 @@ body {
 
   /* readability */
   line-height: 1.7;
-  text-align: left;          /* default left alignment */
+  text-align: left;         
 }
 
 p { margin-bottom: 1.3rem; }

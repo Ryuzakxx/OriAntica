@@ -170,7 +170,7 @@ const LEGGENDE = [
     img2: '',
     imgAlt: 'Il mercante ad Oria',
     imgAlt2: 'Campagna oritana',
-    excerpt: 'Un racconto popolare narra di un mercante che si trovava ad Oria durante un periodo di carestia, e che incontrò un uomo misterioso.',
+    excerpt: 'Un racconto popolare narra di un mercante che si trovava ad Oria durante un periodo di carestia.',
     detailTag: 'Racconto Popolare · San Barsanofio',
     sideInfo: [
       ['Tipo','Racconto popolare'],['Data','~ 1504']

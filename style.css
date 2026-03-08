@@ -867,3 +867,12 @@ footer {
   .stats-inner { gap: 1.5rem; }
   .grid { grid-template-columns: 1fr; }
 }
+
+.fonte {
+  font-size: .75rem;
+  color: var(--text-dim);
+  border-top: 1px solid var(--border);
+  padding-top: .9rem;
+  margin-top: 2rem;
+  opacity: .7;
+}

@@ -22,13 +22,35 @@ const LEGGENDE = [
     relLeggende: ['bianca-guiscardi','san-barsanofio'],
     relLuoghi: ['castello','porta-taranto'],
     body: `
-      <p>Nel XIII secolo, quando Oria cercava di rafforzare le proprie difese erigendo nuove mura cittadine, qualcosa di misterioso e inspiegabile si opponeva ai lavori. Ogni notte, ciò che i costruttori avevano edificato durante il giorno cedeva, crollava, sprofondava nella terra come inghiottito da una forza invisibile.</p>
-      <p>Disperati, i cittadini consultarono un oracolo, il quale sentenziò con voce terribile che la sola soluzione era il sacrificio di una vergine pura. Una giovane fu scelta tra le famiglie della città, strappata alla sua vita e murata viva nel punto più cedevole delle fondamenta.</p>
-      <blockquote>«Ad Oria fumosa, uccisero una bambina…»<br><em>— Verso dialettale tramandato oralmente nei secoli</em></blockquote>
-      <p>La madre della fanciulla, distrutta da un dolore che nessuna parola umana poteva contenere, si fermò davanti alle mura ancora umide del sacrificio e pronunciò la sua maledizione:</p>
-      <blockquote>«Così come fuma il mio cuore disperato,<br>possa tu fumare per sempre.»</blockquote>
-      <p>Da quel giorno, secondo la tradizione popolare, Oria è spesso avvolta da una nebbia fitta e misteriosa, insolita per una città del Salento battuta dal sole. La gente del posto dice ancora oggi che quando la nebbia scende sul colle del Vaglio, è il cuore della madre che continua a fumare, eterno e inconsolabile.</p>
-      <p>Come spesso accade nelle leggende più antiche, questa storia porta in sé un nucleo storico: le pratiche propiziatorie legate alla fondazione di mura ed edifici erano diffuse in tutto il Mediterraneo medievale. La leggenda di Oria ne conserva la memoria con straordinaria potenza emotiva, trasformando un rito antico in un racconto di amore materno, dolore e vendetta che attraversa i secoli intatto.</p>
+      <p>Nonno Cosimo così racconta, in una sera d'inverno, ai suoi nipotini la leggenda di <em>Oria fumosa</em>, tramandata oralmente di padre in figlio tra le famiglie oritane.</p>
+
+      <p>In una delle tante riunioni del Consiglio di Amministrazione, il comandante Marcuzio e un piccolo gruppo di consiglieri proposero di erigere le mura di cinta di Oria, capitale della Messapia. La mozione fu approvata e fu dato l'incarico a Maica per coordinare il progetto. Dopo pochi giorni iniziarono i lavori e tutto sembrava andare a lieto fine — ma non fu così. Una mattina il lavoro dei muratori si vide crollato. Edificato di nuovo con mezzi più sicuri, anche questa volta lo spettacolo dei crolli si ripeté.</p>
+
+      <p>Convocato il Consiglio, la maggioranza volle dare la colpa ai muratori e si deliberò di affidare a Maica l'incarico di dirigere personalmente la costruzione. Le mura furono ultimate e tutti i cittadini erano orgogliosi nell'ammirarle: la base della muraglia a forma cilindrica era larga cinque metri, con tre porte foderate di ferro e vedette di forma quadrata ogni cinquanta metri. Una piccola stanza per i guardiani di turno era edificata a sinistra di ogni porta.</p>
+
+      <p>Una mattina, nelle prime ore, i paesani furono svegliati da un rumoroso boato: le mura erano di nuovo completamente rase al suolo.</p>
+
+      <p>Fu riunito d'urgenza il consiglio. Maica prese la parola:</p>
+      <blockquote>«Quanto è avvenuto è stato un vero castigo degli dei, perché il lavoro è stato eseguito con attenta e abile maestria. Gli dei sono indignati e non sappiamo perché. Bisogna consultare la megera Laila, la quale abita in un antro situato in una delle nostre colline — solo una maga può risolvere l'enigma.»</blockquote>
+
+      <p>Fu inviata una commissione. Arrivata alla tana della maga, la trovarono intenta a girare una grande palla sulla fiamma del focolare, in un antro infestato da un odore sgradevole. Dopo aver ascoltato il motivo della visita, Laila disse: <em>"Il crollo delle mura è avvenuto per volere degli dei, oppure è indignato lo stesso Giove. Io a mezzanotte mi incontrerò con l'oracolo e tutto sarà chiarito."</em> La delegazione andò via, perché nell'antro c'era un puzzo di zolfo che soffocava.</p>
+
+      <p>Nel salone del Consiglio, da poco era trascorsa mezzanotte, quando la megera svegliò tutti i consiglieri con un grido: <em>"Non solo gli dei sono indignati — ma lo stesso Giove. E quello che si chiede è l'olocausto di una neonata di appena tre giorni."</em></p>
+
+      <p>La maga voleva vendicarsi di Matia, una sua paesana che una volta l'aveva cacciata a calci. Matia aveva da tre giorni dato alla luce una bella piccina, alla quale fu dato il nome di Felicita. Ecco perché Laila propose all'Amministrazione l'olocausto di quella bambina. Il consiglio si riunì il giorno dopo in una discussione accesa, e alla fine — per il saggio intervento di Maica — fu approvato l'olocausto della piccola Felicita.</p>
+
+      <p>All'olocausto assistettero il capitano, Maica e due altri del Consiglio. Tutti rimasero meravigliati quando videro arrivare la maga con la piccina tra le braccia — lei stessa volle gettarla nel fuoco. Il fumo smorzò immediatamente il vagito della piccola Martire, che in pochissimo tempo fu carbonizzata. I suoi resti furono chiusi in un cofanetto d'oro e sotterrati sotto le mura. Il capitano diede il compenso alla maga, ma una saetta la fulminò prima che potesse raccogliere il denaro: cadde esanime al suolo.</p>
+
+      <p>Quella mattina i paesani furono svegliati dalle urla isteriche di Matia. Quando si svegliò e non vide al suo fianco la sua amata figlia, scese dal letto con la sola camicia, con i capelli al vento e scalza, e andò per le vie del paese a cercarla. Molte amiche la aiutarono nella ricerca, ma tutto sembrava avvolto nel mistero. Da un vicolo sbucò Rocco, un vecchietto testimone di quanto era avvenuto, che si avvicinò commosso e raccontò tutto. Matia cadde tra le braccia di un'amica; quando rinvenne, volle andare a rovistare tra le ceneri per trovare almeno i resti della sua Felicita — ma neanche questo le fu concesso.</p>
+
+      <p>Al colmo della disperazione, alzò le braccia al cielo e maledisse la città:</p>
+      <blockquote>«FUMA CITTÀ INFAME / FUMA IN ETERNO — gridò — COME FUMA IL MIO CUORE / SCONVOLTO DALLE FURIE DELL'AVERNO.»</blockquote>
+
+      <p>Da quel giorno, secondo la tradizione popolare, Oria è spesso avvolta da una nebbia fitta e misteriosa, insolita per una città del Salento battuta dal sole. Quando la nebbia scende sul colle del Vaglio, è il cuore di Matia che continua a fumare — eterno e inconsolabile.</p>
+
+      <p>Un giornalista di passaggio ad Oria, accolto dall'Assessore provinciale dei Beni Culturali, volle lasciare questo saluto in dialetto, che riportiamo come lo tramanda la tradizione:</p>
+      <blockquote>«A Oria fumosa<br>rubbara 'na carosa,<br>era tanta picciredda,<br>ca si la mintera a mposcja.»</blockquote>
+      <p class="fonte"><em>Fonte: <strong>La città di Oria raccontata da Antimo Baldari, il sarto poeta</strong> — I Tesori della Biblioteca De Pace-Lombardi</em></p>
     `
   },
   {
@@ -50,11 +72,22 @@ const LEGGENDE = [
     relLeggende: ['oria-fumosa','san-barsanofio'],
     relLuoghi: ['castello'],
     body: `
-      <p>Nel castello medievale di Oria, la Torre del Salto custodisce una delle leggende più struggenti della città. Qui, secondo la tradizione, visse Bianca Guiscardi, una giovane nobildonna di straordinaria bellezza e animo fiero, destinata a un matrimonio combinato con un castellano anziano che non aveva mai scelto e non avrebbe mai amato.</p>
-      <p>Bianca rifiutò con ogni fibra del suo essere quella unione imposta, ma le pressioni della famiglia e le usanze dell'epoca non lasciavano scampo alle donne del suo rango. La notte prima delle nozze, salì in cima alla torre più alta del castello.</p>
-      <blockquote>«Preferisco il volo breve di un uccello libero all'eterna gabbia dorata di una moglie infelice.»<br><em>— Frase attribuita a Bianca nella tradizione orale</em></blockquote>
-      <p>Si lanciò nel vuoto. Da allora, la sua figura pallida sarebbe apparsa tra le mura del castello nelle notti di luna piena, camminando lungo i bastioni con passo leggero e il manto sciolto al vento, come se stesse ancora cercando una via di fuga che in vita non trovò.</p>
-      <p>La cripta sotto la Torre del Salto, dedicata ai martiri Crisante e Daria antichi protettori di Oria, aggiunge alla leggenda una dimensione sacra: in quel luogo il sacro e il profano, la santità e la disperazione umana, convivono da secoli sotto le stesse pietre.</p>
+      <p>Sulla collina più alta della città di Oria svetta l'imponente Castello, una fortezza medievale costruita nel XIII secolo e circondata da storie e misteri tramandati nei secoli. Tra le sue torri, una in particolare custodisce una delle leggende più tragiche e affascinanti della tradizione locale: la <strong>Torre del Salto</strong>.</p>
+
+      <p>La leggenda racconta che molti secoli fa una giovane fanciulla, ancora adolescente, fu promessa in sposa a un potente castellano, un uomo molto più anziano di lei. Non era una scelta dettata dall'amore, ma da accordi familiari e interessi di potere, come spesso accadeva nel Medioevo.</p>
+
+      <p>La notte delle nozze, mentre il castello era immerso nel silenzio e illuminato dalla luce della luna, la ragazza si rifugiò nella torre più alta del maniero. Da lassù poteva vedere la città addormentata e le campagne che si estendevano fino all'orizzonte. In quel momento capì che non avrebbe mai accettato una vita imposta, accanto a un uomo che non amava.</p>
+
+      <blockquote>«Si suicidò gettandosi dall'omonima torre angioina per sfuggire al matrimonio forzato con un castellano molto più vecchio di lei»<br></blockquote>
+
+      <p>Secondo la tradizione, la giovane prese allora una decisione estrema: si gettò dalla torre, scegliendo la libertà della morte piuttosto che un destino che sentiva come una prigione. Da quel tragico gesto la torre prese il nome di <em>Torre del Salto</em>, che ancora oggi ricorda quella storia di dolore e ribellione.</p>
+
+      <p>Con il passare dei secoli la vicenda è diventata leggenda. Molti abitanti del luogo raccontano che, nelle notti di luna piena, tra le antiche finestre del castello si possa intravedere l'ombra della giovane castellana, come se il suo spirito continuasse a vagare tra quelle mura di pietra, sospeso tra memoria e mistero.</p>
+
+      <h3>La Cripta dei Santi Crisante e Daria</h3>
+      <p>Ai piedi della torre si trova ancora oggi l'antica cripta dei Santi Crisante e Daria, uno dei luoghi più antichi della città, che contribuisce a rendere questo angolo del castello ancora più suggestivo e carico di storia. Capitelli messapici, colonne e marmi dell'antico tempio bizantino segnano l'ingresso della cripta, interrata nel XIII secolo durante i lavori voluti da Federico II.</p>
+
+      <p>La Torre del Salto non è quindi solo una parte dell'architettura del castello, ma anche il simbolo di una leggenda che continua ad affascinare visitatori e abitanti, ricordando come, tra le pietre dei luoghi antichi, possano vivere storie capaci di attraversare i secoli.</p>
     `
   },
   {

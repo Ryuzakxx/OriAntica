@@ -485,6 +485,25 @@
       transform: none;
     }
 
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;           /* spazio tra logo e testo */
+      text-decoration: none;
+      padding: 7px;
+    }
+
+    .nav-logo img {
+      transform: scale(1.5);
+      height: 40px;       /* regola a piacere */
+      width: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-logo img:hover {
+      transform: scale(1.7);
+    }
+
     @media (max-width: 900px){
       .tl-container{
         padding-left: 100px;
@@ -564,7 +583,9 @@
 
   <nav>
     <div class="nav-wrap">
-      <a class="nav-logo" href="index.html">OriAntica</a>
+      <a class="nav-logo" href="index.html">
+        <img src="./images/logo.png" alt="OriAntica">OriAntica
+      </a>
       <ul class="nav-links">
         <li><a href="index.html" data-page="home">Home</a></li>
         <li><a href="leggende.html" data-page="leggende">Leggende</a></li>

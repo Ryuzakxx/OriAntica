@@ -199,7 +199,7 @@ const LEGGENDE = [
     tag: 'Racconto Popolare',
     title: 'Il mercante durante la carestia',
     icon: '🌾',
-    img: '',
+    img: 'https://www.nelsalento.com/wp-content/uploads/2019/02/Panorama_oria.jpg',
     img2: '',
     imgAlt: 'Il mercante ad Oria',
     imgAlt2: 'Campagna oritana',

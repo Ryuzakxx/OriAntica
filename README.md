@@ -28,6 +28,14 @@ Il sito è interamente statico, costruito con HTML, CSS e JavaScript, senza fram
 
 Hai fotografie storiche, una leggenda da aggiungere o hai trovato un errore? Apri una **Issue** su GitHub oppure usa la pagina **Idee e Feedback** direttamente dal sito.
 
+
+## 🔧 Eventuali implementazioni
+
+Si potrebbe creare una pagina Instagram, Facebook che condivide aneddoti su Oria e dintorni settimanalmente/quotidianamente. Si potrebbe creare un pacchetto completo per turisti, compreso di:
+- Biglietti per il torneo
+- Schedule digitale di tutte le attività medievali di Oria
+- Informazioni sul sito riguardo B&B, ristoranti e servizi disponibili a Oria
+- Creazione e sviluppo di un tour completo guidato di tutti i luoghi storici di Oria, sia dentro che fuori la città
 ---
 
 _Oria (BR) — Puglia · Francesco Moretto_

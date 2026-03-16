@@ -38,4 +38,6 @@ Si potrebbe creare una pagina Instagram / Facebook che condivide aneddoti su Ori
 - Creazione e sviluppo di un tour completo guidato di tutti i luoghi storici di Oria, sia dentro che fuori la città
 ---
 
+⚠️ Questo è un progetto non ufficiale e indipendente. OriAntica non è affiliata, sponsorizzata né collegata al Comune di Oria. Tutti i contenuti sono creati e di proprietà di Francesco Moretto - Tutti i diritti sono risevati.
+
 _Oria (BR) — Puglia · Francesco Moretto_

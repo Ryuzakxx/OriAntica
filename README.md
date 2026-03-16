@@ -31,7 +31,7 @@ Hai fotografie storiche, una leggenda da aggiungere o hai trovato un errore? Apr
 
 ## 🔧 Eventuali implementazioni
 
-Si potrebbe creare una pagina Instagram, Facebook che condivide aneddoti su Oria e dintorni settimanalmente/quotidianamente. Si potrebbe creare un pacchetto completo per turisti, compreso di:
+Si potrebbe creare una pagina Instagram / Facebook che condivide aneddoti su Oria e dintorni settimanalmente/quotidianamente. Si potrebbe creare un pacchetto completo per turisti, compreso di:
 - Biglietti per il torneo
 - Schedule digitale di tutte le attività medievali di Oria
 - Informazioni sul sito riguardo B&B, ristoranti e servizi disponibili a Oria

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>  <script>
+<head>
+  <script>
   (function() {
-    const ALLOWED_THEMES = ['light', 'dark'];
-    let theme = 'light';
-    try { const t = localStorage.getItem('oria-theme'); if (ALLOWED_THEMES.includes(t)) theme = t; } catch(_) {}
-    document.documentElement.dataset.theme = theme;
+    var ALLOWED = ['light', 'dark'];
+    try {
+      var t = localStorage.getItem('oria-theme');
+      if (ALLOWED.includes(t)) document.documentElement.dataset.theme = t;
+    } catch(_) {}
   })();
   </script>
   <style id="theme-fix">
@@ -13,12 +15,16 @@
   </style>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none';">
+  <!-- CSP: permette Google Fonts (fonts.googleapis.com + fonts.gstatic.com) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none';">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
   <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
   <title>Idee e Feedback &#8212; OriAntica</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body data-page="feedback">
@@ -62,7 +68,7 @@
 
       <form id="feedback-form" novalidate autocomplete="off">
 
-        <!-- Honeypot anti-spam: campo nascosto, non deve essere compilato da utenti reali -->
+        <!-- Honeypot anti-spam -->
         <div style="display:none" aria-hidden="true">
           <label for="_hp">Non compilare questo campo</label>
           <input type="text" id="_hp" name="_hp" tabindex="-1" autocomplete="off">
@@ -179,19 +185,15 @@
       var form = document.getElementById('feedback-form');
       var errorEl = document.getElementById('form-error');
       var successEl = document.getElementById('success-msg');
-
       var ALLOWED_TIPI = ['', 'leggenda', 'foto', 'correzione', 'luogo', 'torneo', 'idea', 'altro'];
 
       form.addEventListener('submit', function(e) {
         e.preventDefault();
-
-        // Honeypot check: se compilato, interrompi silenziosamente
         if (document.getElementById('_hp').value !== '') return;
 
         errorEl.style.display = 'none';
         errorEl.textContent = '';
 
-        // Validazione lato client
         var messaggio = document.getElementById('messaggio').value.trim();
         var tipo = document.getElementById('tipo').value;
         var email = document.getElementById('email').value.trim();
@@ -219,8 +221,6 @@
           return;
         }
 
-        // TODO: collega a Formspree o altro servizio backend per invio reale.
-        // Attualmente mostra solo il messaggio di successo (nessun dato viene trasmesso).
         form.style.opacity = '.4';
         form.style.pointerEvents = 'none';
         successEl.classList.add('show');

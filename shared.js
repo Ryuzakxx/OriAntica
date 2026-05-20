@@ -1,12 +1,13 @@
 /* ═══════════════════════════════════════════
-   ORIA MEDIEVALE 
+   ORIA MEDIEVALE
    ═══════════════════════════════════════════ */
 
 /* ── TEMA ── */
 function initTheme() {
   const btn = document.getElementById('theme-btn');
   if (!btn) return;
-  const saved = localStorage.getItem('oria-theme') || 'light';
+  // Usa safeReadTheme() da security.js per allowlist stretta
+  const saved = (typeof safeReadTheme === 'function') ? safeReadTheme() : 'light';
   applyTheme(saved);
   btn.addEventListener('click', () => {
     const current = document.documentElement.dataset.theme || 'light';
@@ -14,10 +15,13 @@ function initTheme() {
   });
 }
 function applyTheme(theme) {
+  // Allowlist: solo 'light' o 'dark' vengono accettati
+  const ALLOWED = ['light', 'dark'];
+  if (!ALLOWED.includes(theme)) theme = 'light';
   document.documentElement.dataset.theme = theme;
-  localStorage.setItem('oria-theme', theme);
+  try { localStorage.setItem('oria-theme', theme); } catch (_) {}
   const btn = document.getElementById('theme-btn');
-  if (btn) btn.textContent = theme === 'dark' ? '☀' : '☾';
+  if (btn) btn.textContent = theme === 'dark' ? '\u2600' : '\u263E';
 }
 
 /* ── SCROLL REVEAL ── */
@@ -90,13 +94,12 @@ function initCarousel(wrapper) {
   goTo(0);
 }
 
-// When the DOM is ready we can do the rest of the setup.
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   setTimeout(initReveal, 80);
   document.querySelectorAll('.carousel').forEach(initCarousel);
 
-  // remove the temporary no-transition style used to prevent flash
+  // Rimuove lo stile temporaneo anti-flash
   const fix = document.getElementById('theme-fix');
   if (fix) fix.remove();
 

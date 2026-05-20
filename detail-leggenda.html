@@ -1,8 +1,24 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+  <script>
+  (function() {
+    const ALLOWED_THEMES = ['light', 'dark'];
+    let theme = 'light';
+    try { const t = localStorage.getItem('oria-theme'); if (ALLOWED_THEMES.includes(t)) theme = t; } catch(_) {}
+    document.documentElement.dataset.theme = theme;
+  })();
+  </script>
+  <style id="theme-fix">
+    html, body, nav, footer { transition: none !important; }
+  </style>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none';">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
   <title>Leggenda — OriAntica</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -21,7 +37,7 @@
         <li><a href="torneo.html" data-page="torneo">Torneo</a></li>
         <li><a href="corteo.html" data-page="corteo">Corteo</a></li>
         <li><a href="feedback.html" data-page="feedback">Idee</a></li>
-        <li><button class="theme-btn" id="theme-btn">☾</button></li>
+        <li><button class="theme-btn" id="theme-btn">&#9790;</button></li>
       </ul>
     </div>
   </nav>
@@ -29,8 +45,8 @@
   <div class="content">
 
     <div class="page-top" id="detail-page-top">
-      <span class="page-kicker" id="detail-kicker">—</span>
-      <h1 id="detail-title">—</h1>
+      <span class="page-kicker" id="detail-kicker">&#8212;</span>
+      <h1 id="detail-title">&#8212;</h1>
     </div>
 
     <div class="detail">
@@ -40,7 +56,7 @@
 
     <footer>
       <div class="footer-inner">
-        <span>Oria (BR) — Puglia</span>
+        <span>Oria (BR) &#8212; Puglia</span>
         <ul class="footer-links">
           <li><a href="index.html">Home</a></li>
           <li><a href="leggende.html">Leggende</a></li>
@@ -53,55 +69,150 @@
     </footer>
   </div>
 
+  <script src="security.js"></script>
   <script src="data.js"></script>
   <script src="shared.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const params = new URLSearchParams(location.search);
-      const id = params.get('id');
+      const rawId = params.get('id');
+      // Valida l'id: solo caratteri alfanumerici e trattini
+      const id = rawId && /^[a-zA-Z0-9_-]{1,64}$/.test(rawId) ? rawId : null;
+
+      if (!id) {
+        document.getElementById('detail-title').textContent = 'Leggenda non trovata';
+        return;
+      }
+
       const item = LEGGENDE.find(x => x.id === id);
-      if (!item) { document.getElementById('detail-title').textContent = 'Leggenda non trovata'; return; }
+      if (!item) {
+        document.getElementById('detail-title').textContent = 'Leggenda non trovata';
+        return;
+      }
 
-      document.title = item.title + ' — Oria Medievale';
-      document.getElementById('detail-kicker').textContent = item.detailTag || item.tag;
-      document.getElementById('detail-title').textContent = item.title;
+      document.title = escapeHTML(item.title) + ' \u2014 Oria Medievale';
+      document.getElementById('detail-kicker').textContent = item.detailTag || item.tag || '';
+      document.getElementById('detail-title').textContent = item.title || '';
 
-      const mainImgHTML = item.img
-        ? `<div class="detail-img"><img src="${item.img}" alt="${item.title}"></div>`
-        : `<div class="detail-img"><span class="ph-icon">${item.icon}</span><span class="ph-txt">${item.imgAlt || ''}</span></div>`;
+      // Immagine principale: usa textContent/setAttribute per evitare XSS
+      const mainEl = document.getElementById('detail-main');
+      const sideEl = document.getElementById('detail-side');
 
-      const img2HTML = item.img2
-        ? `<div class="img2"><img src="${item.img2}" alt="${item.title}"></div>`
-        : '';
+      // Back button
+      const backBtn = document.createElement('a');
+      backBtn.className = 'back-btn';
+      backBtn.href = 'leggende.html';
+      backBtn.textContent = '\u2190 Torna alle Leggende';
+      mainEl.appendChild(backBtn);
 
-      const relLegStr = (item.relLeggende || []).map(rid => {
-        const r = LEGGENDE.find(x => x.id === rid);
-        return r ? `<li><button onclick="location.href='detail-leggenda.html?id=${rid}'">→ ${r.title}</button></li>` : '';
-      }).join('');
+      // Immagine
+      const imgWrap = document.createElement('div');
+      imgWrap.className = 'detail-img';
+      if (item.img) {
+        const imgEl = document.createElement('img');
+        imgEl.src = safeURL(item.img);
+        imgEl.alt = item.title || '';
+        imgWrap.appendChild(imgEl);
+      } else {
+        const iconSpan = document.createElement('span');
+        iconSpan.className = 'ph-icon';
+        iconSpan.textContent = item.icon || '';
+        const txtSpan = document.createElement('span');
+        txtSpan.className = 'ph-txt';
+        txtSpan.textContent = item.imgAlt || '';
+        imgWrap.appendChild(iconSpan);
+        imgWrap.appendChild(txtSpan);
+      }
+      mainEl.appendChild(imgWrap);
 
-      const relLuoStr = (item.relLuoghi || []).map(rid => {
-        const r = LUOGHI.find(x => x.id === rid);
-        return r ? `<li><button onclick="location.href='detail-luogo.html?id=${rid}'">→ ${r.title}</button></li>` : '';
-      }).join('');
+      // Kicker + titolo
+      const kicker = document.createElement('span');
+      kicker.className = 'detail-kicker';
+      kicker.textContent = item.detailTag || item.tag || '';
+      mainEl.appendChild(kicker);
 
-      document.getElementById('detail-main').innerHTML = `
-        <a class="back-btn" href="leggende.html">← Torna alle Leggende</a>
-        ${mainImgHTML}
-        <span class="detail-kicker">${item.detailTag || item.tag}</span>
-        <h2>${item.title}</h2>
-        <div class="body-text">${item.body}${img2HTML}</div>
-      `;
+      const h2 = document.createElement('h2');
+      h2.textContent = item.title || '';
+      mainEl.appendChild(h2);
 
-      document.getElementById('detail-side').innerHTML = `
-        <div class="sbox">
-          <span class="sbox-title">Informazioni</span>
-          <ul class="sinfo">
-            ${(item.sideInfo || []).map(([k,v]) => `<li><strong>${k}</strong>${v}</li>`).join('')}
-          </ul>
-        </div>
-        ${relLegStr ? `<div class="sbox"><span class="sbox-title">Leggende Collegate</span><ul class="snav">${relLegStr}</ul></div>` : ''}
-        ${relLuoStr ? `<div class="sbox"><span class="sbox-title">Luoghi Collegati</span><ul class="snav">${relLuoStr}</ul></div>` : ''}
-      `;
+      // Body: il contenuto del body è HTML redazionale statico da data.js (non user input)
+      // Viene inserito tramite innerHTML SOLO perché è contenuto editoriale controllato dagli autori
+      const bodyDiv = document.createElement('div');
+      bodyDiv.className = 'body-text';
+      bodyDiv.innerHTML = (item.body || '') + (item.img2 ? `<div class="img2"><img src="${escapeHTML(safeURL(item.img2))}" alt="${escapeHTML(item.title)}"></div>` : '');
+      mainEl.appendChild(bodyDiv);
+
+      // Sidebar — informazioni
+      const sboxInfo = document.createElement('div');
+      sboxInfo.className = 'sbox';
+      const sboxTitle = document.createElement('span');
+      sboxTitle.className = 'sbox-title';
+      sboxTitle.textContent = 'Informazioni';
+      sboxInfo.appendChild(sboxTitle);
+      const ul = document.createElement('ul');
+      ul.className = 'sinfo';
+      (item.sideInfo || []).forEach(([k, v]) => {
+        const li = document.createElement('li');
+        const strong = document.createElement('strong');
+        strong.textContent = k;
+        li.appendChild(strong);
+        const valSpan = document.createElement('span');
+        valSpan.textContent = v;
+        li.appendChild(valSpan);
+        ul.appendChild(li);
+      });
+      sboxInfo.appendChild(ul);
+      sideEl.appendChild(sboxInfo);
+
+      // Leggende collegate
+      const relLeg = (item.relLeggende || []).filter(rid => /^[a-zA-Z0-9_-]+$/.test(rid));
+      if (relLeg.length) {
+        const sbox2 = document.createElement('div');
+        sbox2.className = 'sbox';
+        const t2 = document.createElement('span');
+        t2.className = 'sbox-title';
+        t2.textContent = 'Leggende Collegate';
+        sbox2.appendChild(t2);
+        const ul2 = document.createElement('ul');
+        ul2.className = 'snav';
+        relLeg.forEach(rid => {
+          const r = LEGGENDE.find(x => x.id === rid);
+          if (!r) return;
+          const li = document.createElement('li');
+          const btn = document.createElement('a');
+          btn.href = 'detail-leggenda.html?id=' + encodeURIComponent(rid);
+          btn.textContent = '\u2192 ' + r.title;
+          li.appendChild(btn);
+          ul2.appendChild(li);
+        });
+        sbox2.appendChild(ul2);
+        sideEl.appendChild(sbox2);
+      }
+
+      // Luoghi collegati
+      const relLuo = (item.relLuoghi || []).filter(rid => /^[a-zA-Z0-9_-]+$/.test(rid));
+      if (relLuo.length) {
+        const sbox3 = document.createElement('div');
+        sbox3.className = 'sbox';
+        const t3 = document.createElement('span');
+        t3.className = 'sbox-title';
+        t3.textContent = 'Luoghi Collegati';
+        sbox3.appendChild(t3);
+        const ul3 = document.createElement('ul');
+        ul3.className = 'snav';
+        relLuo.forEach(rid => {
+          const r = LUOGHI.find(x => x.id === rid);
+          if (!r) return;
+          const li = document.createElement('li');
+          const btn = document.createElement('a');
+          btn.href = 'detail-luogo.html?id=' + encodeURIComponent(rid);
+          btn.textContent = '\u2192 ' + r.title;
+          li.appendChild(btn);
+          ul3.appendChild(li);
+        });
+        sbox3.appendChild(ul3);
+        sideEl.appendChild(sbox3);
+      }
     });
   </script>
 </body>

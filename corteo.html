@@ -1,1 +1,170 @@
-CORTEO_PLACEHOLDER
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <script>
+  (function() {
+    var ALLOWED = ['light', 'dark'];
+    try {
+      var t = localStorage.getItem('oria-theme');
+      if (ALLOWED.includes(t)) document.documentElement.dataset.theme = t;
+    } catch(_) {}
+  })();
+  </script>
+  <style id="theme-fix">
+    html, body, nav, footer { transition: none !important; }
+  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Il Corteo Storico — Oria Medievale</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="corteo">
+
+  <nav>
+    <div class="nav-wrap">
+      <a class="nav-logo" href="index.html">
+        <img src="./images/logo.png" alt="OriAntica">OriAntica
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" data-page="home">Home</a></li>
+        <li><a href="leggende.html" data-page="leggende">Leggende</a></li>
+        <li><a href="luoghi.html" data-page="luoghi">Luoghi</a></li>
+        <li><a href="storia.html" data-page="storia">Storia</a></li>
+        <li><a href="torneo.html" data-page="torneo">Torneo</a></li>
+        <li><a href="corteo.html" data-page="corteo">Corteo</a></li>
+        <li><a href="feedback.html" data-page="feedback">Idee</a></li>
+        <li><button class="theme-btn" id="theme-btn">☾</button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="content">
+
+    <div class="page-top">
+      <span class="page-kicker">Rievocazione Storica · Il Terzo Giorno del Torneo</span>
+      <h1>Il Corteo Storico</h1>
+      <p>Centinaia di figuranti che sfilano per le vie di Oria</p>
+    </div>
+
+    <!-- CAROUSEL CORTEO -->
+    <div class="carousel carousel-page reveal" style="max-width:var(--max-w);margin:0 auto;margin-top:2rem;">
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <img src="https://www.brindisireport.it/~media/horizontal-hi/43188358054386/il-palio-di-oria-foto-dalla-pagina-facebook.jpg" alt="Il corteo per le vie di Oria">
+        </div>
+        <div class="carousel-slide">
+          <img src="https://www.paliodioria.net/wp-content/uploads/2024/03/gallery_15.jpg" alt="Sbandieratori">
+        </div>
+        <div class="carousel-slide">
+          <img src="https://lh5.googleusercontent.com/proxy/AGobEaBo5PwiSUtfwtX0iflDRL-kqX9eET3KUyHZXXjxNtMNctXOAe3ROw5WDV5lUvItfV8UklK7tihjrZTYEJalxJeCtS_656Hk7i8PNzS9CRdFL1ZnKDR-37CJ7kqRO8TlLrA" alt="Il corteo imperiale">
+        </div>
+        <div class="carousel-slide">
+          <img src="https://www.orianotizie.it/wp-content/uploads/2023/04/ALMIENTO-1ok.jpg" alt="Musici medievali">
+        </div>
+      </div>
+      <button class="carousel-prev" aria-label="Precedente">‹</button>
+      <button class="carousel-next" aria-label="Successivo">›</button>
+      <div class="carousel-dots"></div>
+    </div>
+
+    <!-- INTRO -->
+    <div class="sec" style="padding-bottom:1rem;">
+      <span class="sec-label">La manifestazione</span>
+      <h2>Il Grande Corteo</h2>
+      <div style="max-width:680px;">
+        <p style="font-size:.97rem;line-height:1.9;color:var(--text-dim);margin-bottom:1rem;">
+          Il Corteo Storico è il momento più scenografico della rievocazione medievale di Oria. Si svolge nel tardo pomeriggio del terzo giorno della manifestazione.
+        </p>
+        <p style="font-size:.97rem;line-height:1.9;color:var(--text-dim);">
+          Centinaia di figuranti in abiti fedelmente ricostruiti sfilano per le vie del centro storico, aprendo e chiudendo un lungo percorso che tocca i punti simbolici della città: dalla Porta Taranto alla Cattedrale, fino in piazza Lorch. Ogni rione sfila davanti all'imperatore Federico II.
+        </p>
+      </div>
+    </div>
+
+    <!-- TIMELINE CORTEO -->
+    <div class="corteo-timeline">
+      <h2>L'Ordine del Corteo</h2>
+      <div class="timeline">
+
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <span class="tl-label">Apertura</span>
+          <h3>I Cavalli dei quattro rioni</h3>
+          <p>Il corteo si apre con i cavalli dei quattro rioni che sfilano a coppie</p>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <span class="tl-label">Rione Lama</span>
+          <h3>Il Rione Lama — Gli Artigiani e il Popolo</h3>
+          <p>Il primo rione sfila con i suoi artigiani, le donne in costume popolare, i bambini e i tamburini. Il gonfalone oro e nero apre la delegazione, seguita dai campioni che gareggeranno il giorno dopo.</p>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <span class="tl-label">Rione Judea</span>
+          <h3>Il Rione Judea — I Mercanti e i Sapienti</h3>
+          <p>Il secondo rione ricorda l'eredità della comunità ebraica medievale di Oria. Tra i figuranti compaiono mercanti, filosofi, medici e figure della cultura andalusa che transitarono per la città.</p>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <span class="tl-label">Rione Castello</span>
+          <h3>Il Rione Castello — I Cavalieri e la Nobiltà</h3>
+          <p>Il terzo rione sfila con i cavalieri a cavallo, le dame di corte, gli scudieri e i portabandiera. Il rosso e il bianco dominano la scena, tra corazze lucide e cotte di maglia.</p>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <span class="tl-label">Climax</span>
+          <h3>Il Corteo Imperiale di Federico II</h3>
+          <p>Il momento più atteso: l'imperatore Federico II, circondato dai dignitari di corte, dai falconieri e dalla guardia imperiale, attraversa le strade di Oria a cavallo. Il pubblico si dispone ai lati del percorso in un silenzio carico di emozione, rotto solo dai tamburi.</p>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <span class="tl-label">Arrivo</span>
+          <h3>La Piazza del Castello</h3>
+          <p>Il corteo confluisce nella piazza antistante il castello, dove si esibiscono gli sbandieratori di tutti e tre i rioni contemporaneamente, in un'unica coreografia che chiude la serata del corteo e apre la vigilia del torneo.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- I COSTUMI -->
+    <div class="sec" style="padding-top:1rem;">
+      <span class="sec-label">Dettagli</span>
+      <h2>I Costumi</h2>
+      <div style="max-width:680px;">
+        <p style="font-size:.97rem;line-height:1.9;color:var(--text-dim);margin-bottom:1rem;">
+          I costumi della rievocazione sono realizzati seguendo criteri di filologia storica: i tessuti, i tagli, i colori e gli accessori sono basati su fonti iconografiche del XIII secolo, in particolare miniature dell'epoca federiciana e affreschi di area pugliese.
+        </p>
+        <p style="font-size:.97rem;line-height:1.9;color:var(--text-dim);margin-bottom:1rem;">
+          Le stoffe sono acquistate da fornitori specializzati in tessuti storici. Le corazze e le armi sono in metallo lavorato a mano da armaioli locali. I copricapi — da semplici veli a corone nobiliari — sono cuciti a mano da sarte volontarie all'interno dei rioni.
+        </p>
+        <p style="font-size:.97rem;line-height:1.9;color:var(--text-dim);">
+          Ogni figurante cura autonomamente il proprio costume, con il supporto del rione di appartenenza. La preparazione inizia mesi prima della manifestazione.
+        </p>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-inner">
+        <span>Oria (BR) — Puglia</span>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="leggende.html">Leggende</a></li>
+          <li><a href="luoghi.html">Luoghi</a></li>
+          <li><a href="storia.html">Storia</a></li>
+          <li><a href="torneo.html">Torneo</a></li>
+          <li><a href="corteo.html">Corteo</a></li>
+          <li><a href="feedback.html">Idee</a></li>
+        </ul>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="shared.js"></script>
+</body>
+</html>

@@ -1,1 +1,909 @@
-STORIA_PLACEHOLDER
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <script>
+  (function() {
+    var ALLOWED = ['light', 'dark'];
+    try {
+      var t = localStorage.getItem('oria-theme');
+      if (ALLOWED.includes(t)) document.documentElement.dataset.theme = t;
+    } catch(_) {}
+  })();
+  </script>
+  <style id="theme-fix">html,body,nav,footer{transition:none!important}</style>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Storia di Oria | OriAntica</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .storia-page{
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 3rem 2rem 6rem;
+    }
+
+    .tl-container{
+      position: relative;
+      padding-left: 130px;
+    }
+
+    .tl-container::before{
+      content: "";
+      position: absolute;
+      left: 95px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+
+    .tl-progress{
+      position: absolute;
+      left: 95px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .tl-progress-fill{
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 0;
+      background: var(--accent);
+      transition: height .12s linear;
+    }
+
+    .tl-section{
+      position: relative;
+      margin-bottom: 4.5rem;
+      padding-left: 0;
+    }
+
+    .tl-section:last-child{
+      margin-bottom: 0;
+    }
+
+    .tl-marker{
+      position: absolute;
+      left: -130px;
+      top: 0;
+      width: 82px;
+      text-align: right;
+    }
+
+    .tl-marker-year{
+      display: block;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      line-height: 1.2;
+    }
+
+    .tl-marker-arm{
+      display: none;
+    }
+
+    .tl-dot{
+      position: absolute;
+      left: -41px;
+      top: .45rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--accent);
+      z-index: 3;
+    }
+
+    .tl-heading{
+      margin-bottom: 1.3rem;
+      padding-bottom: .75rem;
+      border-bottom: 1px solid var(--border);
+      display: block;
+    }
+
+    .tl-period-label{
+      display: block;
+      font-size: .58rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: .35rem;
+    }
+
+    .tl-heading h2{
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--text);
+      border: 0;
+      padding: 0;
+    }
+
+    .tl-body{
+      position: relative;
+      z-index: 1;
+    }
+
+    .tl-body p{
+      font-size: .97rem;
+      line-height: 1.95;
+      color: var(--text-dim);
+      margin: 0 0 1.1rem;
+    }
+
+    .tl-body p:first-of-type::first-letter{
+      font-size: 2.6rem;
+      float: left;
+      line-height: .88;
+      margin: .08rem .35rem 0 0;
+      color: var(--accent);
+    }
+
+    .tl-body h3{
+      font-size: .93rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 1.8rem 0 .6rem;
+    }
+
+    .tl-body blockquote{
+      border-left: 2px solid var(--accent);
+      padding: .65rem 1.1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text);
+      font-size: .93rem;
+    }
+
+    .s-img{
+      width: 100%;
+      border: 1px solid var(--border);
+      margin: 1.8rem 0;
+      overflow: hidden;
+      background: var(--bg-alt);
+    }
+
+    .s-img img{
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .s-img figcaption{
+      font-size: .67rem;
+      letter-spacing: .04em;
+      color: var(--text-dim);
+      padding: .55rem .8rem;
+      border-top: 1px solid var(--border);
+      font-style: italic;
+    }
+
+    .s-duo{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.8rem 0;
+    }
+
+    .s-duo figure{
+      border: 1px solid var(--border);
+      overflow: hidden;
+      background: var(--bg-alt);
+      margin: 0;
+    }
+
+    .s-duo img{
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+    }
+
+    .s-duo figcaption{
+      font-size: .64rem;
+      color: var(--text-dim);
+      padding: .45rem .7rem;
+      border-top: 1px solid var(--border);
+      font-style: italic;
+    }
+
+    .s-car{
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      margin: 1.8rem 0;
+      background: #000;
+    }
+
+    .s-car .car-track{
+      display: flex;
+      transition: transform .5s cubic-bezier(.4,0,.2,1);
+    }
+
+    .s-car .car-slide{
+      position: relative;
+      flex: 0 0 100%;
+      min-width: 100%;
+    }
+
+    .s-car .car-slide img{
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      display: block;
+      opacity: .92;
+    }
+
+    .s-car .car-cap{
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 1rem 1.2rem 1.4rem;
+      background: linear-gradient(to top, rgba(0,0,0,.78), rgba(0,0,0,.18), transparent);
+      z-index: 2;
+    }
+
+    .s-car .car-cap p{
+      margin: 0;
+      font-size: .78rem;
+      line-height: 1.45;
+      font-style: italic;
+      color: #fff !important;
+    }
+
+    .s-car .car-cap p::first-letter{
+      all: unset;
+    }
+
+    .s-car .car-prev,
+    .s-car .car-next{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,.38);
+      border: 1px solid rgba(255,255,255,.18);
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      padding: .45rem .75rem;
+      z-index: 5;
+      line-height: 1;
+      transition: background .2s;
+    }
+
+    .s-car .car-prev{ left: .8rem; }
+    .s-car .car-next{ right: .8rem; }
+
+    .s-car .car-prev:hover,
+    .s-car .car-next:hover{
+      background: rgba(0,0,0,.68);
+    }
+
+    .s-car .car-dots{
+      position: absolute;
+      left: 50%;
+      bottom: .7rem;
+      transform: translateX(-50%);
+      display: flex;
+      gap: .35rem;
+      z-index: 6;
+    }
+
+    .s-car .car-dot{
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.35);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background .2s, transform .2s;
+    }
+
+    .s-car .car-dot.on{
+      background: #fff;
+      transform: scale(1.2);
+    }
+
+    .s-fact{
+      border: 1px solid var(--border);
+      background: var(--bg-alt);
+      padding: 1rem 1.3rem;
+      margin: 1.5rem 0;
+    }
+
+    .s-fact-lbl{
+      font-size: .54rem;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: block;
+      margin-bottom: .45rem;
+    }
+
+    .s-fact p{
+      font-size: .87rem !important;
+      margin: 0 !important;
+      color: var(--text) !important;
+    }
+
+    .s-fact p::first-letter{
+      all: unset !important;
+    }
+
+    .gallery-wrap{
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .gallery-wrap h2{
+      font-size: 1.05rem;
+      font-weight: 400;
+      padding-bottom: .75rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .gallery-kicker{
+      font-size: .57rem;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      display: block;
+      margin-bottom: .4rem;
+    }
+
+    .gallery-grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .g-item{
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--bg-alt);
+    }
+
+    .g-item img{
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+      transition: transform .4s, opacity .3s;
+    }
+
+    .g-item:hover img{
+      transform: scale(1.06);
+      opacity: .82;
+    }
+
+    .g-item-cap{
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,.75));
+      color: #fff;
+      padding: .7rem .65rem .45rem;
+      font-size: .63rem;
+      font-style: italic;
+      opacity: 0;
+      transition: opacity .22s;
+    }
+
+    .g-item:hover .g-item-cap{
+      opacity: 1;
+    }
+
+    .g-item.wide{
+      grid-column: span 2;
+    }
+
+    .g-item.wide img{
+      aspect-ratio: 2 / 1;
+    }
+
+    .lightbox{
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.93);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 2rem;
+    }
+
+    .lightbox.open{
+      display: flex;
+    }
+
+    .lightbox img{
+      max-width: 90vw;
+      max-height: 80vh;
+      object-fit: contain;
+    }
+
+    .lb-cap{
+      color: rgba(255,255,255,.6);
+      font-size: .73rem;
+      font-style: italic;
+      margin-top: .75rem;
+    }
+
+    .lb-close{
+      position: fixed;
+      top: 1.1rem;
+      right: 1.4rem;
+      background: none;
+      border: 1px solid rgba(255,255,255,.3);
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      padding: .28rem .65rem;
+    }
+
+    .lb-prev,
+    .lb-next{
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.2);
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: .65rem .95rem;
+    }
+
+    .lb-prev{ left: .8rem; }
+    .lb-next{ right: .8rem; }
+
+    .rev{
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity .45s ease, transform .45s ease;
+    }
+
+    .rev.in{
+      opacity: 1;
+      transform: none;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      padding: 7px;
+    }
+
+    .nav-logo img {
+      transform: scale(1.5);
+      height: 40px;
+      width: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-logo img:hover {
+      transform: scale(1.7);
+    }
+
+    @media (max-width: 900px){
+      .tl-container{
+        padding-left: 100px;
+      }
+
+      .tl-container::before,
+      .tl-progress{
+        left: 72px;
+      }
+
+      .tl-marker{
+        left: -100px;
+        width: 60px;
+      }
+
+      .tl-dot{
+        left: -34px;
+      }
+    }
+
+    @media (max-width: 680px){
+      .storia-page,
+      .gallery-wrap{
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .tl-container{
+        padding-left: 56px;
+      }
+
+      .tl-container::before,
+      .tl-progress{
+        left: 18px;
+      }
+
+      .tl-marker{
+        left: -56px;
+        width: 42px;
+      }
+
+      .tl-marker-year{
+        font-size: .56rem;
+        letter-spacing: .04em;
+      }
+
+      .tl-dot{
+        left: -44px;
+        top: .38rem;
+        width: 10px;
+        height: 10px;
+      }
+
+      .s-duo{
+        grid-template-columns: 1fr;
+      }
+
+      .s-car .car-slide img{
+        height: 260px;
+      }
+
+      .gallery-grid{
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .g-item.wide{
+        grid-column: span 1;
+      }
+
+      .g-item.wide img{
+        aspect-ratio: 1;
+      }
+    }
+  </style>
+</head>
+<body data-page="storia">
+
+  <nav>
+    <div class="nav-wrap">
+      <a class="nav-logo" href="index.html">
+        <img src="./images/logo.png" alt="OriAntica">OriAntica
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" data-page="home">Home</a></li>
+        <li><a href="leggende.html" data-page="leggende">Leggende</a></li>
+        <li><a href="luoghi.html" data-page="luoghi">Luoghi</a></li>
+        <li><a href="storia.html" data-page="storia">Storia</a></li>
+        <li><a href="torneo.html" data-page="torneo">Torneo</a></li>
+        <li><a href="corteo.html" data-page="corteo">Corteo</a></li>
+        <li><a href="feedback.html" data-page="feedback">Idee</a></li>
+        <li><button class="theme-btn" id="theme-btn"></button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="content">
+    <div class="page-top">
+      <span class="page-kicker">Dalle origini messapiche al XX secolo</span>
+      <h1>La Storia di Oria</h1>
+      <p>Duemila anni sul colle del Vaglio</p>
+    </div>
+
+    <div class="storia-page">
+      <div class="tl-container">
+        <div class="tl-progress"><span class="tl-progress-fill"></span></div>
+
+        <div class="tl-section rev" id="messapici">
+          <div class="tl-marker">
+            <span class="tl-marker-year">VIII a.C.</span>
+            <div class="tl-marker-arm"></div>
+          </div>
+          <div class="tl-dot"></div>
+          <div class="tl-heading">
+            <span class="tl-period-label">Preistoria</span>
+            <h2>Le Origini Messapiche</h2>
+          </div>
+          <div class="tl-body">
+            <p>Le origini di Oria si perdono tra storia e leggenda. Secondo Erodoto, la città nacque da un gruppo di Cretesi naufragati sulle coste del Salento, che scelsero il colle più alto per fondare un primo insediamento chiamato Hyria — nome che probabilmente richiamava Yrìa, città della Beozia da cui provenivano.
+Dall'VIII secolo a.C. il centro si sviluppò progressivamente fino a diventare la capitale politica della confederazione messapica, intrattenendo intensi rapporti con i centri del Salento e della Magna Grecia. Il legame più importante fu con Taranto: commerciale e culturale da un lato, rivale e militare dall'altro. Questo contrasto culminò nel 473 a.C. con una grande battaglia tra Tarantini, Reggini e Messapi, che indebolì entrambe le parti.
+Nel 272 a.C., con la caduta di Taranto, anche i Messapi entrarono nell'orbita di Roma. Oria mantenne comunque il suo ruolo di rilievo, tanto che nell'88 a.C. ottenne lo status di municipium romanum, integrandosi nel sistema amministrativo di Roma senza perdere la propria identità storica.</p>
+
+            <figure class="s-img">
+              <img src="https://www.ilpuntoamezzogiorno.it/wp-content/uploads/2023/12/oria_papalucio2.jpg"/>
+              <figcaption>Oria, Monte Papalucio - INFO E BIBLIOGRAFIA DI RIFERIMENTO: <a href="https://landlab.unisalento.it/oria.html" target="_blank" rel="noopener noreferrer">https://landlab.unisalento.it/oria.html</a></figcaption>
+            </figure>
+
+            <div class="s-fact">
+              <span class="s-fact-lbl">Da sapere</span>
+              <p>Il nome <em>Uria</em> compare nelle fonti greche e latine già nel VI secolo a.C. Una delle particolarità di Oria è la sua posizione costruita su più colli, caratteristica che nei secoli l'ha resa un luogo naturalmente strategico e facile da difendere. Proprio questa conformazione del territorio ha influenzato lo sviluppo della città fin dall'antichità, contribuendo alla nascita di un centro urbano importante e ben collegato con il resto del Salento.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-section rev" id="romani">
+          <div class="tl-marker">
+            <span class="tl-marker-year">III a.C.</span>
+            <div class="tl-marker-arm"></div>
+          </div>
+          <div class="tl-dot"></div>
+          <div class="tl-heading">
+            <span class="tl-period-label">Antichità</span>
+            <h2>Età Romana</h2>
+          </div>
+          <div class="tl-body">
+            <p>Quello che sappiamo su Oria nel periodo romano è molto vago, si sa che Oria era diventata un importante centro commerciale, culturale e militare <i>(anche detto municipium romanum)</i> nella rete stradale romana. La via Appia e i suoi rami collegavano Oria ai grandi centri dell'Impero, facilitando lo scambio di beni e idee. Di seguito sono riportate alcune ricostruzioni di monete battute ad Oria in epoca romana.</p>
+            <figure class="s-img">
+              <img src="./images/moneta1.jpeg"/>
+              <figcaption>Busto diademato di Aphrodite, sull'altro lato la figura di Eros, stante e nudo, raffigurato in movimento verso destra, nell'atto di suonare la
+cetra. A lato sono visibili cinque globetti in serie verticale (segni di valore).</figcaption>
+            </figure>
+            <figure class="s-img">
+              <img src="./images/moneta2.jpeg"/>
+              <figcaption>Testa elmata di guerriero, volta a destra. L'elmo è crestato e decorato, con alto livello di
+dettaglio nella resa dei tratti fisionomici, sull'altro lato abbiamo un'aquila stante ad ali spiegate, volta a sinistra, poggiante su un fulmine. L'animale è
+accompagnato dalla leggenda nella forma estesa ORRA.</figcaption>
+            </figure>
+
+            <figure class="s-img">
+              <img src="./images/moneta3.jpeg"/>
+              <figcaption>Testa di Herakles con la spoglia del leone di Nemea. Resa naturalistica dei tratti del volto, sull'altro lato il simbolo centrale costituito da un fulmine, in alto la leggenda ORRA affiancata dalla sigla ΓΟΡ
+in basso. Inferiormente sono presenti tre globetti allineati (segni di valore) </figcaption>
+            </figure>
+            </div>
+          </div>
+
+        <div class="tl-section rev" id="bizantini">
+          <div class="tl-marker">
+            <span class="tl-marker-year">V - VI d.C.</span>
+            <div class="tl-marker-arm"></div>
+          </div>
+          <div class="tl-dot"></div>
+          <div class="tl-heading">
+            <span class="tl-period-label">Circa 400-500 d.C.</span>
+            <h2>I Bizantini</h2>
+          </div>
+          <div class="tl-body">
+            <p>Dopo la caduta dell'Impero Romano d'Occidente nel 476 d.C., la Puglia entrò nell'orbita di Bisanzio. La presenza bizantina non fu però ininterrotta: Goti e Longobardi misero continuamente alla prova il controllo greco sulla regione. Nel 663 d.C. l'imperatore Costante II sbarcò a Taranto con ventimila soldati e riconquistò buona parte della Puglia, ma il re longobardo Grimoaldo lo respinse. Costante fuggì in Sicilia, dove fu assassinato in una congiura di palazzo. Senza il loro imperatore, i Bizantini si ritirarono definitivamente dalla Puglia interna.
+I Longobardi si fermarono però ad Oria senza spingersi oltre, costruendo il Limitone dei Greci — un vallo difensivo che divideva i due mondi. A nord cultura longobarda, a sud cultura bizantina fino a Otranto. Questo confine era anche linguistico: a sud si parlava greco per secoli, nella zona ancora oggi chiamata Grecìa Salentina. I resti del Limitone sono ancora visibili nei pressi del Santuario di San Cosimo alla Macchia.</p>
+
+            <figure class="s-img">
+              <img src="https://comune.oria.br.it/wp-content/uploads/2023/11/pasculli-dallalto.jpg"/>
+              <figcaption>L'area archeologica "Ing. S. Pasculli" con i resti di quel periodo</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="tl-section rev" id="goti">
+          <div class="tl-marker">
+            <span class="tl-marker-year">VI - VII d.C.</span>
+            <div class="tl-marker-arm"></div>
+          </div>
+          <div class="tl-dot"></div>
+          <div class="tl-heading">
+            <span class="tl-period-label">Circa 500-600 d.C.</span>
+            <h2>Il Periodo dei Goti (o Visigoti)</h2>
+          </div>
+          <div class="tl-body">
+            <p>Per quanto riguarda il Medioevo, dobbiamo ricordare che Oria fu attaccata duramente dalle forze dei Goti — chiamati anche Visigoti — che calarono dalla penisola iberica verso l'Italia meridionale. In questo periodo, Oria subì saccheggi e devastazioni, perdendo parte del suo splendore. I Goti cercarono di insediarsi nel territorio della città, ma trovarono resistenza da parte degli abitanti e delle forze bizantine rimaste nella zona. Questa fase di instabilità durò diversi decenni, e le sue tracce sono ancora visibili nelle mura e nelle fondamenta di alcune strutture medievali della città.</p>
+          </div>
+        </div>
+
+        <div class="tl-section rev" id="normanni">
+          <div class="tl-marker">
+            <span class="tl-marker-year">XI d.C.</span>
+            <div class="tl-marker-arm"></div>
+          </div>
+          <div class="tl-dot"></div>
+          <div class="tl-heading">
+            <span class="tl-period-label">Medioevo</span>
+            <h2>I Normanni e il Castello</h2>
+          </div>
+          <div class="tl-body">
+            <p>Con l'arrivo dei Normanni nell'XI secolo, Oria conobbe una nuova stagione di sviluppo. I conquistatori nordici trasformarono il borgo in un importante centro strategico, costruendo e rafforzando le strutture difensive già esistenti. Il castello, che domina ancora oggi la città dall'alto del colle, fu potenziato in questo periodo e divenne simbolo del potere normanno nel Salento. Oria divenne sede di contea e fulcro del controllo normanno sulla Terra d'Otranto.</p>
+
+            <figure class="s-img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Castello_di_Oria.jpg/1280px-Castello_di_Oria.jpg" alt="Castello di Oria"/>
+              <figcaption>Il Castello di Oria, simbolo della città</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="tl-section rev" id="federico">
+          <div class="tl-marker">
+            <span class="tl-marker-year">XIII d.C.</span>
+            <div class="tl-marker-arm"></div>
+          </div>
+          <div class="tl-dot"></div>
+          <div class="tl-heading">
+            <span class="tl-period-label">Medioevo</span>
+            <h2>Federico II di Svevia</h2>
+          </div>
+          <div class="tl-body">
+            <p>Federico II di Svevia, l'imperatore chiamato <em>Stupor Mundi</em>, soggiornò ad Oria e la elevò ulteriormente come sede imperiale. Sotto il suo governo, il castello fu ampliato e dotato di tre torri, assumendo la conformazione che in parte conserva ancora oggi. Federico II promosse anche la convivenza tra le tre culture presenti nel Salento: cristiana, araba ed ebraica. Proprio ad Oria esisteva una fiorente comunità ebraica, la cui storia è legata alla figura del celebre medico Donnolo e alla tradizione della Cabbalah salentina.</p>
+
+            <div class="s-fact">
+              <span class="s-fact-lbl">Lo sapevi?</span>
+              <p>Oria ospitò una delle più antiche e importanti comunità ebraiche del Sud Italia. La famiglia di Shabbetay Donnolo, il famoso medico e astrologo medievale, era di Oria. Nel 925 d.C. i Saraceni attaccarono la città, e il giovane Donnolo fu catturato e poi riscattato.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-section rev" id="aragonesi">
+          <div class="tl-marker">
+            <span class="tl-marker-year">XV d.C.</span>
+            <div class="tl-marker-arm"></div>
+          </div>
+          <div class="tl-dot"></div>
+          <div class="tl-heading">
+            <span class="tl-period-label">Rinascimento</span>
+            <h2>Gli Aragonesi</h2>
+          </div>
+          <div class="tl-body">
+            <p>Con gli Aragonesi, Oria entrò in una fase di relativa stabilità politica, pur rimanendo soggetta alle continue lotte per il controllo del Mezzogiorno. In questo periodo la città vide lo sviluppo di nuove chiese e palazzi nobiliari, e il centro storico assunse progressivamente la forma che riconosciamo oggi. La cattedrale, dedicata all'Assunta, fu ricostruita e ampliata durante questo periodo, diventando il cuore spirituale e architettonico della città.</p>
+          </div>
+        </div>
+
+        <div class="tl-section rev" id="terremoto">
+          <div class="tl-marker">
+            <span class="tl-marker-year">1743</span>
+            <div class="tl-marker-arm"></div>
+          </div>
+          <div class="tl-dot"></div>
+          <div class="tl-heading">
+            <span class="tl-period-label">Età Moderna</span>
+            <h2>Il Terremoto del 1743</h2>
+          </div>
+          <div class="tl-body">
+            <p>Il 20 febbraio 1743, un violento terremoto con epicentro nel mar Ionio devastò buona parte del Salento. Oria fu gravemente colpita: molti edifici crollarono o riportarono danni irreparabili, e la popolazione soffrì perdite significative. La ricostruzione che seguì cambiò parzialmente il volto della città, portando a nuove architetture barocche che si sovrapposero alle strutture medievali preesistenti. Questo evento segnò profondamente la memoria collettiva della comunità oriese.</p>
+
+            <div class="s-fact">
+              <span class="s-fact-lbl">Il sisma</span>
+              <p>Il terremoto del 1743 è ricordato come uno dei più distruttivi della storia del Salento. Colpì in modo particolare i centri dell'entroterra brindisino e leccese, causando danni enormi al patrimonio edilizio e alla popolazione. Ad Oria, diverse chiese e palazzi nobiliari furono gravemente danneggiati.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-section rev" id="novecento">
+          <div class="tl-marker">
+            <span class="tl-marker-year">XX sec.</span>
+            <div class="tl-marker-arm"></div>
+          </div>
+          <div class="tl-dot"></div>
+          <div class="tl-heading">
+            <span class="tl-period-label">Età Contemporanea</span>
+            <h2>Il Novecento e il Torneo</h2>
+          </div>
+          <div class="tl-body">
+            <p>Nel Novecento Oria ha vissuto le trasformazioni della modernità mantenendo vivo il legame con la propria storia. L'evento che più di ogni altro ha contribuito a tenere viva la memoria medievale della città è il Torneo dei Rioni, una rievocazione storica nata nel 1967 che ogni agosto trasforma le strade di Oria in un palcoscenico medievale. Il torneo è preceduto dal solenne Corteo Storico, durante il quale centinaia di figuranti in costume sfilano per le vie del centro riproponendo la corte di Federico II.</p>
+
+            <div class="s-fact">
+              <span class="s-fact-lbl">Il Torneo dei Rioni</span>
+              <p>Nato nel 1967 per iniziativa di un gruppo di cittadini appassionati di storia locale, il Torneo dei Rioni di Oria è oggi uno degli eventi di rievocazione medievale più importanti del Sud Italia. Quattro rioni — Lama, Castello, Judea e San Basilio — si sfidano in una giostra equestre per la conquista del Palio.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="gallery-wrap">
+      <span class="gallery-kicker">Immagini storiche</span>
+      <h2>Galleria</h2>
+      <div class="gallery-grid" id="gallery-grid">
+        <div class="g-item wide">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Castello_di_Oria_al_Tramonto.jpg" alt="Castello di Oria al tramonto" loading="lazy"/>
+          <span class="g-item-cap">Castello di Oria al tramonto</span>
+        </div>
+        <div class="g-item">
+          <img src="https://comune.oria.br.it/wp-content/uploads/2023/11/pasculli-dallalto.jpg" alt="Area archeologica Pasculli" loading="lazy"/>
+          <span class="g-item-cap">Area archeologica Pasculli</span>
+        </div>
+        <div class="g-item">
+          <img src="https://www.ilpuntoamezzogiorno.it/wp-content/uploads/2023/12/oria_papalucio2.jpg" alt="Monte Papalucio" loading="lazy"/>
+          <span class="g-item-cap">Monte Papalucio</span>
+        </div>
+        <div class="g-item">
+          <img src="./images/moneta1.jpeg" alt="Moneta messapica" loading="lazy"/>
+          <span class="g-item-cap">Moneta messapica — Aphrodite ed Eros</span>
+        </div>
+        <div class="g-item">
+          <img src="./images/moneta2.jpeg" alt="Moneta messapica guerriero" loading="lazy"/>
+          <span class="g-item-cap">Moneta messapica — Guerriero e aquila</span>
+        </div>
+        <div class="g-item">
+          <img src="./images/moneta3.jpeg" alt="Moneta messapica Herakles" loading="lazy"/>
+          <span class="g-item-cap">Moneta messapica — Herakles e fulmine</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Galleria immagini">
+    <button class="lb-close" id="lb-close" aria-label="Chiudi">✕</button>
+    <button class="lb-prev" id="lb-prev" aria-label="Precedente">‹</button>
+    <img id="lb-img" src="" alt=""/>
+    <p class="lb-cap" id="lb-cap"></p>
+    <button class="lb-next" id="lb-next" aria-label="Successivo">›</button>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="shared.js"></script>
+  <script>
+  // ── Reveal ──
+  const ro = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); }
+    });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.rev').forEach(el => ro.observe(el));
+
+  // ── Timeline progress ──
+  const fill = document.querySelector('.tl-progress-fill');
+  const container = document.querySelector('.tl-container');
+  if (fill && container) {
+    window.addEventListener('scroll', () => {
+      const rect = container.getBoundingClientRect();
+      const total = container.offsetHeight;
+      const visible = Math.min(Math.max(-rect.top + window.innerHeight * 0.5, 0), total);
+      fill.style.height = (visible / total * 100) + '%';
+    }, { passive: true });
+  }
+
+  // ── Lightbox ──
+  const gItems = Array.from(document.querySelectorAll('.g-item img'));
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lb-img');
+  const lbCap = document.getElementById('lb-cap');
+  let lbIdx = 0;
+
+  function openLb(i) {
+    lbIdx = i;
+    lbImg.src = gItems[i].src;
+    lbImg.alt = gItems[i].alt;
+    lbCap.textContent = gItems[i].closest('.g-item').querySelector('.g-item-cap')?.textContent || '';
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLb() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  gItems.forEach((img, i) => {
+    img.closest('.g-item').addEventListener('click', () => openLb(i));
+  });
+  document.getElementById('lb-close').addEventListener('click', closeLb);
+  document.getElementById('lb-prev').addEventListener('click', () => openLb((lbIdx - 1 + gItems.length) % gItems.length));
+  document.getElementById('lb-next').addEventListener('click', () => openLb((lbIdx + 1) % gItems.length));
+  lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLb();
+    if (e.key === 'ArrowLeft') openLb((lbIdx - 1 + gItems.length) % gItems.length);
+    if (e.key === 'ArrowRight') openLb((lbIdx + 1) % gItems.length);
+  });
+  </script>
+</body>
+</html>

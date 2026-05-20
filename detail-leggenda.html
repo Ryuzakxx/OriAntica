@@ -1,1 +1,215 @@
-DETAIL_LEGGENDA_PLACEHOLDER
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <script>
+  (function() {
+    var ALLOWED = ['light', 'dark'];
+    try {
+      var t = localStorage.getItem('oria-theme');
+      if (ALLOWED.includes(t)) document.documentElement.dataset.theme = t;
+    } catch(_) {}
+  })();
+  </script>
+  <style id="theme-fix">html,body,nav,footer{transition:none!important}</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leggenda — OriAntica</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="leggende">
+
+  <nav>
+    <div class="nav-wrap">
+      <a class="nav-logo" href="index.html">
+        <img src="./images/logo.png" alt="OriAntica">OriAntica
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" data-page="home">Home</a></li>
+        <li><a href="leggende.html" data-page="leggende">Leggende</a></li>
+        <li><a href="luoghi.html" data-page="luoghi">Luoghi</a></li>
+        <li><a href="storia.html" data-page="storia">Storia</a></li>
+        <li><a href="torneo.html" data-page="torneo">Torneo</a></li>
+        <li><a href="corteo.html" data-page="corteo">Corteo</a></li>
+        <li><a href="feedback.html" data-page="feedback">Idee</a></li>
+        <li><button class="theme-btn" id="theme-btn">☾</button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="content">
+
+    <div class="page-top" id="detail-page-top">
+      <span class="page-kicker" id="detail-kicker">—</span>
+      <h1 id="detail-title">—</h1>
+    </div>
+
+    <div class="detail">
+      <main class="detail-main" id="detail-main"></main>
+      <aside class="sidebar" id="detail-side"></aside>
+    </div>
+
+    <footer>
+      <div class="footer-inner">
+        <span>Oria (BR) — Puglia</span>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="leggende.html">Leggende</a></li>
+          <li><a href="luoghi.html">Luoghi</a></li>
+          <li><a href="storia.html">Storia</a></li>
+          <li><a href="torneo.html">Torneo</a></li>
+          <li><a href="corteo.html">Corteo</a></li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="shared.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var ID_RE = /^[a-zA-Z0-9_-]{1,64}$/;
+      var params = new URLSearchParams(location.search);
+      var rawId = params.get('id') || '';
+      var id = ID_RE.test(rawId) ? rawId : '';
+      var item = id ? LEGGENDE.find(function(x){ return x.id === id; }) : null;
+
+      if (!item) {
+        document.getElementById('detail-title').textContent = 'Leggenda non trovata';
+        return;
+      }
+
+      document.title = item.title + ' — Oria Medievale';
+      document.getElementById('detail-kicker').textContent = item.detailTag || item.tag;
+      document.getElementById('detail-title').textContent = item.title;
+
+      var mainEl = document.getElementById('detail-main');
+      var sideEl = document.getElementById('detail-side');
+
+      // Back button
+      var back = document.createElement('a');
+      back.className = 'back-btn';
+      back.href = 'leggende.html';
+      back.textContent = '← Torna alle Leggende';
+      mainEl.appendChild(back);
+
+      // Immagine principale
+      var imgWrap = document.createElement('div');
+      imgWrap.className = 'detail-img';
+      if (item.img) {
+        var img = document.createElement('img');
+        img.src = item.img;
+        img.alt = item.title;
+        imgWrap.appendChild(img);
+      } else {
+        var ph = document.createElement('span');
+        ph.className = 'ph-icon';
+        ph.textContent = item.icon || '';
+        imgWrap.appendChild(ph);
+      }
+      mainEl.appendChild(imgWrap);
+
+      // Kicker
+      var kicker = document.createElement('span');
+      kicker.className = 'detail-kicker';
+      kicker.textContent = item.detailTag || item.tag;
+      mainEl.appendChild(kicker);
+
+      // Titolo H2
+      var h2 = document.createElement('h2');
+      h2.textContent = item.title;
+      mainEl.appendChild(h2);
+
+      // Body text
+      var bodyDiv = document.createElement('div');
+      bodyDiv.className = 'body-text';
+      bodyDiv.innerHTML = item.body || '';
+
+      // Seconda immagine opzionale
+      if (item.img2) {
+        var img2wrap = document.createElement('div');
+        img2wrap.className = 'img2';
+        var img2 = document.createElement('img');
+        img2.src = item.img2;
+        img2.alt = item.title;
+        img2wrap.appendChild(img2);
+        bodyDiv.appendChild(img2wrap);
+      }
+      mainEl.appendChild(bodyDiv);
+
+      // Sidebar — info
+      var sbox = document.createElement('div');
+      sbox.className = 'sbox';
+      var sboxTitle = document.createElement('span');
+      sboxTitle.className = 'sbox-title';
+      sboxTitle.textContent = 'Informazioni';
+      sbox.appendChild(sboxTitle);
+      var ul = document.createElement('ul');
+      ul.className = 'sinfo';
+      (item.sideInfo || []).forEach(function(pair) {
+        var li = document.createElement('li');
+        var strong = document.createElement('strong');
+        strong.textContent = pair[0];
+        li.appendChild(strong);
+        li.appendChild(document.createTextNode(pair[1]));
+        ul.appendChild(li);
+      });
+      sbox.appendChild(ul);
+      sideEl.appendChild(sbox);
+
+      // Leggende collegate
+      var relLeg = item.relLeggende || [];
+      if (relLeg.length) {
+        var lb = document.createElement('div');
+        lb.className = 'sbox';
+        var lbt = document.createElement('span');
+        lbt.className = 'sbox-title';
+        lbt.textContent = 'Leggende Collegate';
+        lb.appendChild(lbt);
+        var lul = document.createElement('ul');
+        lul.className = 'snav';
+        relLeg.forEach(function(rid) {
+          var r = LEGGENDE.find(function(x){ return x.id === rid; });
+          if (!r) return;
+          var li = document.createElement('li');
+          var btn = document.createElement('button');
+          btn.textContent = '→ ' + r.title;
+          btn.addEventListener('click', function() {
+            location.href = 'detail-leggenda.html?id=' + encodeURIComponent(r.id);
+          });
+          li.appendChild(btn);
+          lul.appendChild(li);
+        });
+        lb.appendChild(lul);
+        sideEl.appendChild(lb);
+      }
+
+      // Luoghi collegati
+      var relLuo = item.relLuoghi || [];
+      if (relLuo.length) {
+        var lb2 = document.createElement('div');
+        lb2.className = 'sbox';
+        var lb2t = document.createElement('span');
+        lb2t.className = 'sbox-title';
+        lb2t.textContent = 'Luoghi Collegati';
+        lb2.appendChild(lb2t);
+        var lul2 = document.createElement('ul');
+        lul2.className = 'snav';
+        relLuo.forEach(function(rid) {
+          var r = LUOGHI.find(function(x){ return x.id === rid; });
+          if (!r) return;
+          var li = document.createElement('li');
+          var btn = document.createElement('button');
+          btn.textContent = '→ ' + r.title;
+          btn.addEventListener('click', function() {
+            location.href = 'detail-luogo.html?id=' + encodeURIComponent(r.id);
+          });
+          li.appendChild(btn);
+          lul2.appendChild(li);
+        });
+        lb2.appendChild(lul2);
+        sideEl.appendChild(lb2);
+      }
+    });
+  </script>
+</body>
+</html>

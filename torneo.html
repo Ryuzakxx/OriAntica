@@ -13,6 +13,10 @@
   <style id="theme-fix">html,body,nav,footer{transition:none!important}</style>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none';">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
   <title>Torneo dei Rioni — OriAntica</title>
   <link rel="stylesheet" href="style.css"/>
    <style>
@@ -47,7 +51,6 @@
     transition: background .3s, color .3s;
   }
 
-  /* HERO */
   .hero-torneo {
     position: relative;
     height: 100vh;
@@ -197,7 +200,6 @@
     100%{ transform: scaleY(0); transform-origin: bottom; }
   }
 
-  /* INTRO BAND */
   .intro-band {
     background: var(--bg-alt);
     border-top: 1px solid var(--border);
@@ -234,7 +236,6 @@
   }
   .intro-text strong { font-style: normal; color: var(--accent); font-weight: 600; }
 
-  /* I RIONI */
   .rioni-section {
     max-width: var(--max-w);
     margin: 0 auto;
@@ -331,7 +332,6 @@
     margin-top: auto;
   }
 
-  /* FOTO GRIGLIA */
   .foto-band { background: var(--text); padding: 1px; }
   .foto-grid {
     display: grid;
@@ -351,7 +351,6 @@
   .foto-item.tall { grid-row: span 2; }
   .foto-item.tall img { aspect-ratio: unset; height: 100%; }
 
-  /* PROGRAMMA */
   .programma-section {
     max-width: var(--max-w);
     margin: 0 auto;
@@ -384,7 +383,6 @@
   }
   .prog-desc { font-size: .77rem; line-height: 1.75; color: var(--text-dim); }
 
-  /* INFO PRATICHE */
   .info-band {
     background: var(--bg-alt);
     border-top: 1px solid var(--border);
@@ -430,7 +428,6 @@
   }
   .fact-l { font-size: .78rem; line-height: 1.5; color: var(--text-dim); }
 
-  /* NAV logo */
   .nav-logo {
     display: flex; align-items: center;
     gap: 8px; text-decoration: none; padding: 7px;
@@ -478,7 +475,6 @@
     </div>
   </nav>
 
-  <!-- HERO -->
   <section class="hero-torneo" id="hero">
     <div class="hero-torneo-bg"></div>
     <div class="hero-torneo-content">
@@ -510,7 +506,6 @@
     </div>
   </section>
 
-  <!-- INTRO BAND -->
   <div class="intro-band">
     <div class="intro-inner">
       <div class="intro-left">
@@ -523,7 +518,6 @@
     </div>
   </div>
 
-  <!-- I RIONI -->
   <section class="rioni-section" id="rioni">
     <div class="section-head">
       <div>
@@ -533,8 +527,6 @@
     </div>
 
     <div class="rioni-grid">
-
-      <!-- Rione Lama -->
       <div class="rione-card">
         <div class="rione-stemma">
           <img src="https://www.paliodioria.net/wp-content/uploads/2024/03/lama.jpg" alt="Stemma Rione Lama" onerror="this.parentElement.innerHTML='<div class=stemma-ph><span class=stemma-ph-icon>⚜</span><span class=stemma-ph-txt>Lama</span></div>'">
@@ -547,8 +539,6 @@
           <span class="rione-colori">Colori · Oro e Nero</span>
         </div>
       </div>
-
-      <!-- Rione Judea -->
       <div class="rione-card">
         <div class="rione-stemma">
           <img src="https://www.paliodioria.net/wp-content/uploads/2024/03/judea.jpg" alt="Stemma Rione Judea" onerror="this.parentElement.innerHTML='<div class=stemma-ph><span class=stemma-ph-icon>✡</span><span class=stemma-ph-txt>Judea</span></div>'">
@@ -561,8 +551,6 @@
           <span class="rione-colori">Colori · Verde e Bianco</span>
         </div>
       </div>
-
-      <!-- Rione Castello -->
       <div class="rione-card">
         <div class="rione-stemma">
           <img src="https://www.paliodioria.net/wp-content/uploads/2024/03/castello.jpg" alt="Stemma Rione Castello" onerror="this.parentElement.innerHTML='<div class=stemma-ph><span class=stemma-ph-icon>🏰</span><span class=stemma-ph-txt>Castello</span></div>'">
@@ -575,8 +563,6 @@
           <span class="rione-colori">Colori · Rosso e Bianco</span>
         </div>
       </div>
-
-      <!-- Rione Santo Basilio -->
       <div class="rione-card">
         <div class="rione-stemma">
           <img src="https://www.paliodioria.net/wp-content/uploads/2024/03/santobasilio.jpg" alt="Stemma Rione Santo Basilio" onerror="this.parentElement.innerHTML='<div class=stemma-ph><span class=stemma-ph-icon>⛪</span><span class=stemma-ph-txt>S. Basilio</span></div>'">
@@ -589,11 +575,9 @@
           <span class="rione-colori">Colori · Blu e Giallo</span>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- GALLERIA FOTO -->
   <div class="foto-band">
     <div class="foto-grid">
       <div class="foto-item tall">
@@ -614,7 +598,6 @@
     </div>
   </div>
 
-  <!-- PROGRAMMA -->
   <section class="programma-section" id="programma">
     <div class="section-head">
       <div>
@@ -622,7 +605,6 @@
         <h2 class="section-title">Il Programma</h2>
       </div>
     </div>
-
     <div class="programma-grid">
       <div class="prog-item">
         <span class="prog-giorno">Primo Giorno · Venerdì</span>
@@ -642,7 +624,6 @@
     </div>
   </section>
 
-  <!-- INFO PRATICHE -->
   <div class="info-band">
     <div class="info-inner">
       <div>
@@ -689,7 +670,6 @@
 
   <script src="shared.js"></script>
   <script>
-    // Hero parallax + loaded class
     window.addEventListener('load', function() {
       document.getElementById('hero').classList.add('loaded');
     });

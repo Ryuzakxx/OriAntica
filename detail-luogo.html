@@ -13,8 +13,13 @@
   <style id="theme-fix">html,body,nav,footer{transition:none!important}</style>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none';">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
   <title>Luogo — OriAntica</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
 </head>
 <body data-page="luoghi">
 
@@ -97,8 +102,8 @@
       imgWrap.className = 'detail-img';
       if (item.img) {
         var img = document.createElement('img');
-        img.src = item.img;
-        img.alt = item.title;
+        img.src = safeURL(item.img);
+        img.alt = escapeHTML(item.title);
         imgWrap.appendChild(img);
       } else {
         var ph = document.createElement('span');
@@ -119,17 +124,19 @@
       h2.textContent = item.title;
       mainEl.appendChild(h2);
 
-      // Body text
+      // Body text — VUL-01: sanificato con DOMPurify
       var bodyDiv = document.createElement('div');
       bodyDiv.className = 'body-text';
-      bodyDiv.innerHTML = item.body || '';
+      bodyDiv.innerHTML = (typeof DOMPurify !== 'undefined')
+        ? DOMPurify.sanitize(item.body || '')
+        : escapeHTML(item.body || '');
 
       if (item.img2) {
         var img2wrap = document.createElement('div');
         img2wrap.className = 'img2';
         var img2 = document.createElement('img');
-        img2.src = item.img2;
-        img2.alt = item.title;
+        img2.src = safeURL(item.img2);
+        img2.alt = escapeHTML(item.title);
         img2wrap.appendChild(img2);
         bodyDiv.appendChild(img2wrap);
       }

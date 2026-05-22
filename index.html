@@ -14,44 +14,10 @@
   <link rel="stylesheet" href="style.css"/>
   <style>
 
-  /* ═══════════════════════════════
-     RESET & BASE
-  ═══════════════════════════════ */
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
   @font-face {
     font-family: 'MedievalSharp';
     src: url('./fonts/MedievalSharp.ttf') format('truetype');
     font-weight: 400;
-  }
-
-  :root {
-    --bg: #faf8f3;
-    --bg-alt: #f2ede2;
-    --border: #d8cdb8;
-    --text: #1c1610;
-    --text-dim: #6b5e4a;
-    --accent: #7a3010;
-    --accent2: #c05828;
-    --max-w: 1100px;
-    --nav-h: 57px;
-  }
-  [data-theme="dark"] {
-    --bg: #0e0c08;
-    --bg-alt: #181410;
-    --border: #2e2416;
-    --text: #ede5d0;
-    --text-dim: #8a7a62;
-    --accent: #c05828;
-    --accent2: #e07840;
-  }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Merriweather', Georgia, serif;
-    overflow-x: hidden;
-    transition: background .3s, color .3s;
   }
 
   /* ═══════════════════════════════
@@ -79,7 +45,6 @@
   }
   .hero-full.loaded .hero-bg { transform: scale(1); }
 
-  /* Overlay: gradiente verticale forte in basso dove c'è il testo */
   .hero-full::after {
     content: '';
     position: absolute;
@@ -103,7 +68,6 @@
     width: 100%;
   }
 
-  /* Titolo */
   .hero-title {
     font-family: 'MedievalSharp', serif;
     font-size: clamp(3.8rem, 12vw, 11rem);
@@ -119,7 +83,6 @@
     color: var(--accent2);
   }
 
-  /* Subtitle / nomi storici */
   .hero-subtitle {
     font-size: clamp(.72rem, 1.4vw, .9rem);
     color: rgba(255,255,255,.7);
@@ -129,7 +92,6 @@
     margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
   }
 
-  /* Riga con descrizione + stats */
   .hero-row {
     display: flex;
     align-items: flex-end;
@@ -137,7 +99,6 @@
     gap: 2rem;
   }
 
-  /* Colonna sinistra */
   .hero-desc-col { max-width: 460px; }
   .hero-desc {
     font-size: clamp(.82rem, 1.3vw, .92rem);
@@ -148,7 +109,6 @@
     text-shadow: 0 1px 8px rgba(0,0,0,.4);
   }
 
-  /* Bottoni */
   .hero-btns { display: flex; gap: .75rem; flex-wrap: wrap; }
   .btn-hero-solid {
     background: var(--accent2);
@@ -185,7 +145,6 @@
   }
   .btn-hero-ghost:hover { border-color: var(--accent2); color: var(--accent2); transform: translateY(-1px);}
 
-  /* Colonna destra — stats */
   .hero-stats-col {
     display: flex;
     flex-direction: column;
@@ -215,7 +174,6 @@
     white-space: nowrap;
   }
 
-  /* Scroll indicator */
   .hero-scroll {
     position: absolute;
     bottom: 1.8rem;
@@ -432,10 +390,6 @@
   .home-footer-links a:hover { color: var(--accent); }
   .footer-copy { font-size: .62rem; color: var(--text-dim); opacity: .5; }
 
-  .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; padding: 7px; font-family: 'MedievalSharp', serif; }
-  .nav-logo img { transform: scale(1.5); height: 40px; width: auto; transition: transform 0.3s ease; }
-  .nav-logo img:hover { transform: scale(1.7); }
-
   /* ═══════════════════════════════
      REVEAL
   ═══════════════════════════════ */
@@ -453,13 +407,11 @@
     .cards-editorial .card-ed:first-child { grid-column: span 2; }
     .intro-inner { grid-template-columns: 1fr; gap: 1.5rem; }
     .luoghi-strip { grid-template-columns: 1fr 1fr; }
-    /* Stats hero: meno colonne su tablet */
     .hero-stats-col { gap: .3rem; }
     .hero-stat-n { font-size: 1.4rem; }
   }
 
   @media (max-width: 680px) {
-    /* Hero: titolo + desc in colonna, stats sotto in griglia 2x2 */
     .hero-row { flex-direction: column; gap: 1.4rem; }
     .hero-desc-col { max-width: 100%; }
     .hero-stats-col {
@@ -493,8 +445,13 @@
   <nav>
     <div class="nav-wrap">
       <a class="nav-logo" href="index.html">
-        <img src="./images/logo.png" alt="OriAntica">OriAntica
+        <img src="./images/logo.png" alt="OriAntica">
+        <span class="nav-logo-word">
+          <span class="nav-logo-main">OriAntica</span>
+          <span class="nav-logo-sub">Oria · Puglia</span>
+        </span>
       </a>
+      <div class="nav-divider"></div>
       <ul class="nav-links">
         <li><a href="index.html" data-page="home">Home</a></li>
         <li><a href="leggende.html" data-page="leggende">Leggende</a></li>
@@ -505,6 +462,23 @@
         <li><a href="feedback.html" data-page="feedback">Contattaci</a></li>
         <li><button class="theme-btn" id="theme-btn">☾</button></li>
       </ul>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Apri menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <nav class="nav-mobile" id="nav-mobile">
+    <a href="index.html" data-page="home">Home</a>
+    <a href="leggende.html" data-page="leggende">Leggende</a>
+    <a href="luoghi.html" data-page="luoghi">Luoghi</a>
+    <a href="storia.html" data-page="storia">Storia</a>
+    <a href="torneo.html" data-page="torneo">Torneo</a>
+    <a href="corteo.html" data-page="corteo">Corteo</a>
+    <a href="feedback.html" data-page="feedback">Contattaci</a>
+    <div class="nav-mobile-footer">
+      <span>OriAntica · Oria (BR)</span>
+      <button class="theme-btn" id="theme-btn-mobile">☾</button>
     </div>
   </nav>
 
@@ -642,7 +616,6 @@
   <script src="data.js"></script>
   <script src="shared.js"></script>
   <script>
-  // Hero parallax
   const heroBg = document.getElementById('hero-bg');
   window.addEventListener('scroll', () => {
     const y = window.scrollY;
@@ -650,7 +623,6 @@
   }, { passive: true });
   document.getElementById('hero').classList.add('loaded');
 
-  // Genera card leggenda
   function cardLeggenda(item, i) {
     const thumb = item.img
       ? `<img src="${item.img}" alt="${item.title}" loading="lazy">`
@@ -666,7 +638,6 @@
     </a>`;
   }
 
-  // Genera card luogo
   function cardLuogo(item, i) {
     const num = String(i + 1).padStart(2, '0');
     const thumb = item.img
@@ -689,7 +660,6 @@
     if (luGrid && typeof LUOGHI !== 'undefined')   luGrid.innerHTML = LUOGHI.slice(0, 3).map(cardLuogo).join('');
   });
 
-  // Reveal
   const ro = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
   }, { threshold: 0.07 });

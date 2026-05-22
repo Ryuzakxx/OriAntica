@@ -15,10 +15,216 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Torneo dei Rioni — OriAntica</title>
   <link rel="stylesheet" href="style.css"/>
-  <!-- Contenuti aggiornati in forma generica, senza date né claim ufficiali sul programma -->
 </head>
 <body>
-  <!-- TODO: reinserire qui il markup esistente (hero, rioni, programma, info) mantenendo lo stesso layout,
-       ma aggiornando solo i testi descrittivi per allinearli meglio alle fonti senza copiare frasi. -->
+
+  <nav>
+    <div class="nav-wrap">
+      <a class="nav-logo" href="index.html">
+        <img src="./images/logo.png" alt="OriAntica">OriAntica
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" data-page="home">Home</a></li>
+        <li><a href="leggende.html" data-page="leggende">Leggende</a></li>
+        <li><a href="luoghi.html" data-page="luoghi">Luoghi</a></li>
+        <li><a href="storia.html" data-page="storia">Storia</a></li>
+        <li><a href="torneo.html" data-page="torneo" class="active">Torneo</a></li>
+        <li><a href="corteo.html" data-page="corteo">Corteo</a></li>
+        <li><a href="feedback.html" data-page="feedback">Idee</a></li>
+        <li><button class="theme-btn" id="theme-btn">☾</button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero-torneo" id="hero">
+    <div class="hero-torneo-bg"></div>
+    <div class="hero-torneo-content">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-line"></div>
+        <span>Palio di Oria · Rievocazione medievale</span>
+      </div>
+      <h1 class="hero-torneo-title">
+        Torneo<br>
+        <em>dei Rioni</em>
+      </h1>
+      <p class="hero-torneo-sub">La sfida finale tra i quattro quartieri storici</p>
+      <div class="hero-torneo-row">
+        <div>
+          <p class="hero-torneo-desc">
+            Il Torneo dei Rioni è il cuore agonistico del Palio di Oria: sul campo allestito accanto all'istituto dei Padri Rogazionisti i cavalieri dei quattro rioni si misurano in giochi ispirati ai tornei medievali, davanti a tribune gremite di pubblico.
+          </p>
+          <div class="hero-btns">
+            <a href="#rioni" class="btn-solid">I Rioni</a>
+            <a href="#programma" class="btn-ghost">Come si svolge</a>
+          </div>
+        </div>
+        <div class="hero-torneo-year">1967</div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Scorri</span>
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- INTRO BAND -->
+  <div class="intro-band">
+    <div class="intro-inner">
+      <div class="intro-left">
+        <span class="intro-kicker">La rievocazione</span>
+        <div class="intro-year-big">1225</div>
+      </div>
+      <p class="intro-text">
+        Il Palio di Oria nasce come rievocazione del soggiorno di <strong>Federico II di Svevia</strong> in città, legato alle nozze con Isabella di Brienne. Il Torneo dei Rioni riprende idealmente i giochi cavallereschi con cui i quartieri della città decisero di onorare l'imperatore.
+      </p>
+    </div>
+  </div>
+
+  <!-- I RIONI -->
+  <section class="rioni-section" id="rioni">
+    <div class="section-head">
+      <div>
+        <span class="section-kicker">I quartieri in gara</span>
+        <h2 class="section-title">I quattro rioni storici</h2>
+      </div>
+    </div>
+
+    <div class="rioni-grid">
+
+      <!-- Rione Lama -->
+      <div class="rione-card">
+        <div class="rione-stemma">
+          <img src="https://www.paliodioria.net/wp-content/uploads/2024/03/lama.jpg" alt="Stemma Rione Lama" onerror="this.parentElement.innerHTML='<div class=stemma-ph><span class=stemma-ph-icon>⚜</span><span class=stemma-ph-txt>Lama</span></div>'">
+        </div>
+        <div class="rione-body">
+          <div class="rione-bar" style="background:#d4a000;"></div>
+          <span class="rione-num">I</span>
+          <div class="rione-name">Rione Lama</div>
+          <p class="rione-desc">Comprende l'area più antica del tessuto urbano, tra vicoli stretti e case addossate alla cinta muraria. È tradizionalmente associato al mondo degli artigiani e del popolo minuto.</p>
+          <span class="rione-colori">Colori · Oro e Nero</span>
+        </div>
+      </div>
+
+      <!-- Rione Judea -->
+      <div class="rione-card">
+        <div class="rione-stemma">
+          <img src="https://www.paliodioria.net/wp-content/uploads/2024/03/judea.jpg" alt="Stemma Rione Judea" onerror="this.parentElement.innerHTML='<div class=stemma-ph><span class=stemma-ph-icon>✡</span><span class=stemma-ph-txt>Judea</span></div>'">
+        </div>
+        <div class="rione-body">
+          <div class="rione-bar" style="background:#1a6e3c;"></div>
+          <span class="rione-num">II</span>
+          <div class="rione-name">Rione Judea</div>
+          <p class="rione-desc">Ricorda l'antico quartiere ebraico di Oria, legato a una comunità presente in città per secoli. Simboleggia la dimensione mercantile e culturale della Oria medievale.</p>
+          <span class="rione-colori">Colori · Verde e Bianco</span>
+        </div>
+      </div>
+
+      <!-- Rione Castello -->
+      <div class="rione-card">
+        <div class="rione-stemma">
+          <img src="https://www.paliodioria.net/wp-content/uploads/2024/03/castello.jpg" alt="Stemma Rione Castello" onerror="this.parentElement.innerHTML='<div class=stemma-ph><span class=stemma-ph-icon>🏰</span><span class=stemma-ph-txt>Castello</span></div>'">
+        </div>
+        <div class="rione-body">
+          <div class="rione-bar" style="background:#c41e1e;"></div>
+          <span class="rione-num">III</span>
+          <div class="rione-name">Rione Castello</div>
+          <p class="rione-desc">Si estende attorno alla fortezza che domina la città. Rappresenta il legame con il potere militare e politico, con cavalieri, nobili e armigeri.</p>
+          <span class="rione-colori">Colori · Rosso e Bianco</span>
+        </div>
+      </div>
+
+      <!-- Rione Santo Basilio -->
+      <div class="rione-card">
+        <div class="rione-stemma">
+          <img src="https://www.paliodioria.net/wp-content/uploads/2024/03/santobasilio.jpg" alt="Stemma Rione Santo Basilio" onerror="this.parentElement.innerHTML='<div class=stemma-ph><span class=stemma-ph-icon>⛪</span><span class=stemma-ph-txt>S. Basilio</span></div>'">
+        </div>
+        <div class="rione-body">
+          <div class="rione-bar" style="background:#1a3a8c;"></div>
+          <span class="rione-num">IV</span>
+          <div class="rione-name">Rione Santo Basilio</div>
+          <p class="rione-desc">Prende il nome da una delle chiese più significative della città. È associato alla dimensione religiosa e monastica della Oria del XIII secolo.</p>
+          <span class="rione-colori">Colori · Blu e Giallo</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROGRAMMA (DESCRIZIONE GENERALE) -->
+  <section class="programma-section" id="programma">
+    <div class="section-head">
+      <div>
+        <span class="section-kicker">Come si svolge</span>
+        <h2 class="section-title">La struttura del Torneo</h2>
+      </div>
+    </div>
+
+    <div class="programma-grid">
+      <div class="prog-item">
+        <span class="prog-giorno">Ingresso in campo</span>
+        <div class="prog-title">Presentazione dei rioni</div>
+        <p class="prog-desc">Il Torneo si apre con l'ingresso ordinato dei quattro rioni, ciascuno con il proprio gonfalone, i cavalieri e una rappresentanza di figuranti. L'imperatore prende posto sulla tribuna d'onore e riceve il saluto della città.</p>
+      </div>
+      <div class="prog-item">
+        <span class="prog-giorno">Le prove</span>
+        <div class="prog-title">Giochi di abilità</div>
+        <p class="prog-desc">I cavalieri si cimentano in più prove che richiamano i tornei medievali: corse ad anello, esercizi di precisione e destrezza, passaggi tra bersagli. Ogni prova assegna punti al rione di appartenenza.</p>
+      </div>
+      <div class="prog-item">
+        <span class="prog-giorno">Palio e proclamazione</span>
+        <div class="prog-title">La vittoria del rione</div>
+        <p class="prog-desc">Al termine delle gare viene proclamato il rione vincitore e consegnato il Palio, dipinto ogni anno da un artista diverso. Il successo nel Torneo vale prestigio simbolico e riempie di orgoglio l'intero quartiere.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFO PRATICHE GENERALI -->
+  <div class="info-band">
+    <div class="info-inner">
+      <div>
+        <h3 class="info-title">Quando e dove</h3>
+        <p class="info-text">Il Torneo dei Rioni si svolge nel periodo estivo, all'interno del programma del Palio di Oria. Date e orari possono cambiare di anno in anno: per le informazioni aggiornate è sempre consigliato consultare il sito ufficiale della manifestazione.</p>
+        <p class="info-text">L'area del Torneo è collocata in un grande campo nei pressi dell'istituto dei Padri Rogazionisti, poco fuori dal centro storico. Sono predisposte tribune a pagamento e settori liberi, con accessi e servizi regolati dall'organizzazione.</p>
+        <a href="https://www.paliodioria.net" target="_blank" rel="noopener noreferrer" class="info-link">Sito ufficiale Palio di Oria →</a>
+      </div>
+      <div class="info-facts">
+        <div class="info-fact">
+          <span class="fact-n">1967</span>
+          <span class="fact-l">Anno di nascita della rievocazione moderna del Palio di Oria</span>
+        </div>
+        <div class="info-fact">
+          <span class="fact-n">4</span>
+          <span class="fact-l">Rioni che si contendono il Palio ogni anno</span>
+        </div>
+        <div class="info-fact">
+          <span class="fact-n">800+</span>
+          <span class="fact-l">Figuranti coinvolti tra corteo e Torneo</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <span>Oria (BR) — Puglia</span>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="leggende.html">Leggende</a></li>
+        <li><a href="luoghi.html">Luoghi</a></li>
+        <li><a href="storia.html">Storia</a></li>
+        <li><a href="torneo.html">Torneo</a></li>
+        <li><a href="corteo.html">Corteo</a></li>
+        <li><a href="feedback.html">Idee</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="shared.js"></script>
+  <script>
+    window.addEventListener('load', function() {
+      document.getElementById('hero').classList.add('loaded');
+    });
+  </script>
 </body>
 </html>

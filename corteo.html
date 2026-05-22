@@ -17,10 +17,137 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Il Corteo Storico — Oria Medievale</title>
   <link rel="stylesheet" href="style.css" />
-  <!-- Contenuti aggiornati in forma descrittiva generica, senza riportare il programma specifico né testi ufficiali -->
 </head>
 <body data-page="corteo">
-  <!-- TODO: reinserire qui il markup esistente (carousel, timeline, costumi) mantenendo la struttura,
-       ma riformulando i testi in modo più descrittivo e neutro, ispirandosi alle fonti ma senza riportarle. -->
+
+  <nav>
+    <div class="nav-wrap">
+      <a class="nav-logo" href="index.html">
+        <img src="./images/logo.png" alt="OriAntica">OriAntica
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" data-page="home">Home</a></li>
+        <li><a href="leggende.html" data-page="leggende">Leggende</a></li>
+        <li><a href="luoghi.html" data-page="luoghi">Luoghi</a></li>
+        <li><a href="storia.html" data-page="storia">Storia</a></li>
+        <li><a href="torneo.html" data-page="torneo">Torneo</a></li>
+        <li><a href="corteo.html" data-page="corteo" class="active">Corteo</a></li>
+        <li><a href="feedback.html" data-page="feedback">Idee</a></li>
+        <li><button class="theme-btn" id="theme-btn">☾</button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="content">
+
+    <div class="page-top">
+      <span class="page-kicker">Palio di Oria · La grande sfilata</span>
+      <h1>Il Corteo Storico di Federico II</h1>
+      <p>La rievocazione dell'ingresso dell'imperatore in città</p>
+    </div>
+
+    <!-- CAROUSEL CORTEO -->
+    <div class="carousel carousel-page reveal" style="max-width:var(--max-w);margin:0 auto;margin-top:2rem;">
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <img src="https://www.brindisireport.it/~media/horizontal-hi/43188358054386/il-palio-di-oria-foto-dalla-pagina-facebook.jpg" alt="Il corteo per le vie di Oria">
+        </div>
+        <div class="carousel-slide">
+          <img src="https://www.paliodioria.net/wp-content/uploads/2024/03/gallery_15.jpg" alt="Sbandieratori">
+        </div>
+        <div class="carousel-slide">
+          <img src="https://lh5.googleusercontent.com/proxy/AGobEaBo5PwiSUtfwtX0iflDRL-kqX9eET3KUyHZXXjxNtMNctXOAe3ROw5WDV5lUvItfV8UklK7tihjrZTYEJalxJeCtS_656Hk7i8PNzS9CRdFL1ZnKDR-37CJ7kqRO8TlLrA" alt="Il corteo imperiale">
+        </div>
+        <div class="carousel-slide">
+          <img src="https://www.orianotizie.it/wp-content/uploads/2023/04/ALMIENTO-1ok.jpg" alt="Musici medievali">
+        </div>
+      </div>
+      <button class="carousel-prev" aria-label="Precedente">‹</button>
+      <button class="carousel-next" aria-label="Successivo">›</button>
+      <div class="carousel-dots"></div>
+    </div>
+
+    <!-- INTRO -->
+    <div class="sec" style="padding-bottom:1rem;">
+      <span class="sec-label">La manifestazione</span>
+      <h2>La sfilata che apre il Torneo</h2>
+      <div style="max-width:680px;">
+        <p style="font-size:.97rem;line-height:1.9;color:var(--text-dim);margin-bottom:1rem;">
+          Il Corteo Storico è il momento più scenografico del Palio di Oria. Si svolge nel periodo estivo e ripercorre, in forma simbolica, l'arrivo di <strong>Federico II</strong> in città con la sua corte, lungo un percorso che attraversa il centro storico per diversi chilometri.
+        </p>
+        <p style="font-size:.97rem;line-height:1.9;color:var(--text-dim);">
+          Oltre ottocento figuranti in costume sfilano tra tamburi, chiarine e sbandieratori. L'alternanza dei quattro rioni e del corteo imperiale trasforma le vie di Oria in un grande teatro all'aperto, davanti a migliaia di spettatori.
+        </p>
+      </div>
+    </div>
+
+    <!-- TIMELINE CORTEO -->
+    <div class="corteo-timeline">
+      <h2>L'ordine del corteo</h2>
+      <div class="timeline">
+
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <span class="tl-label">Apertura</span>
+          <h3>Sbandieratori e trombettieri</h3>
+          <p>Ad aprire la sfilata sono gli sbandieratori e i musici, spesso appartenenti al rione vincitore dell'edizione precedente. Il loro passaggio annuncia alla città l'arrivo del corteo.</p>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <span class="tl-label">I rioni</span>
+          <h3>Le delegazioni di Lama, Judea, Castello e Santo Basilio</h3>
+          <p>Seguono le quattro delegazioni dei rioni, ciascuna con gonfaloni, armati, dame, popolani e gruppi tematici che raccontano la storia e le attività del quartiere.</p>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <span class="tl-label">Figura storica</span>
+          <h3>Il personaggio dell'imperatore</h3>
+          <p>Al centro del corteo compare la figura di Federico II, accompagnato dalla corte, dai dignitari, dai falconieri e dalla guardia personale. È il momento più atteso dal pubblico, che vede sfilare l'imperatore a cavallo.</p>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <span class="tl-label">Chiusura</span>
+          <h3>Arrivo in piazza e presentazione del Palio</h3>
+          <p>Il corteo confluisce nella piazza principale, dove viene presentato il Palio e viene data lettura simbolica del bando che invita i rioni alla sfida del Torneo.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- I COSTUMI -->
+    <div class="sec" style="padding-top:1rem;">
+      <span class="sec-label">Dietro le quinte</span>
+      <h2>I costumi e la ricerca storica</h2>
+      <div style="max-width:680px;">
+        <p style="font-size:.97rem;line-height:1.9;color:var(--text-dim);margin-bottom:1rem;">
+          I costumi del Corteo sono realizzati tenendo conto di fonti iconografiche del XIII secolo: miniature, affreschi e descrizioni dell'epoca. Ogni rione possiede un guardaroba che viene rinnovato e ampliato nel tempo.</p>
+        <p style="font-size:.97rem;line-height:1.9;color:var(--text-dim);margin-bottom:1rem;">
+          Sarte, ricamatrici e artigiani locali collaborano alla confezione degli abiti, delle armature e degli accessori. Alcuni elementi, come scudi e bandiere, sono prodotti appositamente per la rievocazione da laboratori specializzati in rievocazioni storiche.</p>
+        <p style="font-size:.97rem;line-height:1.9;color:var(--text-dim);">
+          La scelta dei colori e dei simboli segue la tradizione consolidata del Palio, ma lascia spazio anche alla creatività, rendendo ogni edizione leggermente diversa dalla precedente.</p>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-inner">
+        <span>Oria (BR) — Puglia</span>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="leggende.html">Leggende</a></li>
+          <li><a href="luoghi.html">Luoghi</a></li>
+          <li><a href="storia.html">Storia</a></li>
+          <li><a href="torneo.html">Torneo</a></li>
+          <li><a href="corteo.html">Corteo</a></li>
+          <li><a href="feedback.html">Idee</a></li>
+        </ul>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="shared.js"></script>
 </body>
 </html>

@@ -21,9 +21,7 @@
   <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
   <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
-  <title>Idee e Feedback &#8212; OriAntica</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <title>Contattaci &#8212; OriAntica</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body data-page="feedback">
@@ -40,7 +38,7 @@
         <li><a href="storia.html" data-page="storia">Storia</a></li>
         <li><a href="torneo.html" data-page="torneo">Torneo</a></li>
         <li><a href="corteo.html" data-page="corteo">Corteo</a></li>
-        <li><a href="feedback.html" data-page="feedback">Idee</a></li>
+        <li><a href="feedback.html" data-page="feedback">Contattaci</a></li>
         <li><button class="theme-btn" id="theme-btn">&#9790;</button></li>
       </ul>
     </div>
@@ -50,7 +48,7 @@
 
     <div class="page-top">
       <span class="page-kicker">Partecipa &middot; Contribuisci &middot; Migliora</span>
-      <h1>Idee e Feedback</h1>
+      <h1>Contattaci</h1>
       <p>Questo sito &#232; in costruzione &#8212; il tuo contributo &#232; prezioso</p>
     </div>
 
@@ -62,60 +60,24 @@
         Il sito &#232; un progetto in continua evoluzione, nato per raccogliere e tramandare la memoria di Oria.
       </p>
       <p>
-        Compila il modulo qui sotto e il tuo messaggio arriver&#224; direttamente ai curatori del sito.
+        Scrivi una email a <a href="mailto:oriantica@info.it">oriantica@info.it</a> con le informazioni che avresti indicato nel form.
       </p>
 
-      <form id="feedback-form" novalidate autocomplete="off">
-
-        <!-- Honeypot anti-spam -->
-        <div style="display:none" aria-hidden="true">
-          <label for="_hp">Non compilare questo campo</label>
-          <input type="text" id="_hp" name="_hp" tabindex="-1" autocomplete="off">
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="nome">Nome</label>
-            <input type="text" id="nome" name="nome" placeholder="Il tuo nome" maxlength="100" autocomplete="name">
-          </div>
-          <div class="form-group">
-            <label for="email">Email (facoltativa)</label>
-            <input type="email" id="email" name="email" placeholder="Per ricevere una risposta" maxlength="200" autocomplete="email">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="tipo">Tipo di contributo</label>
-          <select id="tipo" name="tipo">
-            <option value="">&#8212; Seleziona &#8212;</option>
-            <option value="leggenda">Nuova leggenda o racconto</option>
-            <option value="foto">Foto o materiale storico</option>
-            <option value="correzione">Correzione di un errore</option>
-            <option value="luogo">Luogo non ancora presente</option>
-            <option value="torneo">Informazione sul Torneo o Corteo</option>
-            <option value="idea">Idea per il sito</option>
-            <option value="altro">Altro</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="messaggio">Il tuo messaggio <span style="color:var(--color-error,red)">*</span></label>
-          <textarea id="messaggio" name="messaggio" placeholder="Scrivi qui la tua idea, la leggenda che conosci, la correzione che vuoi segnalare&#8230;" maxlength="3000" required></textarea>
-        </div>
-
-        <div class="form-group">
-          <label for="fonte">Fonte o riferimento (facoltativo)</label>
-          <input type="text" id="fonte" name="fonte" placeholder="Es: anziano di Oria, libro X, archivio parrocchiale&#8230;" maxlength="200">
-        </div>
-
-        <p id="form-error" role="alert" style="color:var(--color-error,red);display:none;"></p>
-
-        <button type="submit" class="btn btn-solid" style="margin-top:.5rem;">Invia il contributo</button>
-
-      </form>
-
-      <div class="feedback-success" id="success-msg">
-        Grazie per il tuo contributo. Il tuo messaggio &#232; stato ricevuto e verr&#224; valutato dai curatori del sito. Oria ti ringrazia.
+      <div class="feedback-guide">
+        <h3>Come inviare il contributo</h3>
+        <ul>
+          <li><strong>Nome</strong> (se vuoi presentarti)</li>
+          <li><strong>Email</strong> (facoltativa, per ricevere una risposta)</li>
+          <li><strong>Tipo di contributo</strong>: nuova leggenda, foto o materiale storico, correzione, luogo non presente, torneo/corteo, idea per il sito, altro</li>
+          <li><strong>Messaggio</strong>: descrivi il tuo contributo o la segnalazione</li>
+          <li><strong>Fonte o riferimento</strong>* : es. persona, libro, archivio, racconto locale</li>
+        </ul><br>
+        <p>
+          Se hai materiale utile, indicaci anche come contattarti per eventuali chiarimenti. 
+          <i>Le richieste che non hanno rispettato queste indicazioni potrebbero non essere prese in considerazione.</i>
+          <br>
+          <i>* Campo obbligatorio</i>
+        </p>
       </div>
 
       <hr style="border:none;border-top:1px solid var(--border);margin:3rem 0;">
@@ -132,7 +94,7 @@
           <li><a href="storia.html">Storia</a></li>
           <li><a href="torneo.html">Torneo</a></li>
           <li><a href="corteo.html">Corteo</a></li>
-          <li><a href="feedback.html">Idee</a></li>
+          <li><a href="feedback.html">Contattaci</a></li>
         </ul>
       </div>
     </footer>
@@ -141,53 +103,5 @@
 
   <script src="security.js"></script>
   <script src="shared.js"></script>
-  <script>
-    (function() {
-      var form = document.getElementById('feedback-form');
-      var errorEl = document.getElementById('form-error');
-      var successEl = document.getElementById('success-msg');
-      var ALLOWED_TIPI = ['', 'leggenda', 'foto', 'correzione', 'luogo', 'torneo', 'idea', 'altro'];
-
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        if (document.getElementById('_hp').value !== '') return;
-
-        errorEl.style.display = 'none';
-        errorEl.textContent = '';
-
-        var messaggio = document.getElementById('messaggio').value.trim();
-        var tipo = document.getElementById('tipo').value;
-        var email = document.getElementById('email').value.trim();
-
-        if (!messaggio) {
-          errorEl.textContent = 'Il campo messaggio \u00e8 obbligatorio.';
-          errorEl.style.display = 'block';
-          document.getElementById('messaggio').focus();
-          return;
-        }
-        if (messaggio.length > 3000) {
-          errorEl.textContent = 'Il messaggio \u00e8 troppo lungo (max 3000 caratteri).';
-          errorEl.style.display = 'block';
-          return;
-        }
-        if (!ALLOWED_TIPI.includes(tipo)) {
-          errorEl.textContent = 'Tipo di contributo non valido.';
-          errorEl.style.display = 'block';
-          return;
-        }
-        if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-          errorEl.textContent = 'Indirizzo email non valido.';
-          errorEl.style.display = 'block';
-          document.getElementById('email').focus();
-          return;
-        }
-
-        form.style.opacity = '.4';
-        form.style.pointerEvents = 'none';
-        successEl.classList.add('show');
-        window.scrollTo({ top: successEl.offsetTop - 100, behavior: 'smooth' });
-      });
-    })();
-  </script>
 </body>
 </html>

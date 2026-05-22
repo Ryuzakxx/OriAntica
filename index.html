@@ -40,8 +40,7 @@
     background-image: url('https://upload.wikimedia.org/wikipedia/commons/9/9e/Castello_di_Oria_al_Tramonto.jpg');
     background-size: cover;
     background-position: center 30%;
-    transform: scale(1.05);
-    transition: transform 8s ease;
+    transform: scale(1);
   }
   .hero-full.loaded .hero-bg { transform: scale(1); }
 
@@ -438,9 +437,152 @@
     .hero-title { font-size: 3.2rem; }
     .hero-stats-col { display: none; }
   }
+
+  /* ═══════════════════════════════
+     DISCLAIMER MODAL
+  ═══════════════════════════════ */
+  .disclaimer-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity .3s ease;
+    pointer-events: none;
+  }
+  .disclaimer-modal.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .disclaimer-content {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: clamp(2rem, 5vw, 3rem);
+    max-width: 500px;
+    width: 90%;
+    border-radius: 2px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.3);
+    animation: slideUp .4s ease cubic-bezier(.34,.69,.56,1);
+  }
+  @keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  .disclaimer-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .disclaimer-close {
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0;
+    transition: color .2s;
+    min-width: 30px;
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .disclaimer-close:hover {
+    color: var(--accent);
+  }
+  .disclaimer-title {
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    letter-spacing: .02em;
+  }
+  .disclaimer-text {
+    font-size: var(--text-sm);
+    line-height: 1.8;
+    color: var(--text-dim);
+    margin-bottom: 1.5rem;
+  }
+  .disclaimer-badge {
+    display: inline-block;
+    background: var(--accent2);
+    color: #fff;
+    padding: .35rem .75rem;
+    font-size: .65rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    border-radius: 1px;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+  .disclaimer-actions {
+    display: flex;
+    gap: .8rem;
+    flex-wrap: wrap;
+  }
+  .disclaimer-btn {
+    flex: 1;
+    min-width: 120px;
+    padding: .75rem 1.2rem;
+    min-height: 44px;
+    border: 1px solid var(--border);
+    background: none;
+    color: var(--text-dim);
+    font-family: 'Merriweather', serif;
+    font-size: var(--text-xs);
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all .2s;
+    border-radius: 2px;
+  }
+  .disclaimer-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(122,48,16,.05);
+  }
+  .disclaimer-btn-primary {
+    background: var(--accent2);
+    color: #fff;
+    border-color: var(--accent2);
+  }
+  .disclaimer-btn-primary:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    opacity: .9;
+  }
   </style>
 </head>
 <body data-page="home">
+
+  <!-- DISCLAIMER MODAL -->
+  <div class="disclaimer-modal" id="disclaimer-modal">
+    <div class="disclaimer-content">
+      <div class="disclaimer-header">
+        <button class="disclaimer-close" id="disclaimer-close">✕</button>
+      </div>
+      <h2 class="disclaimer-title">In Fase di Sviluppo</h2>
+      <span class="disclaimer-badge">Beta</span>
+      <p class="disclaimer-text">
+        Benvenuto su <strong>OriAntica</strong>! Il sito è appena uscito e ancora in fase di sviluppo. Le informazioni contenute potrebbero non essere completamente corrette o aggiornate.
+      </p>
+      <p class="disclaimer-text">
+        Se trovi imprecisioni o hai suggerimenti per migliorare il contenuto, ti invitiamo a contattarci nella pagina Feedback.
+      </p>
+      <div class="disclaimer-actions">
+        <button class="disclaimer-btn" id="disclaimer-close-btn">Chiudi</button>
+        <a href="feedback.html" class="disclaimer-btn disclaimer-btn-primary">Lascia Feedback</a>
+      </div>
+    </div>
+  </div>
 
   <nav>
     <div class="nav-wrap">

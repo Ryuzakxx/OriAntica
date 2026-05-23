@@ -644,20 +644,14 @@
   function goToImage(index) {
     const bgElement = document.querySelector('.hero-bg');
     if (!bgElement) return;
-    
     currentImageIndex = (index + heroBgImages.length) % heroBgImages.length;
     bgElement.style.backgroundImage = `url('${heroBgImages[currentImageIndex]}')`;
     updateDots();
     restartAutoPlay();
   }
 
-  function nextImage() {
-    goToImage(currentImageIndex + 1);
-  }
-
-  function prevImage() {
-    goToImage(currentImageIndex - 1);
-  }
+  function nextImage() { goToImage(currentImageIndex + 1); }
+  function prevImage() { goToImage(currentImageIndex - 1); }
 
   function updateDots() {
     document.querySelectorAll('.carousel-dot').forEach((dot, idx) => {
@@ -671,7 +665,6 @@
   }
 
   document.addEventListener('DOMContentLoaded', () => {
-    // Genera dinamicamente i punti in base al numero di immagini
     const dotsContainer = document.getElementById('carousel-dots-container');
     heroBgImages.forEach((_, idx) => {
       const dot = document.createElement('button');
@@ -680,13 +673,10 @@
       dot.addEventListener('click', () => goToImage(idx));
       dotsContainer.appendChild(dot);
     });
-    
     const prevBtn = document.getElementById('carousel-prev');
     const nextBtn = document.getElementById('carousel-next');
-    
     if (prevBtn) prevBtn.addEventListener('click', prevImage);
     if (nextBtn) nextBtn.addEventListener('click', nextImage);
-    
     restartAutoPlay();
   });
   </script>
@@ -877,6 +867,7 @@
   <script src="data.js"></script>
   <script src="shared.js"></script>
   <script>
+  /* Parallax hero */
   const heroBg = document.getElementById('hero-bg');
   window.addEventListener('scroll', () => {
     const y = window.scrollY;
@@ -884,6 +875,7 @@
   }, { passive: true });
   document.getElementById('hero').classList.add('loaded');
 
+  /* Popola le grid — data.js già caricato, nessun DOMContentLoaded necessario */
   function cardLeggenda(item, i) {
     const thumb = item.img
       ? `<img src="${item.img}" alt="${item.title}" loading="lazy">`
@@ -914,13 +906,12 @@
     </a>`;
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const lgGrid = document.getElementById('leggende-grid');
-    const luGrid = document.getElementById('luoghi-grid');
-    if (lgGrid && typeof LEGGENDE !== 'undefined') lgGrid.innerHTML = LEGGENDE.slice(0, 3).map(cardLeggenda).join('');
-    if (luGrid && typeof LUOGHI !== 'undefined')   luGrid.innerHTML = LUOGHI.slice(0, 3).map(cardLuogo).join('');
-  });
+  const lgGrid = document.getElementById('leggende-grid');
+  const luGrid = document.getElementById('luoghi-grid');
+  if (lgGrid && typeof LEGGENDE !== 'undefined') lgGrid.innerHTML = LEGGENDE.slice(0, 3).map(cardLeggenda).join('');
+  if (luGrid && typeof LUOGHI !== 'undefined')   luGrid.innerHTML = LUOGHI.slice(0, 3).map(cardLuogo).join('');
 
+  /* Reveal on scroll */
   const ro = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
   }, { threshold: 0.07 });

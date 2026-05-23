@@ -15,450 +15,103 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Torneo dei Rioni — OriAntica</title>
   <link rel="stylesheet" href="style.css"/>
-   <style>
-
+  <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --bg: #faf8f3;
-    --bg-alt: #f2ede2;
-    --border: #d8cdb8;
-    --text: #1c1610;
-    --text-dim: #6b5e4a;
-    --accent: #7a3010;
-    --accent2: #c05828;
-    --max-w: 1100px;
-  }
-  [data-theme="dark"] {
-    --bg: #0e0c08;
-    --bg-alt: #181410;
-    --border: #2e2416;
-    --text: #ede5d0;
-    --text-dim: #8a7a62;
-    --accent: #c05828;
-    --accent2: #e07840;
-  }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Merriweather', Georgia, serif;
-    overflow-x: hidden;
-    transition: background .3s, color .3s;
-  }
+  body { background: var(--bg); color: var(--text); font-family: 'Merriweather', Georgia, serif; overflow-x: hidden; transition: background .3s, color .3s; }
 
   /* HERO */
-  .hero-torneo {
-    position: relative;
-    height: 100vh;
-    min-height: 600px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding-bottom: 5rem;
-    overflow: hidden;
-  }
-  .hero-torneo-bg {
-    position: absolute;
-    inset: 0;
-    background-image: url('https://www.paliodioria.net/wp-content/uploads/2024/03/gallery_14.jpg');
-    background-size: cover;
-    background-position: center 40%;
-    transform: scale(1.05);
-    transition: transform 8s ease;
-  }
+  .hero-torneo { position: relative; height: 100vh; min-height: 600px; display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 5rem; overflow: hidden; }
+  .hero-torneo-bg { position: absolute; inset: 0; background-image: url('https://www.paliodioria.net/wp-content/uploads/2024/03/gallery_14.jpg'); background-size: cover; background-position: center 40%; transform: scale(1.05); transition: transform 8s ease; }
   .hero-torneo.loaded .hero-torneo-bg { transform: scale(1); }
-  .hero-torneo::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to bottom,
-      rgba(14,12,8,.1) 0%,
-      rgba(14,12,8,.05) 25%,
-      rgba(14,12,8,.6) 60%,
-      rgba(14,12,8,.93) 100%
-    );
-  }
-  .hero-torneo-content {
-    position: relative;
-    z-index: 2;
-    max-width: var(--max-w);
-    margin: 0 auto;
-    padding: 0 2.5rem;
-    width: 100%;
-  }
-  .hero-eyebrow {
-    display: flex;
-    align-items: center;
-    gap: .8rem;
-    margin-bottom: 1.2rem;
-  }
-  .hero-eyebrow span {
-    font-size: .58rem;
-    letter-spacing: .35em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,.5);
-    font-weight: 300;
-  }
-  .hero-eyebrow-line {
-    width: 50px; height: 1px;
-    background: rgba(255,255,255,.25);
-  }
-  .hero-torneo-title {
-    font-family: 'MedievalSharp', serif;
-    font-size: clamp(4rem, 11vw, 9rem);
-    font-weight: 300;
-    line-height: .92;
-    color: #fff;
-    letter-spacing: -.02em;
-    margin-bottom: .5rem;
-  }
-  .hero-torneo-title em {
-    color: var(--accent2);
-    display: block;
-  }
-  .hero-torneo-sub {
-    font-size: .75rem;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,.45);
-    font-weight: 300;
-    margin-bottom: 2.5rem;
-  }
-  .hero-torneo-row {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
-  .hero-torneo-desc {
-    max-width: 440px;
-    font-size: .88rem;
-    line-height: 1.85;
-    color: rgba(255,255,255,.55);
-    font-weight: 300;
-    margin-bottom: 1.8rem;
-  }
+  .hero-torneo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(14,12,8,.1) 0%, rgba(14,12,8,.05) 25%, rgba(14,12,8,.6) 60%, rgba(14,12,8,.93) 100%); }
+  .hero-torneo-content { position: relative; z-index: 2; max-width: var(--max-w); margin: 0 auto; padding: 0 2.5rem; width: 100%; }
+  .hero-eyebrow { display: flex; align-items: center; gap: .8rem; margin-bottom: 1.2rem; }
+  .hero-eyebrow span { font-size: .58rem; letter-spacing: .35em; text-transform: uppercase; color: rgba(255,255,255,.5); font-weight: 300; }
+  .hero-eyebrow-line { width: 50px; height: 1px; background: rgba(255,255,255,.25); }
+  .hero-torneo-title { font-size: clamp(4rem, 11vw, 9rem); font-weight: 300; line-height: .92; color: #fff; letter-spacing: -.02em; margin-bottom: .5rem; }
+  .hero-torneo-title em { color: var(--accent2); display: block; font-style: normal; }
+  .hero-torneo-sub { font-size: .75rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.45); font-weight: 300; margin-bottom: 2.5rem; }
+  .hero-torneo-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+  .hero-torneo-desc { max-width: 440px; font-size: .88rem; line-height: 1.85; color: rgba(255,255,255,.55); font-weight: 300; margin-bottom: 1.8rem; }
   .hero-btns { display: flex; gap: .75rem; flex-wrap: wrap; }
-  .btn-solid {
-    background: var(--accent2); color: #fff;
-    border: 1px solid var(--accent2);
-    padding: .7rem 1.6rem;
-    font-size: .68rem; letter-spacing: .18em;
-    text-transform: uppercase; text-decoration: none;
-    font-family: 'Merriweather', serif;
-    transition: background .2s, transform .15s;
-    display: inline-block;
-  }
+  .btn-solid { background: var(--accent2); color: #fff; border: 1px solid var(--accent2); padding: .7rem 1.6rem; font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; text-decoration: none; font-family: 'Merriweather', serif; transition: background .2s, transform .15s; display: inline-block; }
   .btn-solid:hover { background: #a04020; transform: translateY(-1px); }
-  .btn-ghost {
-    background: transparent;
-    color: rgba(255,255,255,.75);
-    border: 1px solid rgba(255,255,255,.3);
-    padding: .7rem 1.6rem;
-    font-size: .68rem; letter-spacing: .18em;
-    text-transform: uppercase; text-decoration: none;
-    font-family: 'Merriweather', serif;
-    transition: border-color .2s, color .2s, transform .15s;
-    display: inline-block;
-  }
+  .btn-ghost { background: transparent; color: rgba(255,255,255,.75); border: 1px solid rgba(255,255,255,.3); padding: .7rem 1.6rem; font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; text-decoration: none; font-family: 'Merriweather', serif; transition: border-color .2s, color .2s, transform .15s; display: inline-block; }
   .btn-ghost:hover { border-color: rgba(255,255,255,.7); color: #fff; transform: translateY(-1px); }
-
-  .hero-torneo-year {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(4rem, 8vw, 7rem);
-    font-weight: 300;
-    color: rgba(255,255,255,.08);
-    line-height: 1;
-    letter-spacing: -.02em;
-    text-align: right;
-    user-select: none;
-  }
-
-  .hero-scroll {
-    position: absolute;
-    bottom: 1.8rem; left: 50%;
-    transform: translateX(-50%);
-    z-index: 3;
-    display: flex; flex-direction: column;
-    align-items: center; gap: .4rem; opacity: .4;
-  }
+  .hero-torneo-year { font-size: clamp(4rem, 8vw, 7rem); font-weight: 300; color: rgba(255,255,255,.08); line-height: 1; letter-spacing: -.02em; text-align: right; user-select: none; }
+  .hero-scroll { position: absolute; bottom: 1.8rem; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; flex-direction: column; align-items: center; gap: .4rem; opacity: .4; }
   .hero-scroll span { font-size: .5rem; letter-spacing: .25em; text-transform: uppercase; color: #fff; }
-  .hero-scroll-line {
-    width: 1px; height: 40px; background: #fff;
-    animation: sd 1.8s ease-in-out infinite;
-  }
-  @keyframes sd {
-    0%  { transform: scaleY(0); transform-origin: top; }
-    50% { transform: scaleY(1); transform-origin: top; }
-    51% { transform: scaleY(1); transform-origin: bottom; }
-    100%{ transform: scaleY(0); transform-origin: bottom; }
-  }
+  .hero-scroll-line { width: 1px; height: 40px; background: #fff; animation: sd 1.8s ease-in-out infinite; }
+  @keyframes sd { 0%{transform:scaleY(0);transform-origin:top} 50%{transform:scaleY(1);transform-origin:top} 51%{transform:scaleY(1);transform-origin:bottom} 100%{transform:scaleY(0);transform-origin:bottom} }
 
-  /* INTRO BAND */
-  .intro-band {
-    background: var(--bg-alt);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 4.5rem 2.5rem;
-    transition: background .3s;
-  }
-  .intro-inner {
-    max-width: var(--max-w);
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 4rem;
-    align-items: center;
-  }
+  /* INTRO */
+  .intro-band { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 4.5rem 2.5rem; transition: background .3s; }
+  .intro-inner { max-width: var(--max-w); margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: center; }
   .intro-left { display: flex; flex-direction: column; gap: .6rem; }
-  .intro-kicker {
-    font-size: .55rem; letter-spacing: .32em;
-    text-transform: uppercase; color: var(--accent);
-  }
-  .intro-year-big {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3rem, 6vw, 5rem);
-    font-weight: 300; line-height: 1;
-    color: var(--border); letter-spacing: -.02em;
-  }
-  .intro-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.2rem, 2.5vw, 1.7rem);
-    font-weight: 300; font-style: italic;
-    line-height: 1.65; color: var(--text);
-    border-left: 2px solid var(--accent);
-    padding-left: 1.8rem;
-  }
+  .intro-kicker { font-size: .55rem; letter-spacing: .32em; text-transform: uppercase; color: var(--accent); }
+  .intro-year-big { font-size: clamp(3rem, 6vw, 5rem); font-weight: 300; line-height: 1; color: var(--border); letter-spacing: -.02em; }
+  .intro-text { font-size: clamp(1.1rem, 2.2vw, 1.5rem); font-weight: 300; font-style: italic; line-height: 1.65; color: var(--text); border-left: 2px solid var(--accent); padding-left: 1.8rem; }
   .intro-text strong { font-style: normal; color: var(--accent); font-weight: 600; }
 
-  /* I RIONI */
-  .rioni-section {
-    max-width: var(--max-w);
-    margin: 0 auto;
-    padding: 5rem 2.5rem;
-  }
-  .section-head {
-    display: flex; align-items: baseline;
-    justify-content: space-between;
-    margin-bottom: 3rem; padding-bottom: 1rem;
-    border-bottom: 1px solid var(--border);
-    gap: 1rem; flex-wrap: wrap;
-  }
-  .section-kicker {
-    font-size: .55rem; letter-spacing: .32em;
-    text-transform: uppercase; color: var(--accent);
-    display: block; margin-bottom: .3rem;
-  }
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
-    font-weight: 300; color: var(--text); line-height: 1.1;
-  }
-  .rioni-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-  }
-  .rione-card {
-    background: var(--bg);
-    padding: 0 0 2rem;
-    display: flex; flex-direction: column;
-    transition: background .2s;
-    position: relative;
-    overflow: hidden;
-  }
+  /* RIONI */
+  .rioni-section { max-width: var(--max-w); margin: 0 auto; padding: 5rem 2.5rem; }
+  .section-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 3rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); gap: 1rem; flex-wrap: wrap; }
+  .section-kicker { font-size: .55rem; letter-spacing: .32em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: .3rem; }
+  .section-title { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 300; color: var(--text); line-height: 1.1; }
+  .rioni-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+  .rione-card { background: var(--bg); padding: 0 0 2rem; display: flex; flex-direction: column; transition: background .2s; position: relative; overflow: hidden; }
   .rione-card:hover { background: var(--bg-alt); }
-  .rione-stemma {
-    width: 100%;
-    aspect-ratio: 4/3;
-    overflow: hidden;
-    background: var(--bg-alt);
-    border-bottom: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-  .rione-stemma img {
-    width: 100%; height: 100%;
-    object-fit: cover; display: block;
-    transition: transform .4s ease, opacity .3s;
-  }
+  .rione-stemma { width: 100%; aspect-ratio: 4/3; overflow: hidden; background: var(--bg-alt); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .rione-stemma img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease, opacity .3s; }
   .rione-card:hover .rione-stemma img { transform: scale(1.04); opacity: .9; }
-  .rione-stemma .stemma-ph {
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    gap: .5rem; width: 100%; height: 100%;
-  }
+  .rione-stemma .stemma-ph { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .5rem; width: 100%; height: 100%; }
   .stemma-ph-icon { font-size: 2.8rem; opacity: .18; }
-  .stemma-ph-txt {
-    font-size: .55rem; letter-spacing: .18em;
-    text-transform: uppercase; color: var(--text-dim); opacity: .5;
-  }
-  .rione-body {
-    padding: 1.5rem 1.6rem 0;
-    display: flex; flex-direction: column;
-    gap: .9rem; flex: 1;
-  }
-  .rione-bar {
-    height: 3px; width: 40px; margin-bottom: .3rem;
-    transition: width .3s;
-  }
+  .stemma-ph-txt { font-size: .55rem; letter-spacing: .18em; text-transform: uppercase; color: var(--text-dim); opacity: .5; }
+  .rione-body { padding: 1.5rem 1.6rem 0; display: flex; flex-direction: column; gap: .9rem; flex: 1; }
+  .rione-bar { height: 3px; width: 40px; margin-bottom: .3rem; transition: width .3s; }
   .rione-card:hover .rione-bar { width: 70px; }
-  .rione-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3rem; font-weight: 300;
-    color: var(--border); line-height: 1;
-    position: absolute; top: 1.2rem; right: 1.4rem;
-    transition: color .2s;
-  }
+  .rione-num { font-size: 3rem; font-weight: 300; color: var(--border); line-height: 1; position: absolute; top: 1.2rem; right: 1.4rem; transition: color .2s; }
   .rione-card:hover .rione-num { color: var(--bg-alt); }
-  .rione-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.35rem; font-weight: 400;
-    color: var(--text); line-height: 1.2;
-  }
-  .rione-desc {
-    font-size: .77rem; line-height: 1.75;
-    color: var(--text-dim);
-  }
-  .rione-colori {
-    font-size: .55rem; letter-spacing: .2em;
-    text-transform: uppercase; color: var(--accent);
-    margin-top: auto;
-  }
+  .rione-name { font-size: 1.35rem; font-weight: 400; color: var(--text); line-height: 1.2; }
+  .rione-desc { font-size: .77rem; line-height: 1.75; color: var(--text-dim); }
+  .rione-colori { font-size: .55rem; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-top: auto; }
 
-  /* FOTO GRIGLIA */
-  .foto-band { background: var(--text); padding: 1px; }
-  .foto-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 1px;
-  }
-  .foto-item { overflow: hidden; background: #111; cursor: pointer; }
-  .foto-item img {
-    width: 100%; height: 100%;
-    object-fit: cover; display: block;
-    aspect-ratio: 4/3;
-    opacity: .85;
-    transition: transform .5s ease, opacity .3s;
-  }
-  .foto-item:hover img { transform: scale(1.04); opacity: 1; }
-  .foto-item.tall { grid-row: span 2; }
-  .foto-item.tall img { aspect-ratio: unset; height: 100%; }
-
-  /* PROGRAMMA */
-  .programma-section {
-    max-width: var(--max-w);
-    margin: 0 auto;
-    padding: 5rem 2.5rem;
-  }
-  .programma-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    margin-top: 3rem;
-  }
-  .prog-item {
-    background: var(--bg);
-    padding: 2rem 1.6rem 2.2rem;
-    display: flex; flex-direction: column;
-    gap: .7rem;
-    transition: background .2s;
-  }
+  /* PROVE */
+  .programma-section { max-width: var(--max-w); margin: 0 auto; padding: 5rem 2.5rem; }
+  .programma-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 3rem; }
+  .prog-item { background: var(--bg); padding: 2rem 1.6rem 2.2rem; display: flex; flex-direction: column; gap: .7rem; transition: background .2s; }
   .prog-item:hover { background: var(--bg-alt); }
-  .prog-giorno {
-    font-size: .52rem; letter-spacing: .28em;
-    text-transform: uppercase; color: var(--accent);
-  }
-  .prog-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem; font-weight: 400;
-    color: var(--text); line-height: 1.2;
-  }
+  .prog-giorno { font-size: .52rem; letter-spacing: .28em; text-transform: uppercase; color: var(--accent); }
+  .prog-title { font-size: 1.2rem; font-weight: 400; color: var(--text); line-height: 1.2; }
   .prog-desc { font-size: .77rem; line-height: 1.75; color: var(--text-dim); }
 
-  /* INFO PRATICHE */
-  .info-band {
-    background: var(--bg-alt);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 4rem 2.5rem;
-  }
-  .info-inner {
-    max-width: var(--max-w);
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: start;
-  }
-  .info-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.8rem; font-weight: 300;
-    color: var(--text); margin-bottom: 1.5rem;
-    line-height: 1.2;
-  }
+  /* INFO */
+  .info-band { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 4rem 2.5rem; }
+  .info-inner { max-width: var(--max-w); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .info-title { font-size: 1.8rem; font-weight: 300; color: var(--text); margin-bottom: 1.5rem; line-height: 1.2; }
   .info-text { font-size: .83rem; line-height: 1.9; color: var(--text-dim); margin-bottom: 1rem; }
-  .info-link {
-    display: inline-block;
-    font-size: .62rem; letter-spacing: .2em;
-    text-transform: uppercase; color: var(--accent);
-    text-decoration: none; border-bottom: 1px solid var(--accent);
-    padding-bottom: .1rem; margin-top: .5rem;
-    transition: opacity .2s;
-  }
+  .info-link { display: inline-block; font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: .1rem; margin-top: .5rem; transition: opacity .2s; }
   .info-link:hover { opacity: .65; }
   .info-facts { display: flex; flex-direction: column; gap: 1px; }
-  .info-fact {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    padding: 1.2rem 1.4rem;
-    display: flex; align-items: baseline;
-    gap: 1.2rem;
-  }
-  .fact-n {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.2rem; font-weight: 300;
-    color: var(--accent); line-height: 1; flex-shrink: 0;
-  }
+  .info-fact { background: var(--bg); border: 1px solid var(--border); padding: 1.2rem 1.4rem; display: flex; align-items: baseline; gap: 1.2rem; }
+  .fact-n { font-size: 2.2rem; font-weight: 300; color: var(--accent); line-height: 1; flex-shrink: 0; }
   .fact-l { font-size: .78rem; line-height: 1.5; color: var(--text-dim); }
 
-  /* NAV logo */
-  .nav-logo {
-    display: flex; align-items: center;
-    gap: 8px; text-decoration: none; padding: 7px;
-  }
-  .nav-logo img {
-    transform: scale(1.5);
-    height: 40px; width: auto;
-    transition: transform 0.3s ease;
-  }
-  .nav-logo img:hover { transform: scale(1.7); }
+  /* BIGLIETTI */
+  .ticket-band { background: var(--bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 3rem 2.5rem; }
+  .ticket-inner { max-width: var(--max-w); margin: 0 auto; }
+  .ticket-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 2rem; }
+  .ticket-item { background: var(--bg-alt); padding: 1.8rem 1.6rem; }
+  .ticket-tipo { font-size: .52rem; letter-spacing: .28em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: .5rem; }
+  .ticket-nome { font-size: 1.1rem; font-weight: 400; color: var(--text); margin-bottom: .8rem; }
+  .ticket-prezzi { font-size: .8rem; line-height: 1.9; color: var(--text-dim); }
+  .ticket-prezzi strong { color: var(--text); }
 
-  @media (max-width: 900px) {
-    .rioni-grid { grid-template-columns: repeat(2, 1fr); }
-    .intro-inner { grid-template-columns: 1fr; gap: 2rem; }
-    .info-inner { grid-template-columns: 1fr; gap: 2rem; }
-    .foto-grid { grid-template-columns: 1fr 1fr; }
-    .foto-item.tall { grid-row: auto; }
-    .foto-item.tall img { aspect-ratio: 4/3; height: auto; }
-  }
-  @media (max-width: 600px) {
-    .rioni-grid { grid-template-columns: 1fr; }
-    .programma-grid { grid-template-columns: 1fr; }
-    .hero-torneo-title { font-size: clamp(3rem, 15vw, 5rem); }
-    .rioni-section, .programma-section, .intro-band, .info-band { padding-left: 1.2rem; padding-right: 1.2rem; }
-  }
+  @media (max-width: 900px) { .rioni-grid { grid-template-columns: repeat(2, 1fr); } .intro-inner { grid-template-columns: 1fr; gap: 2rem; } .info-inner { grid-template-columns: 1fr; gap: 2rem; } .ticket-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 600px) { .rioni-grid { grid-template-columns: 1fr; } .programma-grid { grid-template-columns: 1fr; } .hero-torneo-title { font-size: clamp(3rem, 15vw, 5rem); } .rioni-section, .programma-section, .intro-band, .info-band, .ticket-band { padding-left: 1.2rem; padding-right: 1.2rem; } }
   </style>
 </head>
-<body>
+<body data-page="torneo">
 
   <nav>
     <div class="nav-wrap">
@@ -484,24 +137,24 @@
     <div class="hero-torneo-content">
       <div class="hero-eyebrow">
         <div class="hero-eyebrow-line"></div>
-        <span>Rievocazione Medievale · Oria</span>
+        <span>Rievocazione Medievale · Oria (BR)</span>
       </div>
       <h1 class="hero-torneo-title">
         Torneo<br>
         <em>dei Rioni</em>
       </h1>
-      <p class="hero-torneo-sub">La giostra cavalleresca · Ogni anno ad agosto</p>
+      <p class="hero-torneo-sub">Prove atletiche medievali · Seconda settimana di agosto</p>
       <div class="hero-torneo-row">
         <div>
           <p class="hero-torneo-desc">
-            Una delle più antiche e spettacolari rievocazioni medievali del Sud Italia. Quattro rioni si sfidano in una gara di abilità equestre nel cuore del centro storico di Oria.
+            Una delle più spettacolari rievocazioni medievali del Sud Italia. Quattro rioni si sfidano in durissime prove di stampo medievale — ariete, ponte, spada e mazza ferrata — per conquistare il Palio dipinto ogni anno da un artista locale.
           </p>
           <div class="hero-btns">
             <a href="#rioni" class="btn-solid">I Rioni</a>
-            <a href="#programma" class="btn-ghost">Programma</a>
+            <a href="#programma" class="btn-ghost">Le Prove</a>
           </div>
         </div>
-        <div class="hero-torneo-year">1967</div>
+        <div class="hero-torneo-year">1225</div>
       </div>
     </div>
     <div class="hero-scroll">
@@ -510,7 +163,7 @@
     </div>
   </section>
 
-  <!-- INTRO BAND -->
+  <!-- INTRO -->
   <div class="intro-band">
     <div class="intro-inner">
       <div class="intro-left">
@@ -518,7 +171,7 @@
         <div class="intro-year-big">1225</div>
       </div>
       <p class="intro-text">
-        Il Torneo dei Rioni rievoca la visita di <strong>Federico II di Svevia</strong> ad Oria nel 1225, in occasione delle sue nozze per procura con Isabella II di Brienne. La città si divise allora in fazioni per accogliere l'imperatore con giochi cavallereschi e cortei.
+        Il Palio di Oria rievoca il bando emanato da <strong>Federico II di Svevia</strong> nel 1225, quando l'imperatore indisse un torneamento tra i quattro rioni della città in occasione delle sue nozze per procura con Isabella II di Brienne. La manifestazione moderna si articola in due giornate: il <strong>Corteo Storico</strong> e il <strong>Torneo dei Rioni</strong>, entrambi nella seconda settimana di agosto.
       </p>
     </div>
   </div>
@@ -531,142 +184,151 @@
         <h2 class="section-title">I Quattro Rioni</h2>
       </div>
     </div>
-
     <div class="rioni-grid">
 
-      <!-- Rione Lama -->
-      <div class="rione-card">
-        <div class="rione-stemma">
-          <img src="https://www.paliodioria.net/wp-content/uploads/2024/03/lama.jpg" alt="Stemma Rione Lama" onerror="this.parentElement.innerHTML='<div class=stemma-ph><span class=stemma-ph-icon>⚜</span><span class=stemma-ph-txt>Lama</span></div>'">
-        </div>
-        <div class="rione-body">
-          <div class="rione-bar" style="background:#d4a000;"></div>
-          <span class="rione-num">I</span>
-          <div class="rione-name">Rione Lama</div>
-          <p class="rione-desc">Il rione del quartiere storico più antico, con radici nell'insediamento medievale originario.</p>
-          <span class="rione-colori">Colori · Oro e Nero</span>
-        </div>
-      </div>
-
-      <!-- Rione Judea -->
-      <div class="rione-card">
-        <div class="rione-stemma">
-          <img src="https://www.paliodioria.net/wp-content/uploads/2024/03/judea.jpg" alt="Stemma Rione Judea" onerror="this.parentElement.innerHTML='<div class=stemma-ph><span class=stemma-ph-icon>✡</span><span class=stemma-ph-txt>Judea</span></div>'">
-        </div>
-        <div class="rione-body">
-          <div class="rione-bar" style="background:#1a6e3c;"></div>
-          <span class="rione-num">II</span>
-          <div class="rione-name">Rione Judea</div>
-          <p class="rione-desc">Il rione che ricorda la comunità ebraica medievale di Oria, una delle più antiche della Puglia.</p>
-          <span class="rione-colori">Colori · Verde e Bianco</span>
-        </div>
-      </div>
-
-      <!-- Rione Castello -->
+      <!-- Castello -->
       <div class="rione-card">
         <div class="rione-stemma">
           <img src="https://www.paliodioria.net/wp-content/uploads/2024/03/castello.jpg" alt="Stemma Rione Castello" onerror="this.parentElement.innerHTML='<div class=stemma-ph><span class=stemma-ph-icon>🏰</span><span class=stemma-ph-txt>Castello</span></div>'">
         </div>
         <div class="rione-body">
           <div class="rione-bar" style="background:#c41e1e;"></div>
-          <span class="rione-num">III</span>
+          <span class="rione-num">I</span>
           <div class="rione-name">Rione Castello</div>
-          <p class="rione-desc">Il rione che sorge ai piedi del castello svevo, simbolo del potere normanno-svevo nella città.</p>
-          <span class="rione-colori">Colori · Rosso e Bianco</span>
+          <p class="rione-desc">Sorge sul colle più alto della città, ai piedi del Castello Svevo. Lo stemma raffigura una torre rossa sormontata da corona su campo azzurro.</p>
+          <span class="rione-colori">Colori · Rosso e Azzurro</span>
         </div>
       </div>
 
-      <!-- Rione Santo Basilio -->
+      <!-- Lama -->
       <div class="rione-card">
         <div class="rione-stemma">
-          <img src="https://www.paliodioria.net/wp-content/uploads/2024/03/santobasilio.jpg" alt="Stemma Rione Santo Basilio" onerror="this.parentElement.innerHTML='<div class=stemma-ph><span class=stemma-ph-icon>⛪</span><span class=stemma-ph-txt>S. Basilio</span></div>'">
+          <img src="https://www.paliodioria.net/wp-content/uploads/2024/03/lama.jpg" alt="Stemma Rione Lama" onerror="this.parentElement.innerHTML='<div class=stemma-ph><span class=stemma-ph-icon>⚜</span><span class=stemma-ph-txt>Lama</span></div>'">
         </div>
         <div class="rione-body">
-          <div class="rione-bar" style="background:#1a3a8c;"></div>
+          <div class="rione-bar" style="background:#4a8a00;"></div>
+          <span class="rione-num">II</span>
+          <div class="rione-name">Rione Lama</div>
+          <p class="rione-desc">Prende il nome dalla pianura nella quale confluivano le acque dal colle del castello. Lo stemma richiama il passaggio di San Francesco d'Assisi sul territorio.</p>
+          <span class="rione-colori">Colori · Verde e Giallo-Oro</span>
+        </div>
+      </div>
+
+      <!-- Judea -->
+      <div class="rione-card">
+        <div class="rione-stemma">
+          <img src="https://www.paliodioria.net/wp-content/uploads/2024/03/judea.jpg" alt="Stemma Rione Judea" onerror="this.parentElement.innerHTML='<div class=stemma-ph><span class=stemma-ph-icon>✡</span><span class=stemma-ph-txt>Judea</span></div>'">
+        </div>
+        <div class="rione-body">
+          <div class="rione-bar" style="background:#4a7abf;"></div>
+          <span class="rione-num">III</span>
+          <div class="rione-name">Rione Judea</div>
+          <p class="rione-desc">Il nome ricorda la vigorosa comunità ebraica medievale di Oria. Lo stemma raffigura il candelabro ebraico a sette bracci su bande bianche e celesti.</p>
+          <span class="rione-colori">Colori · Bianco e Celeste</span>
+        </div>
+      </div>
+
+      <!-- San Basilio -->
+      <div class="rione-card">
+        <div class="rione-stemma">
+          <img src="https://www.paliodioria.net/wp-content/uploads/2024/03/santobasilio.jpg" alt="Stemma Rione San Basilio" onerror="this.parentElement.innerHTML='<div class=stemma-ph><span class=stemma-ph-icon>⛪</span><span class=stemma-ph-txt>San Basilio</span></div>'">
+        </div>
+        <div class="rione-body">
+          <div class="rione-bar" style="background:#c9a800;"></div>
           <span class="rione-num">IV</span>
-          <div class="rione-name">Rione Santo Basilio</div>
-          <p class="rione-desc">Il rione della chiesa di Santo Basilio, cuore religioso della città medievale.</p>
-          <span class="rione-colori">Colori · Blu e Giallo</span>
+          <div class="rione-name">Rione San Basilio</div>
+          <p class="rione-desc">Deve il nome al Colle San Basilio, dove il santo fondò un cenobio che divenne centro della chiesa oritana di rito greco. Lo stemma è una croce greca con stelle su campo nero.</p>
+          <span class="rione-colori">Colori · Giallo-Oro e Nero</span>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- GALLERIA FOTO -->
-  <div class="foto-band">
-    <div class="foto-grid">
-      <div class="foto-item tall">
-        <img src="https://www.paliodioria.net/wp-content/uploads/2024/03/gallery_14.jpg" alt="Torneo dei Rioni">
+  <!-- LE PROVE DEL TORNEO -->
+  <section class="programma-section" id="programma">
+    <div class="section-head">
+      <div>
+        <span class="section-kicker">La Competizione · Seconda giornata · Ore 19:30</span>
+        <h2 class="section-title">Le Prove del Torneo</h2>
       </div>
-      <div class="foto-item">
-        <img src="https://www.paliodioria.net/wp-content/uploads/2024/03/gallery_15.jpg" alt="Sbandieratori">
+    </div>
+    <div class="programma-grid">
+      <div class="prog-item">
+        <span class="prog-giorno">Prova dell'Ariete</span>
+        <div class="prog-title">L'Ariete</div>
+        <p class="prog-desc">Due atleti per ogni rione imbracciano un ariete che pesa 85 chilogrammi e lo trasportano di corsa per 65 metri fino a sfondare un portone. La forza e il coordinamento sono determinanti.</p>
       </div>
-      <div class="foto-item">
-        <img src="https://www.orianotizie.it/wp-content/uploads/2023/04/ALMIENTO-1ok.jpg" alt="Cavalieri">
+      <div class="prog-item">
+        <span class="prog-giorno">Prova del Ponte</span>
+        <div class="prog-title">Il Ponte</div>
+        <p class="prog-desc">Un atleta per ogni rione percorre un tracciato di circa 200 metri superando una serie di ostacoli medievali senza incertezze, fino a raggiungere una scala dove colloca la bandiera del proprio rione.</p>
       </div>
-      <div class="foto-item">
-        <img src="https://www.brindisireport.it/~media/horizontal-hi/43188358054386/il-palio-di-oria-foto-dalla-pagina-facebook.jpg" alt="Il corteo">
+      <div class="prog-item">
+        <span class="prog-giorno">Prove con le Armi</span>
+        <div class="prog-title">Picca, Spada, Scudo e Mazza</div>
+        <p class="prog-desc">I cavalieri in arme dei quattro rioni si sfidano in singolar tenzone con picca, spada, scudo e mazza ferrata. Spettacoli di bandiere, danza e fuoco intrattengono il pubblico sugli spalti.</p>
       </div>
-      <div class="foto-item">
-        <img src="https://lh5.googleusercontent.com/proxy/AGobEaBo5PwiSUtfwtX0iflDRL-kqX9eET3KUyHZXXjxNtMNctXOAe3ROw5WDV5lUvItfV8UklK7tihjrZTYEJalxJeCtS_656Hk7i8PNzS9CRdFL1ZnKDR-37CJ7kqRO8TlLrA" alt="Corteo imperiale">
+    </div>
+  </section>
+
+  <!-- BIGLIETTI -->
+  <div class="ticket-band">
+    <div class="ticket-inner">
+      <div class="section-head" style="margin-bottom:0;">
+        <div>
+          <span class="section-kicker">Accesso al Campo del Torneamento</span>
+          <h2 class="section-title">Biglietti</h2>
+        </div>
+      </div>
+      <div class="ticket-grid">
+        <div class="ticket-item">
+          <span class="ticket-tipo">Tribuna Centrale</span>
+          <div class="ticket-nome">Posto centrale</div>
+          <p class="ticket-prezzi">
+            <strong>Intero</strong> € 20,00<br>
+            <strong>Ridotto</strong> (3–10 anni) € 15,00<br>
+            <strong>Bambini</strong> 0–3 anni gratuito (senza posto)
+          </p>
+        </div>
+        <div class="ticket-item">
+          <span class="ticket-tipo">Tribuna Laterale</span>
+          <div class="ticket-nome">Posto laterale</div>
+          <p class="ticket-prezzi">
+            <strong>Intero</strong> € 15,00<br>
+            <strong>Ridotto</strong> (3–10 anni) € 10,00<br>
+            <strong>Bambini</strong> 0–3 anni gratuito (senza posto)
+          </p>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- PROGRAMMA -->
-  <section class="programma-section" id="programma">
-    <div class="section-head">
-      <div>
-        <span class="section-kicker">Tre Giorni di Festa</span>
-        <h2 class="section-title">Il Programma</h2>
-      </div>
-    </div>
-
-    <div class="programma-grid">
-      <div class="prog-item">
-        <span class="prog-giorno">Primo Giorno · Venerdì</span>
-        <div class="prog-title">Apertura e Sfida</div>
-        <p class="prog-desc">Cerimonia di apertura in piazza Manfredi. I capitani dei quattro rioni si sfidano verbalmente davanti alla folla. Esibizioni di sbandieratori e musici.</p>
-      </div>
-      <div class="prog-item">
-        <span class="prog-giorno">Secondo Giorno · Sabato</span>
-        <div class="prog-title">Il Corteo Storico</div>
-        <p class="prog-desc">Centinaia di figuranti sfilano per le vie del centro storico in costume medievale. L'imperatore Federico II attraversa la città a cavallo tra ali di folla.</p>
-      </div>
-      <div class="prog-item">
-        <span class="prog-giorno">Terzo Giorno · Domenica</span>
-        <div class="prog-title">La Giostra</div>
-        <p class="prog-desc">Il momento culminante: i cavalieri dei quattro rioni si sfidano nella giostra. Il vincitore conquista il Palio dipinto da un artista locale, diverso ogni anno.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- INFO PRATICHE -->
+  <!-- INFO -->
   <div class="info-band">
     <div class="info-inner">
       <div>
         <h3 class="info-title">Come partecipare</h3>
-        <p class="info-text">Il Torneo dei Rioni si svolge ogni anno nell'ultimo weekend di agosto ad Oria (BR). L'ingresso agli eventi in piazza è gratuito. Per la giostra finale sono disponibili posti a sedere a pagamento nelle tribune allestite.</p>
+        <p class="info-text">Il Palio di Oria si svolge ogni anno nella <strong>seconda settimana di agosto</strong> a Oria (BR), in Puglia. Il Corteo Storico è gratuito e aperto a tutti lungo le vie del centro storico. Per il Torneo dei Rioni sono disponibili tribune a pagamento.</p>
         <p class="info-text">Oria si raggiunge in auto dall'A14 (uscita Taranto o Brindisi) oppure in treno fino a Francavilla Fontana, con navette durante i giorni della manifestazione.</p>
         <a href="https://www.paliodioria.net" target="_blank" rel="noopener noreferrer" class="info-link">Sito ufficiale Palio di Oria →</a>
       </div>
       <div class="info-facts">
         <div class="info-fact">
-          <span class="fact-n">1967</span>
-          <span class="fact-l">Prima edizione della rievocazione moderna</span>
+          <span class="fact-n">1225</span>
+          <span class="fact-l">Anno del bando imperiale di Federico II che ispira la manifestazione</span>
         </div>
         <div class="info-fact">
           <span class="fact-n">4</span>
-          <span class="fact-l">Rioni storici in competizione</span>
+          <span class="fact-l">Rioni storici in competizione: Castello, Lama, Judea, San Basilio</span>
         </div>
         <div class="info-fact">
-          <span class="fact-n">800+</span>
-          <span class="fact-l">Figuranti nel corteo storico</span>
+          <span class="fact-n">1000+</span>
+          <span class="fact-l">Figuranti nel Corteo Storico di Federico II</span>
         </div>
         <div class="info-fact">
           <span class="fact-n">Agosto</span>
-          <span class="fact-l">Ultimo weekend del mese ogni anno</span>
+          <span class="fact-l">Seconda settimana del mese, ogni anno</span>
         </div>
       </div>
     </div>
@@ -689,7 +351,6 @@
 
   <script src="shared.js"></script>
   <script>
-    // Hero parallax + loaded class
     window.addEventListener('load', function() {
       document.getElementById('hero').classList.add('loaded');
     });

@@ -24,7 +24,7 @@ const LEGGENDE = [
     body: `
       <p>Nonno Cosimo così racconta, in una sera d'inverno, ai suoi nipotini la leggenda di <em>Oria fumosa</em>, tramandata oralmente di padre in figlio tra le famiglie oritane.</p>
 
-      <p>In una delle tante riunioni del Consiglio di Amministrazione, il comandante Marcuzio e un piccolo gruppo di consiglieri proposero di erigere le mura di cinta di Oria, capitale della Messapia. La mozione fu approvata e fu dato l'incarico a Maica per coordinare il progetto. Dopo pochi giorni iniziarono i lavori e tutto sembrava andare a lieto fine — ma non fu così. Una mattina il lavoro dei muratori si vide crollato. Edificato di nuovo con mezzi più sicuri, anche questa volta lo spettacolo dei crolli si ripeté.</p>
+      <p>In una delle tante riunioni del Consiglio di Amministrazione, il comandante Marcuzio e un piccolo gruppo di consiglieri proposero di erigere le mura di cinta di Oria, capitale della Messapia. La mozione fu approvata e fu dato l'incarico a Maica per coordinare il progetto. Dopo pochi giorni iniziarono i lavori e tutto sembrava andare a lieto fine — ma non fu così. Una mattina il lavoro dei muratori si vide crollato. Edificato di nuovo con mezzi più sicuri, anche questa volta lo spettacolo dei crolli si ripetrò.</p>
 
       <p>Convocato il Consiglio, la maggioranza volle dare la colpa ai muratori e si deliberò di affidare a Maica l'incarico di dirigere personalmente la costruzione. Le mura furono ultimate e tutti i cittadini erano orgogliosi nell'ammirarle: la base della muraglia a forma cilindrica era larga cinque metri, con tre porte foderate di ferro e vedette di forma quadrata ogni cinquanta metri. Una piccola stanza per i guardiani di turno era edificata a sinistra di ogni porta.</p>
 
@@ -35,13 +35,13 @@ const LEGGENDE = [
 
       <p>Fu inviata una commissione. Arrivata alla tana della maga, la trovarono intenta a girare una grande palla sulla fiamma del focolare, in un antro infestato da un odore sgradevole. Dopo aver ascoltato il motivo della visita, Laila disse: <em>"Il crollo delle mura è avvenuto per volere degli dei, oppure è indignato lo stesso Giove. Io a mezzanotte mi incontrerò con l'oracolo e tutto sarà chiarito."</em> La delegazione andò via, perché nell'antro c'era un puzzo di zolfo che soffocava.</p>
 
-      <p>Nel salone del Consiglio, da poco era trascorsa mezzanotte, quando la megera svegliò tutti i consiglieri con un grido: <em>"Non solo gli dei sono indignati — ma lo stesso Giove. E quello che si chiede è l'olocausto di una neonata di appena tre giorni."</em></p>
+      <p>Nel salone del Consiglio, da poco era trascorsa mezzanotte, quando la megera svegliasse tutti i consiglieri con un grido: <em>"Non solo gli dei sono indignati — ma lo stesso Giove. E quello che si chiede è l'olocausto di una neonata di appena tre giorni."</em></p>
 
-      <p>La maga voleva vendicarsi di Matia, una sua paesana che una volta l'aveva cacciata a calci. Matia aveva da tre giorni dato alla luce una bella piccina, alla quale fu dato il nome di Felicita. Ecco perché Laila propose all'Amministrazione l'olocausto di quella bambina. Il consiglio si riunì il giorno dopo in una discussione accesa, e alla fine — per il saggio intervento di Maica — fu approvato l'olocausto della piccola Felicita.</p>
+      <p>La maga voleva vendicarsi di Matia, una sua paesana che una volta l'aveva cacciata a calci. Matia aveva da tre giorni dato alla luce una bella piccina, alla quale fu dato il nome di Felicita. Ecco perché Laila propose all'Amministrazione l'olocausto di quella bambina. Il consiglio si riunisce il giorno dopo in una discussione accesa, e alla fine — per il saggio intervento di Maica — fu approvato l'olocausto della piccola Felicita.</p>
 
-      <p>All'olocausto assistettero il capitano, Maica e due altri del Consiglio. Tutti rimasero meravigliati quando videro arrivare la maga con la piccina tra le braccia — lei stessa volle gettarla nel fuoco. Il fumo smorzò immediatamente il vagito della piccola Martire, che in pochissimo tempo fu carbonizzata. I suoi resti furono chiusi in un cofanetto d'oro e sotterrati sotto le mura. Il capitano diede il compenso alla maga, ma una saetta la fulminò prima che potesse raccogliere il denaro: cadde esanime al suolo.</p>
+      <p>All'olocausto assistettero il capitano, Maica e due altri del Consiglio. Tutti rimasero meravigliati quando videro arrivare la maga con la piccina tra le braccia — lei stessa volle gettarla nel fuoco. Il fumo smorzasse immediatamente il vagito della piccola Martire, che in pochissimo tempo fu carbonizzata. I suoi resti furono chiusi in un cofanetto d'oro e sotterrati sotto le mura. Il capitano diede il compenso alla maga, ma una saetta la fulminò prima che potesse raccogliere il denaro: cadde esanime al suolo.</p>
 
-      <p>Quella mattina i paesani furono svegliati dalle urla isteriche di Matia. Quando si svegliò e non vide al suo fianco la sua amata figlia, scese dal letto con la sola camicia, con i capelli al vento e scalza, e andò per le vie del paese a cercarla. Molte amiche la aiutarono nella ricerca, ma tutto sembrava avvolto nel mistero. Da un vicolo sbucò Rocco, un vecchietto testimone di quanto era avvenuto, che si avvicinò commosso e raccontò tutto. Matia cadde tra le braccia di un'amica; quando rinvenne, volle andare a rovistare tra le ceneri per trovare almeno i resti della sua Felicita — ma neanche questo le fu concesso.</p>
+      <p>Quella mattina i paesani furono svegliati dalle urla isteriche di Matia. Quando si svegliasse e non vide al suo fianco la sua amata figlia, scese dal letto con la sola camicia, con i capelli al vento e scalza, e andò per le vie del paese a cercarla. Molte amiche la aiutarono nella ricerca, ma tutto sembrava avvolto nel mistero. Da un vicolo sbucò Rocco, un vecchietto testimone di quanto era avvenuto, che si avvicinò commosso e raccontò tutto. Matia cadde tra le braccia di un'amica; quando rinvenne, volle andare a rovistare tra le ceneri per trovare almeno i resti della sua Felicita — ma neanche questo le fu concesso.</p>
 
       <p>Al colmo della disperazione, alzò le braccia al cielo e maledisse la città:</p>
       <blockquote>«FUMA CITTÀ INFAME / FUMA IN ETERNO — gridò — COME FUMA IL MIO CUORE / SCONVOLTO DALLE FURIE DELL'AVERNO.»</blockquote>
@@ -57,7 +57,7 @@ const LEGGENDE = [
     id: 'bianca-guiscardi',
     tag: 'Leggenda · Epoca Medievale',
     title: 'Bianca Guiscardi e la Torre del Salto',
-    icon: '🗼',
+    icon: '🗼fe0f',
     img: 'https://www.laterradipuglia.it/wp-content/uploads/Castello_svevo_di_Oria-Laterradipuglia.it_.jpeg',
     imgAlt: 'Torre del Salto al tramonto',
     img2: 'https://www.lalanternadelpopolo.it/Oria%20-%20Castello%20di%20Oria.jpg',
@@ -76,7 +76,7 @@ const LEGGENDE = [
 
       <p>La leggenda racconta che molti secoli fa una giovane fanciulla, ancora adolescente, fu promessa in sposa a un potente castellano, un uomo molto più anziano di lei. Non era una scelta dettata dall'amore, ma da accordi familiari e interessi di potere, come spesso accadeva nel Medioevo.</p>
 
-      <p>La notte delle nozze, mentre il castello era immerso nel silenzio e illuminato dalla luce della luna, la ragazza si rifugiò nella torre più alta del maniero. Da lassù poteva vedere la città addormentata e le campagne che si estendevano fino all'orizzonte. In quel momento capì che non avrebbe mai accettato una vita imposta, accanto a un uomo che non amava.</p>
+      <p>La notte delle nozze, mentre il castello era immerso nel silenzio e illuminato dalla luce della luna, la ragazza si rifugiò nella torre più alta del maniero. Dalassù poteva vedere la città addormentata e le campagne che si estendevano fino all'orizzonte. In quel momento capì che non avrebbe mai accettato una vita imposta, accanto a un uomo che non amava.</p>
 
       <blockquote>«Si suicidò gettandosi dall'omonima torre angioina per sfuggire al matrimonio forzato con un castellano molto più vecchio di lei»<br></blockquote>
 
@@ -120,7 +120,7 @@ const LEGGENDE = [
       <p>Nel pieno della Seconda Guerra Mondiale, il 7 settembre 1943 — giorno della Liberazione — aerei alleati puntarono sulla città. Secondo la tradizione, Barsanofio stese il suo mantello sul cielo di Oria: un improvviso acquazzone violentissimo costrinse gli aerei a deviare. La città fu risparmiata.</p>
       <blockquote>«Il Santo stese il manto e la pioggia cadde come un muro.»<br><em>— Testimonianza orale raccolta dagli anziani di Oria</em></blockquote>
       <h3>Il Miracolo delle Reliquie</h3>
-      <p>Al tempo della traslazione delle reliquie, ladri tentarono di portare via il corpo del Santo. Ma il braccio di Barsanofio si agganciò miracolosamente a una colonna della chiesa, rendendo impossibile il furto. Le reliquie rimasero ad Oria, dove sono custodite ancora oggi nella Cattedrale di Santa Maria Assunta.</p>
+      <p>Al tempo della traslazione delle reliquie, ladri tentarono di portare via il corpo del Santo. Ma il braccio di Barsanofio si agganciasse miracolosamente a una colonna della chiesa, rendendo impossibile il furto. Le reliquie rimasero ad Oria, dove sono custodite ancora oggi nella Cattedrale di Santa Maria Assunta.</p>
     `
   },
   {
@@ -146,7 +146,7 @@ const LEGGENDE = [
       <p>La statua di Gesù Morto, distesa su una bara a baldacchino bianco decorata di fiori, viene portata a spalla dai confratelli dell'Arciconfraternita della Morte, vestiti del tradizionale mantello nero. Il corteo si snoda tra le viuzze di tufo al lume delle torce, in un silenzio rotto solo dal canto delle preghiere.</p>
       <blockquote>«Chi vede la processione almeno una volta, non la dimentica mai più.»<br><em>— Detto popolare oritano</em></blockquote>
       <p>Questa ritualità secolare affonda le radici nell'iconografia barocca del dolore e della redenzione. L'Arciconfraternita della Morte, le cui origini risalgono a molti secoli fa, è ancora oggi una delle istituzioni religiose più vive della comunità oritana, custode di riti e canti che si trasmettono di generazione in generazione.</p>
-      <p>L'oratorio della Confraternita è adiacente alla Cattedrale, dove si trova anche la celebre Cripta delle Mummie: 22 corpi imbalsamati dei confratelli defunti, disposti in nicchie lungo le pareti, vestiti del mantello nero, eterni testimoni di questa devozione millenaria.</p>
+      <p>L'oratorio della Confraternita è adiacente alla Cattedrale, dove si trova anche la celebre Cripta delle Mummie: 12 corpi imbalsamati dei confratelli defunti, disposti in nicchie lungo le pareti, vestiti del mantello nero, eterni testimoni di questa devozione millenaria.</p>
     `
   },
   {
@@ -171,7 +171,7 @@ const LEGGENDE = [
       <p>Nella notte che precede il 15 agosto, Ferragosto, un'antica corrente di fede si mette in moto nella campagna oritana. I fedeli partono dal centro di Oria e percorrono a piedi i sentieri tra ulivi e campi assolati — di notte, al chiaro di luna o di torcia — fino alla piccola chiesa rurale di Santa Maria di Gallana, a qualche chilometro dal paese.</p>
       <p>La chiesa stessa è un luogo di grande antichità: eretta su resti di una villa romana, risale almeno all'XI-XII secolo. La sua facciata sobria in pietra grezza e gli affreschi medievali nell'abside custodiscono secoli di devozione popolare.</p>
       <blockquote>«Si cammina nella notte perché la notte è il tempo degli spiriti, e solo la preghiera li tiene lontani.»<br><em>— Anziana pellegrina di Oria</em></blockquote>
-      <p>Una volta giunti alla chiesa, i pellegrini compiono tre giri cerimoniali attorno all'altare recitando formule di protezione contro gli spiriti maligni — un rito che mescola la devozione mariana con strati più antichi di religiosità popolare, forse pre-cristiana, legata alla propiziazione dei raccolti e alla protezione dei campi.</p>
+      <p>Una volta giunti alla chiesa, i pellegrini compiono tre giri cerimoniali attorno all'altare recitando formule di protezione contro gli spiriti maligni — un rito che mescola la devozione mariana con strati più antichi di religiosity popolare, forse pre-cristiana, legata alla propiziazione dei raccolti e alla protezione dei campi.</p>
       <p>Di particolare pregio nella chiesa è la <em>Natività policroma</em> in pietra attribuita allo scultore salentino Nuzzo Barba (XV secolo), nella cappella di destra: un'opera di rara bellezza che i pellegrini salutano all'arrivo come fosse un volto familiare.</p>
     `
   },
@@ -216,7 +216,7 @@ const LEGGENDE = [
     body: `
       <p>Si racconta che, poco dopo che San Barsanofio divenisse ufficialmente patrono e protettore di Oria, la città stava vivendo un periodo di difficoltà economica e di carestia.</p>
       <p>Durante un caldo pomeriggio, un mercante con il carro pieno di viveri stava passeggiando tra le strade della città, quando ad un tratto apparve un signore anziano e molto alto, con la barba molto lunga.</p>
-      <p>Questo signore, per sfamare il popolo di Oria, si sfilò un anello dal dito e lo diede al mercante, comprando così il necessario.</p>
+      <p>Questo signore, per sfamare il popolo di Oria, si sfilasse un anello dal dito e lo diede al mercante, comprando così il necessario.</p>
       <p>Qualche tempo dopo, quando i popolani si recarono alla chiesa di San Barsanofio, si accorsero che alla statua del santo mancava un anello.</p>
       <blockquote>«Le persone si sono accorte dopo un po' di tempo che mancava un anello a San Barsanofio.»<br><em>— Cittadino di Oria</em></blockquote>
     `
@@ -242,150 +242,4 @@ const LEGGENDE = [
       <p>Una mattina non si fece altro che parlare di ciò che la notte prima era capitato a Giovanni, un contadino, il quale, come ogni sabato sera, dopo la bardatura dell'asino, sul quale caricava gli ortaggi che vendeva al mercato domenicale di Manduria, si avviò per arrivare prima dell'alba. Mentre stava camminando dietro la bestia, vide in lontananza un non so che di bianco che si muoveva. Tutto ad un tratto vide spuntare due enormi alacce. L'asino, forse spaventato, fece dietro front e di corsa tornò verso il paese.</p>
       <p>Una vecchia diceva che il fantasma poteva essere l'apparire di un'anima condannata da Dio per scontare sulla terra chissà quale peccato. La Lalla fu un vero castigo di Dio per i paesani. Il fantasma apparve in diverse occasioni, seminando terrore tra le vie del paese.</p>
       <p>Un giovanotto, quando in lontananza vide arrivare la Lalla che ad una certa distanza cominciava a muovere le sue enormi alacce, sparò un colpo in aria. «Non mi uccidere – gridò una voce di donna – sono un'anima cristiana». Era una donna tra due lenzuola ammainate, non tanto giovane, che i paesani dicevano <em>«Filumena la culu 'gnuru»</em>. Si scoprì che il tutto era stato organizzato da una banda di uomini di malaffare.</p>
-      <p><em>Estrapolato dal libro "Città di Oria, raccontata da Antimo Baldari, il sacro poeta"</em></p>
-    `
-  }
-];
-
-const LUOGHI = [
-  {
-    id: 'castello',
-    tag: 'Architettura Militare · XIII Sec.',
-    title: 'Castello Svevo di Oria',
-    icon: '🏰',
-    img: './images/torre1.jpg',
-    imgAlt: 'Castello Svevo di Oria',
-    img2: './images/porta-castello.jpg',
-    imgAlt2: 'Vista aerea del castello',
-    excerpt: 'Voluto da Federico II di Svevia nel XIII secolo, il castello triangolare con quattro torri domina la piana messapica. Oggi museo, custodisce la leggenda di Bianca Guiscardi.',
-    zona: 'centro',
-    sideInfo: [
-      ['Stile','Militare svevo'],['Sec.','XIII (Federico II)'],
-      ['Pianta','Triangolare'],['Torri','4'],
-      ['Oggi','Temporaneamente chiuso (purtroppo)']
-    ],
-    relLuoghi: ['cattedrale','porta-taranto'],
-    relLeggende: ['bianca-guiscardi','oria-fumosa'],
-    body: `<p>Il castello di Oria è uno dei capolavori dell'architettura militare federiciana in Puglia. Sorge sul punto più alto del colle del Vaglio, là dove già esisteva un insediamento messapico e, più tardi, un primo nucleo normanno.</p><p>Federico II di Svevia lo fece ricostruire nel XIII secolo conferendogli la planimetria triangolare con quattro torri che ancora oggi lo caratterizza: la Torre Maestra, la Torre del Cavaliere, la Torre di San Basilio e la celeberrima Torre del Salto, dalla quale secondo la leggenda si gettò Bianca Guiscardi. Le mura sono in pietra calcarea locale, spesse e compatte, pensate per resistere agli assedi medievali.</p><blockquote>Sotto la Torre del Salto si trova un'antichissima cripta ipogea dei Santi Crisante e Daria, risalente all'epoca basiliana.</blockquote><p>Oggi il castello non è aperto al pubblico. Speriamo ancora per poco!</p>`
-  },
-  {
-    id: 'cattedrale',
-    tag: 'Architettura Religiosa · XVIII Sec.',
-    title: 'Cattedrale di Santa Maria Assunta',
-    icon: '⛪',
-    img: './images/cattedrale1.jpg',
-    imgAlt: 'Facciata della Cattedrale di Oria',
-    img2: '',
-    imgAlt2: 'Interno della Cattedrale',
-    excerpt: 'Ricostruita tra il 1750 e il 1769 su progetto di Giustino Lombardi dopo il terremoto del 1743. Conserva le reliquie di San Barsanofio e la cripta con 22 mummie dei confratelli.',
-    zona: 'centro',
-    sideInfo: [
-      ['Stile','Barocco pugliese'],['Costruzione','1750–1769'],
-      ['Progetto','Giustino Lombardi'],['Reliquie','San Barsanofio'],
-      ['Cripta','22 mummie']
-    ],
-    relLuoghi: ['castello','san-francesco'],
-    relLeggende: ['san-barsanofio','scenni-cristu'],
-    body: `<p>La Cattedrale di Santa Maria Assunta, che sorge al centro della città, è il cuore religioso e artistico di Oria. L'edificio attuale fu interamente ricostruito tra il 1750 e il 1769 da Giustino Lombardi, dopo che il violento terremoto del 20 febbraio 1743 aveva reso inagibile la precedente struttura medievale.</p><p>La facciata in pietra locale si apre su un interno a tre navate ricco di stucchi dorati, altari marmorei e tele di scuola napoletana. La grande cupola, visibile da chilometri di distanza, domina il profilo urbano di Oria insieme alle torri del castello.</p><p>Nella Cattedrale sono conservate le reliquie di San Barsanofio di Gaza, patrono principale della città. Sotto la navata principale si apre la <em>Cripta delle Mummie</em>: ventiddue corpi imbalsamati dei confratelli dell'Arciconfraternita della Morte, disposti in nicchie lungo le pareti nell'abito nero della confraternita, silenziosi testimoni di secoli di devozione.</p><blockquote>«Nella cripta il tempo si ferma. Quei volti sembrano voler dire qualcosa che le parole non riescono a contenere.»</blockquote>`
-  },
-  {
-    id: 'porta-taranto',
-    tag: 'Architettura Urbana · Medioevo',
-    title: 'Porta Taranto — Porta degli Ebrei',
-    icon: '🚪',
-    img: 'https://catalogazione.cartapulia.it/resource/image/files/68258_SBAAASBA131243%20(1447868178).jpg',
-    imgAlt: 'Porta Taranto di Oria',
-    img2: '',
-    imgAlt2: 'Dettaglio architettonico Porta Taranto',
-    excerpt: 'Una delle porte storiche delle mura medievali, nota come "Porta degli Ebrei" per il prospiciente quartiere della comunità ebraica medievale, attiva tra il IX e l\'XI secolo.',
-    zona: 'centro',
-    sideInfo: [
-      ['Tipo','Porta urbana'],['Epoca','Medievale'],
-      ['Nome alt.','Porta degli Ebrei'],['Comunità','Ebraica IX-XI sec.'],
-      ['Funzione orig.','Accesso da Taranto']
-    ],
-    relLuoghi: ['castello','cattedrale'],
-    relLeggende: ['oria-fumosa'],
-    body: `<p>Porta Taranto è una delle porte storiche che si aprivano nelle antiche mura medievali di Oria, l'accesso principale per chi arrivava dalla direzione di Taranto lungo la via consolare. La sua struttura attuale risale al periodo medievale, ma insiste su tracciati viarii assai più antichi.</p><p>Il nome popolare di "Porta degli Ebrei" testimonia la presenza, nel quartiere immediatamente adiacente alla porta, di una fiorente comunità ebraica attiva tra il IX e l'XI secolo. La comunità ebraica di Oria fu una delle più importanti dell'Italia meridionale nel Medioevo alto: trasmise cultura, filosofia e testi nel Mediterraneo, e lasciò una traccia indelebile nella toponomastica e nella memoria collettiva della città.</p><blockquote>«La pietra non dimentica chi l'ha attraversata. Porta Taranto ricorda ogni passo.»</blockquote>`
-  },
-  {
-    id: 'san-francesco',
-    tag: 'Architettura Religiosa · XIII Sec.',
-    title: 'Chiesa di San Francesco d\'Assisi',
-    icon: '⛪',
-    img: 'https://www.sigecweb.beniculturali.it/images/fullsize/ICCD1033054/ICCD11972818_SBAAASBA131485.jpg',
-    imgAlt: 'Chiesa di San Francesco di Oria',
-    img2: '',
-    imgAlt2: 'Interno della chiesa',
-    excerpt: 'Fondata nel XIII secolo dai Frati Minori, conserva un ciclo di affreschi medievali e un pregevole portale gotico. Nel convento annesso fu ospitato lo stesso San Bonaventura.',
-    zona: 'centro',
-    sideInfo: [
-      ['Ordine','Frati Minori'],['Fondazione','XIII Sec.'],
-      ['Stile','Gotico-pugliese'],['Affresco','Ciclo medievale'],
-      ['Ospite illustre','San Bonaventura']
-    ],
-    relLuoghi: ['cattedrale'],
-    relLeggende: ['san-barsanofio'],
-    body: `<p>La chiesa di San Francesco d'Assisi e l'annesso convento francescano rappresentano uno dei complessi religiosi medievali meglio conservati di Oria. Fondati nel XIII secolo dai Frati Minori, poco dopo la morte di Francesco d'Assisi, rispondevano all'espansione del movimento francescano nel Mezzogiorno normanno-svevo.</p><p>Il portale gotico d'ingresso, con i suoi archi a sesto acuto e i fregi floreali scolpiti nella pietra locale, è uno degli esempi più eleganti del gotico pugliese a Oria. All'interno, il ciclo di affreschi medievali sulla controfacciata e nell'abside mostra scene della vita del Santo e dei martiri, con una cromia vivace che i secoli non hanno del tutto spento.</p><p>La tradizione locale vuole che il convento abbia ospitato San Bonaventura da Bagnoregio durante i suoi viaggi nel Mezzogiorno, circostanza che avrebbe contribuito al rango dell'istituzione nella provincia francescana.</p>`
-  },
-  {
-    id: 'montalbano',
-    tag: 'Parco · XIII Sec.',
-    title: 'Parco Sabba - Montalbano',
-    icon: '⛪',
-    img: './images/montalbano1.jpg',
-    imgAlt: 'Chiesa di San Francesco di Oria',
-    img2: '',
-    imgAlt2: 'Interno della chiesa',
-    excerpt: 'Fondata nel XIII secolo dai Frati Minori, conserva un ciclo di affreschi medievali e un pregevole portale gotico. Nel convento annesso fu ospitato lo stesso San Bonaventura.',
-    zona: 'centro',
-    sideInfo: [
-      ['Ordine','Frati Minori'],['Fondazione','XIII Sec.'],
-      ['Stile','Gotico-pugliese'],['Affresco','Ciclo medievale'],
-      ['Ospite illustre','San Bonaventura']
-    ],
-    relLuoghi: ['cattedrale'],
-    relLeggende: ['san-barsanofio'],
-    body: `<p>La chiesa di San Francesco d'Assisi e l'annesso convento francescano rappresentano uno dei complessi religiosi medievali meglio conservati di Oria. Fondati nel XIII secolo dai Frati Minori, poco dopo la morte di Francesco d'Assisi, rispondevano all'espansione del movimento francescano nel Mezzogiorno normanno-svevo.</p><p>Il portale gotico d'ingresso, con i suoi archi a sesto acuto e i fregi floreali scolpiti nella pietra locale, è uno degli esempi più eleganti del gotico pugliese a Oria. All'interno, il ciclo di affreschi medievali sulla controfacciata e nell'abside mostra scene della vita del Santo e dei martiri, con una cromia vivace che i secoli non hanno del tutto spento.</p><p>La tradizione locale vuole che il convento abbia ospitato San Bonaventura da Bagnoregio durante i suoi viaggi nel Mezzogiorno, circostanza che avrebbe contribuito al rango dell'istituzione nella provincia francescana.</p>`
-  },
-  {
-    id: 'santuario-cosimo',
-    tag: 'Architettura Religiosa · XVII Sec.',
-    title: 'Santuario SS. Cosma e Damiano',
-    icon: '⛪',
-    img: 'https://i0.wp.com/www.saralessandrini.it/wp-content/uploads/2019/10/Facciata-Santuario-San-Cosimo-alla-Macchia_.jpg?fit=896%2C600&ssl=1',
-    imgAlt: 'Santuario di San Cosimo alla Macchia',
-    img2: '',
-    imgAlt2: 'Interno del Santuario',
-    excerpt: 'A pochi chilometri da Oria, nel bosco della Macchia, sorge questo santuario meta di pellegrinaggi da tutta la Puglia. La fiera di settembre raduna migliaia di fedeli.',
-    zona: 'dintorni',
-    sideInfo: [
-      ['Posizione','Bosco della Macchia, 5km'],['Patroni','Cosma e Damiano'],
-      ['Fiera','26-27 Settembre'],['Stile','Barocco'],
-      ['Pellegrinaggio','Regionale']
-    ],
-    relLuoghi: ['gallana'],
-    relLeggende: ['san-barsanofio'],
-    body: `<p>Nel bosco della Macchia, a circa cinque chilometri da Oria verso Francavilla Fontana, il Santuario dei Santi Cosma e Damiano è uno dei luoghi di culto più frequentati della Puglia meridionale. Sorto in forme barocche nel XVII secolo su un sito di devozione assai più antico, il santuario deve la sua fama alla potenza taumaturgica attribuita ai due santi medici, patroni dei malati e dei sofferenti.</p><p>La fiera di settembre — il 26 e 27 — raduna ogni anno migliaia di fedeli provenienti da tutta la Puglia e dalla Basilicata, in un'atmosfera che mescola devozione religiosa, commercio tradizionale e convivialità popolare. Le bancarelle si estendono per centinaia di metri lungo i viali del bosco, mentre all'interno del santuario si susseguono messe, preghiere e offerte votive.</p><blockquote>«Chi va a San Cosimo porta un dolore e torna con la speranza.»<br><em>— Detto popolare della zona</em></blockquote>`
-  },
-  {
-    id: 'gallana',
-    tag: 'Architettura Religiosa Rurale · XI-XII Sec.',
-    title: 'Santa Maria di Gallana',
-    icon: '⛪',
-    img: 'https://fai-platform.imgix.net/media/puglia/br/5073_chiesa-madonna-di-gallana.jpg',
-    imgAlt: 'Chiesa rurale Santa Maria di Gallana',
-    img2: '',
-    imgAlt2: 'Affresco medievale abside',
-    excerpt: 'Antico oratorio campestre sui resti di una villa romana. Custodisce affreschi medievali e una Natività policroma del XV secolo. Meta del pellegrinaggio delle 100 croci.',
-    zona: 'dintorni',
-    sideInfo: [
-      ['Posizione','Strada per Latiano'],['Datazione','XI-XII Sec.'],
-      ['Sotto','Villa romana'],['Opera','Natività — Nuzzo Barba XV sec.'],
-      ['Evento','Pellegrinaggio 14-15 agosto']
-    ],
-    relLuoghi: ['santuario-cosimo'],
-    relLeggende: ['gallana'],
-    body: `<p>Sulla strada per Latiano, l'oratorio campestre di Santa Maria di Gallana sorge sui resti di una villa romana, in un paesaggio di ulivi e vigneti che non è cambiato nei secoli. Datato almeno all'XI-XII secolo, la facciata è semplice in pietra grezza, mentre l'interno — un tempo a tre navate, oggi ad aula unica — conserva affreschi medievali sull'abside di notevole interesse storico-artistico.</p><p>Di pregio straordinario è la <em>Natività policroma</em> in pietra nella cappella di destra, attribuita allo scultore salentino Nuzzo Barba del XV secolo: una composizione di rara dolcezza in cui la Vergine, il Bambino e i pastori sembrano ancora freschi di cinello.</p><blockquote>«Qui la fede non ha bisogno di mura grandi. Basta una piccola luce nel campo.»</blockquote><p>La chiesa è la meta del famoso pellegrinaggio delle 100 croci, che nella notte tra il 14 e il 15 agosto porta i fedeli attraverso la campagna buia, a piedi, per compiere tre giri cerimoniali attorno all'altare recitando formule di protezione — uno dei rituali folkloristici più suggestivi e antichi dell'area oritana.</p>`
-  }
-];
+      <p><em>Estrapolato dal libro "Città di

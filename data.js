@@ -112,6 +112,10 @@ const LEGGENDE = [
       <p>San Barsanofio di Gaza è il patrono principale di Oria, e la sua protezione sulla città si manifesta, secondo la tradizione locale, attraverso una serie di prodigi straordinari che attraversano i secoli come un filo dorato.</p>
       <h3>L'Assedio del 1504</h3>
       <p>Nel 1504, le truppe spagnole al comando di Pedro de Paz posero l'assedio alla città. La notte prima dell'attacco decisivo, il comandante ebbe una visione: un anziano monaco armato apparve davanti a lui, fissandolo con occhi che non lasciavano spazio a dubbi. Era Barsanofio, che con la sua sola presenza dissuase il condottiero dall'attaccare. Le truppe si ritirarono. Oria fu salva.</p>
+      <figure>
+        <img src="./images/leggende/san-barsanofio1.jpg" alt="San Barsanofio in azione">
+        <figcaption><i>Immagine generata da IA. Non è un'opera manuale né una fonte storica verificata</i></figcaption>
+      </figure>
       <h3>Il Bombardamento del 7 Settembre 1943</h3>
       <p>Nel pieno della Seconda Guerra Mondiale, il 7 settembre 1943 — giorno della Liberazione — aerei alleati puntarono sulla città. Secondo la tradizione, Barsanofio stese il suo mantello sul cielo di Oria: un improvviso acquazzone violentissimo costrinse gli aerei a deviare. La città fu risparmiata.</p>
       <blockquote>«Il Santo stese il manto e la pioggia cadde come un muro.»<br><em>— Testimonianza orale raccolta dagli anziani di Oria</em></blockquote>

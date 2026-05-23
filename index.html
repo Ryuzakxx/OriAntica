@@ -42,7 +42,78 @@
     background-position: center 30%;
     transform: scale(1);
   }
+  .hero-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center 30%;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+  }
   .hero-full.loaded .hero-bg { transform: scale(1); }
+
+  /* Carousel Controls */
+  .carousel-controls {
+    position: absolute;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 3.5rem;
+    z-index: 10;
+  }
+
+  .carousel-dots {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+  }
+
+  .carousel-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.35);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.3s, width 0.3s;
+  }
+
+  .carousel-dot.active {
+    background: rgba(255, 255, 255, 0.85);
+    width: 20px;
+    border-radius: 3px;
+  }
+
+  .carousel-dot:hover {
+    background: rgba(255, 255, 255, 0.6);
+  }
+
+  .carousel-arrow {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.4rem;
+    transition: color 0.3s;
+    padding: 0;
+  }
+
+  .carousel-arrow:hover {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .carousel-arrow:active {
+    transform: scale(0.92);
+  }
 
   .hero-full::after {
     content: '';
@@ -560,6 +631,65 @@
     opacity: .9;
   }
   </style>
+  <script>
+  const heroBgImages = [
+    './images/castello1.jpg',
+    './images/torre1.jpg',
+    './images/porta2.jpg',
+    './images/torri1.jpg'
+  ];
+  let currentImageIndex = 0;
+  let autoPlayInterval;
+
+  function goToImage(index) {
+    const bgElement = document.querySelector('.hero-bg');
+    if (!bgElement) return;
+    
+    currentImageIndex = (index + heroBgImages.length) % heroBgImages.length;
+    bgElement.style.backgroundImage = `url('${heroBgImages[currentImageIndex]}')`;
+    updateDots();
+    restartAutoPlay();
+  }
+
+  function nextImage() {
+    goToImage(currentImageIndex + 1);
+  }
+
+  function prevImage() {
+    goToImage(currentImageIndex - 1);
+  }
+
+  function updateDots() {
+    document.querySelectorAll('.carousel-dot').forEach((dot, idx) => {
+      dot.classList.toggle('active', idx === currentImageIndex);
+    });
+  }
+
+  function restartAutoPlay() {
+    clearInterval(autoPlayInterval);
+    autoPlayInterval = setInterval(nextImage, 8000);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Genera dinamicamente i punti in base al numero di immagini
+    const dotsContainer = document.getElementById('carousel-dots-container');
+    heroBgImages.forEach((_, idx) => {
+      const dot = document.createElement('button');
+      dot.className = `carousel-dot ${idx === 0 ? 'active' : ''}`;
+      dot.setAttribute('aria-label', `Slide ${idx + 1}`);
+      dot.addEventListener('click', () => goToImage(idx));
+      dotsContainer.appendChild(dot);
+    });
+    
+    const prevBtn = document.getElementById('carousel-prev');
+    const nextBtn = document.getElementById('carousel-next');
+    
+    if (prevBtn) prevBtn.addEventListener('click', prevImage);
+    if (nextBtn) nextBtn.addEventListener('click', nextImage);
+    
+    restartAutoPlay();
+  });
+  </script>
 </head>
 <body data-page="home">
 
@@ -629,6 +759,12 @@
     <!-- ══ HERO ══ -->
     <div class="hero-full" id="hero">
       <div class="hero-bg" id="hero-bg"></div>
+
+      <div class="carousel-controls">
+        <button class="carousel-arrow" id="carousel-prev" aria-label="Immagine precedente">‹</button>
+        <div class="carousel-dots" id="carousel-dots-container"></div>
+        <button class="carousel-arrow" id="carousel-next" aria-label="Immagine successiva">›</button>
+      </div>
 
       <div class="hero-content">
         <h1 class="hero-title">

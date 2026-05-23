@@ -40,7 +40,7 @@
 
   <div class="content">
     <div class="page-top">
-      <span class="page-kicker">Architettura · Archeologia · Arte · Storia</span>
+      <span class="page-kicker">Architettura &middot; Archeologia &middot; Arte &middot; Storia</span>
       <h1>Luoghi Storici</h1>
       <p>Le pietre che custodiscono la memoria di Oria e del Salento</p>
     </div>
@@ -62,24 +62,26 @@
   <script src="data.js"></script>
   <script src="shared.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      function luogoCard(item) {
-        const thumb = item.img
-          ? `<img src="${item.img}" alt="${item.title}">`
-          : `<span class="ph-icon">${item.icon}</span><span class="ph-txt">${item.imgAlt || ''}</span>`;
-        return `<a class="card reveal" href="detail-luogo.html?id=${item.id}">
-          <div class="card-thumb">${thumb}</div>
-          <span class="card-kicker">${item.tag}</span>
-          <h3>${item.title}</h3>
-          <p>${item.excerpt}</p>
-          <div class="card-more">Scopri il luogo →</div>
-        </a>`;
-      }
-      document.getElementById('luoghi-grid-centro').innerHTML =
-        LUOGHI.filter(x => x.zona === 'centro').map(luogoCard).join('');
-      document.getElementById('luoghi-grid-dintorni').innerHTML =
-        LUOGHI.filter(x => x.zona === 'dintorni').map(luogoCard).join('');
-    });
+    function luogoCard(item) {
+      var thumb = item.img
+        ? '<img src="' + item.img + '" alt="' + item.title + '" loading="lazy">'
+        : '<span class="ph-icon">' + item.icon + '</span><span class="ph-txt">' + (item.imgAlt || '') + '</span>';
+      return '<a class="card reveal" href="detail-luogo.html?id=' + item.id + '">'
+        + '<div class="card-thumb">' + thumb + '</div>'
+        + '<span class="card-kicker">' + item.tag + '</span>'
+        + '<h3>' + item.title + '</h3>'
+        + '<p>' + item.excerpt + '</p>'
+        + '<div class="card-more">Scopri il luogo &rarr;</div>'
+        + '</a>';
+    }
+
+    var gridCentro = document.getElementById('luoghi-grid-centro');
+    var gridDintorni = document.getElementById('luoghi-grid-dintorni');
+
+    if (typeof LUOGHI !== 'undefined') {
+      if (gridCentro)   gridCentro.innerHTML   = LUOGHI.filter(function(x) { return x.zona === 'centro'; }).map(luogoCard).join('');
+      if (gridDintorni) gridDintorni.innerHTML = LUOGHI.filter(function(x) { return x.zona === 'dintorni'; }).map(luogoCard).join('');
+    }
   </script>
 </body>
 </html>

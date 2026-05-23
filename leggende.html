@@ -158,33 +158,33 @@
   <script src="data.js"></script>
   <script src="shared.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      /* ── Alert timer ── */
-      const alert = document.getElementById('leggende-alert');
-      const closeBtn = document.getElementById('leggende-alert-close');
-      function hideAlert() {
-        if (!alert) return;
-        alert.classList.add('hide');
-        setTimeout(() => alert.remove(), 350);
-      }
-      if (closeBtn) closeBtn.addEventListener('click', hideAlert);
-      setTimeout(hideAlert, 15000);
+    /* Alert timer */
+    var alertEl = document.getElementById('leggende-alert');
+    var closeBtn = document.getElementById('leggende-alert-close');
+    function hideAlert() {
+      if (!alertEl) return;
+      alertEl.classList.add('hide');
+      setTimeout(function() { if (alertEl) alertEl.remove(); }, 350);
+    }
+    if (closeBtn) closeBtn.addEventListener('click', hideAlert);
+    setTimeout(hideAlert, 15000);
 
-      /* ── Grid ── */
-      const grid = document.getElementById('leggende-grid');
-      grid.innerHTML = LEGGENDE.map(item => {
-        const thumb = item.img
-          ? `<img src="${item.img}" alt="${item.title}">`
-          : `<span class="ph-icon">${item.icon}</span><span class="ph-txt">${item.imgAlt || ''}</span>`;
-        return `<a class="card reveal" href="detail-leggenda.html?id=${item.id}">
-          <div class="card-thumb">${thumb}</div>
-          <span class="card-kicker">${item.tag}</span>
-          <h3>${item.title}</h3>
-          <p>${item.excerpt}</p>
-          <div class="card-more">Leggi la storia →</div>
-        </a>`;
+    /* Popola la grid — data.js già caricato, nessun DOMContentLoaded */
+    var grid = document.getElementById('leggende-grid');
+    if (grid && typeof LEGGENDE !== 'undefined') {
+      grid.innerHTML = LEGGENDE.map(function(item) {
+        var thumb = item.img
+          ? '<img src="' + item.img + '" alt="' + item.title + '" loading="lazy">'
+          : '<span class="ph-icon">' + item.icon + '</span><span class="ph-txt">' + (item.imgAlt || '') + '</span>';
+        return '<a class="card reveal" href="detail-leggenda.html?id=' + item.id + '">'
+          + '<div class="card-thumb">' + thumb + '</div>'
+          + '<span class="card-kicker">' + item.tag + '</span>'
+          + '<h3>' + item.title + '</h3>'
+          + '<p>' + item.excerpt + '</p>'
+          + '<div class="card-more">Leggi la storia &rarr;</div>'
+          + '</a>';
       }).join('');
-    });
+    }
   </script>
 </body>
 </html>

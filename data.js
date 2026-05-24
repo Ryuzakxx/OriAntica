@@ -417,3 +417,128 @@ const LUOGHI = [
     body: `<p>Sulla strada per Latiano, l'oratorio campestre di Santa Maria di Gallana sorge sui resti di una villa romana, in un paesaggio di ulivi e vigneti che non è cambiato nei secoli. Datato almeno all'XI-XII secolo, la facciata è semplice in pietra grezza, mentre l'interno — un tempo a tre navate, oggi ad aula unica — conserva affreschi medievali sull'abside di notevole interesse storico-artistico.</p><p>Di pregio straordinario è la <em>Natività policroma</em> in pietra nella cappella di destra, attribuita allo scultore salentino Nuzzo Barba del XV secolo: una composizione di rara dolcezza in cui la Vergine, il Bambino e i pastori sembrano ancora freschi di cinello.</p><blockquote>«Qui la fede non ha bisogno di mura grandi. Basta una piccola luce nel campo.»</blockquote><p>La chiesa è la meta del famoso pellegrinaggio delle 100 croci, che nella notte tra il 14 e il 15 agosto porta i fedeli attraverso la campagna buia, a piedi, per compiere tre giri cerimoniali attorno all'altare recitando formule di protezione — uno dei rituali folkloristici più suggestivi e antichi dell'area oritana.</p>`
   }
 ];
+
+const LUOGHIMAP = [
+  
+  {
+    id: 'castello-oria',
+    title: 'Castello di Oria',
+    tag: 'Castello',
+    icon: '',
+    excerpt: 'Fortezza medievale costruita da Federico II di Svevia nel XIII secolo. Domina il centro storico con la sua pianta pentagonale unica.',
+    description: 'Il Castello di Oria una delle opere pi importanti di Federico II di Svevia, costruito nel 1233. La sua struttura pentagonale lo rende unico nellarchitettura militare medievale del Salento. Allinterno si trovano i resti della cappella, cisterne e camere abitative. Dalle torri si gode una vista panoramica sul territorio circostante.',
+    lat: 40.58955,
+    lng: 17.89525,
+    zona: 'centro',
+    img: 'images/castello.jpg'
+  },
+  {
+    id: 'torre-circumvallazione',
+    title: 'Torre Circumvallazione',
+    tag: 'Fortificazione',
+    icon: '',
+    excerpt: 'Antica torre difensiva che proteggeva le mura della citt medievale. Parte del sistema fortificato di Oria.',
+    description: 'La Torre Circumvallazione uno dei resti pi significativi del sistema difensivo medievale di Oria. Costruita tra il XIII e XV secolo, serviva a proteggere gli accessi alle mura cittadine. Conserva ancora parte della struttura originale e rappresenta un importante testimone dellarchitettura militare salentina.',
+    lat: 40.58900,
+    lng: 17.89480,
+    zona: 'centro',
+    img: 'images/torre.jpg'
+  },
+  {
+    id: 'chiesa-matrice',
+    title: 'Chiesa Madre - Maria Assunta',
+    tag: 'Religioso',
+    icon: '',
+    excerpt: 'Tempio dedicato a Maria Assunta nel cuore del centro storico. Capolavoro di architettura religiosa barocca salentina.',
+    description: 'La Chiesa Madre di Maria Assunta edificata nel XVI secolo sulla piazza principale di Oria. La sua facciata barocca elegantemente decorata, mentre linterno ospita opere darte sacra di notevole valore. il cuore spirituale della comunit oriana e un capolavoro dellarchitettura religiosa salentina.',
+    lat: 40.58880,
+    lng: 17.89550,
+    zona: 'centro',
+    img: 'images/chiesa.jpg'
+  },
+  {
+    id: 'porta-aragonese',
+    title: 'Porta Aragonese',
+    tag: 'Architettura',
+    icon: '',
+    excerpt: 'Antico accesso fortificato al centro storico. Costruita in epoca medievale e restaurata in epoca aragonese.',
+    description: 'La Porta Aragonese uno dei tre accessi storici a Oria. Costruita in epoca medievale, stata restaurata nel XV-XVI secolo durante il dominio aragonese. La struttura conserva elementi architettonici tipici della fortificazione militare salentina, con archi a volta e merlature.',
+    lat: 40.58750,
+    lng: 17.89600,
+    zona: 'centro',
+    img: 'images/porta.jpg'
+  },
+  {
+    id: 'piazza-angelo-de-sanctis',
+    title: 'Piazza Angelo De Sanctis',
+    tag: 'Spazio Urbano',
+    icon: '',
+    excerpt: 'Principale piazza del centro storico, cuore della vita civile e religiosa di Oria. Circondata da palazzi nobiliari.',
+    description: 'La Piazza Angelo De Sanctis il fulcro del centro storico di Oria. Circondata da eleganti palazzi nobiliari e dalla Chiesa Madre, il luogo dove ancora oggi si svolgono le principali manifestazioni culturali e civili. Destate ospita il Torneo dei Rioni con il suo corteo storico.',
+    lat: 40.58880,
+    lng: 17.89550,
+    zona: 'centro',
+    img: 'images/piazza.jpg'
+  },
+  {
+    id: 'palazzo-nobiliare-martano',
+    title: 'Palazzo Nobiliare Martano',
+    tag: 'Architettura',
+    icon: '',
+    excerpt: 'Antico palazzo nobiliare del XVI secolo con balconate in pietra leccese finemente decorate.',
+    description: 'Uno dei palazzi nobiliari pi importanti del centro storico di Oria. Costruito nel XVI secolo, conserva caratteristiche architettoniche tipiche del barocco salentino, con balconate decorate in pietra leccese e portale dingresso monumentale.',
+    lat: 40.58900,
+    lng: 17.89510,
+    zona: 'centro',
+    img: 'images/palazzo.jpg'
+  },
+  {
+    id: 'basilica-cosma-damiano',
+    title: 'Basilica SS. Cosma e Damiano',
+    tag: 'Religioso',
+    icon: '',
+    excerpt: 'Santuario paleocristiano con basilica rupestre a 5 km da Oria. Uno dei siti pi antichi della cristianit salentina VI sec..',
+    description: 'La Basilica di SS. Cosma e Damiano uno dei siti pi importanti per la storia cristiana del Salento. Contiene sia una basilica paleocristiana VI sec. che una basilica rupestre scavata nella roccia. Le pareti conservano ancora tracce di affreschi bizantini e rappresenta un luogo di grande importanza storica e archeologica.',
+    lat: 40.60000,
+    lng: 17.90000,
+    zona: 'dintorni',
+    img: 'images/basilica.jpg'
+  },
+  {
+    id: 'torre-testa-del-lupo',
+    title: 'Torre Testa del Lupo',
+    tag: 'Fortificazione',
+    icon: '',
+    excerpt: 'Torre di guardia costiera medievale a sud di Oria. Costruita nel XVI secolo per difendersi dalle incursioni saracene.',
+    description: 'Torre di avvistamento costiera costruita nel XVI secolo per proteggere il territorio dalle incursioni saracene. Conserva ancora gli elementi caratteristici dellarchitettura difensiva salentina forma cilindrica, merlature e feritorie. Si trova in posizione strategica sul territorio a sud di Oria.',
+    lat: 40.55000,
+    lng: 17.88000,
+    zona: 'dintorni',
+    img: 'images/torre-testa.jpg'
+  },
+  {
+    id: 'masseria-monumentale',
+    title: 'Masseria Monumentale',
+    tag: 'Architettura',
+    icon: '',
+    excerpt: 'Antica fortezza rurale del XVII-XVIII secolo. Esempio di architettura agraria fortificata tipica del Salento.',
+    description: 'Una masseria monumentale unantica fortezza rurale costruita nel XVII-XVIII secolo. Rappresenta un raro esempio di architettura agraria fortificata del Salento, con muri spessi, torri e strutture difensive. Era sia luogo di abitazione che di protezione per i contadini contro le incursioni nemiche.',
+    lat: 40.56500,
+    lng: 17.87500,
+    zona: 'dintorni',
+    img: 'images/masseria.jpg'
+  },
+  {
+    id: 'grotta-religiosa',
+    title: 'Grotta Religiosa di Oria',
+    tag: 'Religioso',
+    icon: '',
+    excerpt: 'Grotta sacra utilizzata come luogo di culto fin dal periodo paleocristiano. Contiene affreschi rupestri antichi.',
+    description: 'Una grotta naturale trasformata in luogo di culto fin dallepoca paleocristiana. Le pareti conservano tracce di affreschi antichi e nicchie altarili. Rappresenta un importante testimone della fede cristiana primitiva nel Salento e della pratica del culto rupestre medievale.',
+    lat: 40.61000,
+    lng: 17.91000,
+    zona: 'dintorni',
+    img: 'images/grotta.jpg'
+  }
+];
+

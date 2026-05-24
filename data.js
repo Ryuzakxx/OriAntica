@@ -118,10 +118,19 @@ const LEGGENDE = [
       </figure>
       <h3>Il Bombardamento del 7 Settembre 1943</h3>
       <p>Nel pieno della Seconda Guerra Mondiale, il 7 settembre 1943 — giorno della Liberazione — aerei alleati puntarono sulla città. Secondo la tradizione, Barsanofio stese il suo mantello sul cielo di Oria: un improvviso acquazzone violentissimo costrinse gli aerei a deviare. La città fu risparmiata.</p>
-      <blockquote>«Il Santo stese il manto e la pioggia cadde come un muro.»<br><em>— Testimonianza orale raccolta dagli anziani di Oria</em></blockquote>
+      <figure>
+        <img src="./images/leggende/san-barsanofio2.png" alt="San Barsanofio in azione">
+        <figcaption><i>Immagine generata da IA. Non è un'opera manuale né una fonte storica verificata</i></figcaption>
+      </figure>
       <h3>Il Miracolo delle Reliquie</h3>
       <p>Al tempo della traslazione delle reliquie, ladri tentarono di portare via il corpo del Santo. Ma il braccio di Barsanofio si agganciò miracolosamente a una colonna della chiesa, rendendo impossibile il furto. Le reliquie rimasero ad Oria, dove sono custodite ancora oggi nella Cattedrale di Santa Maria Assunta.</p>
-    `
+      <figure>
+        <img src="./images/leggende/san-barsanofio3.png" alt="San Barsanofio in azione">
+        <figcaption><i>Immagine generata da IA. Non è un'opera manuale né una fonte storica verificata</i></figcaption>
+      </figure>
+      <br>
+      <em>Testimonianze orali raccolte dagli anziani di Oria</em>
+      `
   },
   {
     id: 'scenni-cristu',

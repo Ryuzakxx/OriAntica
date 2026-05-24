@@ -15,7 +15,7 @@ Sito web dedicato alla storia, alle leggende e alla cultura medievale di **Oria 
 | **Storia** | Narrazione della storia di Oria dalle origini messapiche ad oggi |
 | **Torneo** | Il Torneo dei Rioni — i quattro rioni, il programma e la rievocazione |
 | **Corteo** | Il Corteo Storico — l'ordine della sfilata e i costumi d'epoca |
-| **Idee** | Form per inviare contributi, correzioni e suggerimenti al sito |
+| **Contattaci** | Istruzioni per inviare contributi, correzioni e suggerimenti al sito |
 
 ---
 

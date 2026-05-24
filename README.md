@@ -16,10 +16,8 @@ Sito web dedicato alla storia, alle leggende e alla cultura medievale di **Oria 
 | **Leggende** | `leggende.html` | Griglia completa di tutte le leggende e racconti popolari di Oria |
 | **Luoghi** | `luoghi.html` | Luoghi storici del centro storico e dei dintorni con dettaglio dedicato |
 | **Storia** | `storia.html` | Narrazione della storia di Oria dalle origini messapiche (VIII sec. a.C.) ad oggi |
-| **Timeline** | `timeline.html` | Cronologia visiva degli eventi storici più importanti |
 | **Torneo** | `torneo.html` | Il Torneo dei Rioni — i quattro rioni, il programma e la rievocazione medievale |
 | **Corteo** | `corteo.html` | Il Corteo Storico — l'ordine della sfilata e i costumi d'epoca |
-| **Galleria** | `galleria.html` | Galleria fotografica del patrimonio storico di Oria |
 | **Feedback** | `feedback.html` | Istruzioni per inviare contributi, correzioni e suggerimenti al sito |
 
 ---

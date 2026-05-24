@@ -21,7 +21,7 @@ Sito web dedicato alla storia, alle leggende e alla cultura medievale di **Oria 
 
 ## ⚙️ Tecnologie
 
-Il sito è interamente statico, costruito con HTML, CSS e JavaScript, senza framework o dipendenze esterne. Utilizza Google Fonts (Merriweather) e supporta tema chiaro e scuro.
+Il sito è interamente statico, costruito con HTML, CSS e JavaScript, senza framework o dipendenze esterne.
 
 ---
 
@@ -33,7 +33,6 @@ Hai fotografie storiche, una leggenda da aggiungere o hai trovato un errore? Apr
 ## 🔧 Eventuali implementazioni
 
 Si potrebbe creare una pagina Instagram / Facebook che condivide aneddoti su Oria e dintorni settimanalmente/quotidianamente. Si potrebbe creare un pacchetto completo per turisti, compreso di:
-- Biglietti per il torneo
 - Schedule digitale di tutte le attività medievali di Oria
 - Informazioni sul sito riguardo B&B, ristoranti e servizi disponibili a Oria
 - Creazione e sviluppo di un tour completo guidato di tutti i luoghi storici di Oria, sia dentro che fuori la città

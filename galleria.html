@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <script>
+    (function() {
+      var ALLOWED = ['light', 'dark'];
+      try {
+        var t = localStorage.getItem('oria-theme');
+        if (ALLOWED.includes(t)) document.documentElement.dataset.theme = t;
+      } catch(_) {}
+    })();
+  </script>
+  <style id="theme-fix">
+    html, body, nav, footer { transition: none !important; }
+  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galleria Fotografica — OriAntica</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── FILTRI ── */
+    .gallery-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      justify-content: center;
+      margin-bottom: 2.4rem;
+    }
+    .filter-btn {
+      padding: .45rem 1.1rem;
+      border: 1.5px solid var(--accent);
+      background: transparent;
+      color: var(--accent);
+      font-family: inherit;
+      font-size: .82rem;
+      letter-spacing: .04em;
+      cursor: pointer;
+      transition: background .25s, color .25s;
+      border-radius: 2px;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+    /* ── GRID ── */
+    .gallery-grid {
+      columns: 3 280px;
+      gap: 1rem;
+    }
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 1rem;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    .gallery-item img {
+      width: 100%;
+      display: block;
+      transition: transform .45s ease, filter .45s ease;
+      filter: brightness(.88) sepia(.12);
+    }
+    .gallery-item:hover img {
+      transform: scale(1.04);
+      filter: brightness(1) sepia(0);
+    }
+    .gallery-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.75) 0%, transparent 100%);
+      color: #fff;
+      padding: .6rem .8rem;
+      font-size: .78rem;
+      letter-spacing: .03em;
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .gallery-item:hover .gallery-caption { opacity: 1; }
+    /* ── LIGHTBOX ── */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.92);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    #lightbox.open { display: flex; }
+    #lb-img {
+      max-width: min(92vw, 960px);
+      max-height: 80vh;
+      object-fit: contain;
+      box-shadow: 0 8px 48px rgba(0,0,0,.6);
+    }
+    #lb-caption {
+      color: rgba(255,255,255,.75);
+      font-size: .85rem;
+      margin-top: .8rem;
+      text-align: center;
+      max-width: 620px;
+      line-height: 1.55;
+    }
+    #lb-close {
+      position: fixed;
+      top: 1.2rem; right: 1.4rem;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      color: #fff;
+      font-size: 1.6rem;
+      width: 42px; height: 42px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .25s;
+    }
+    #lb-close:hover { background: rgba(255,255,255,.2); }
+    #lb-nav {
+      display: flex; gap: 1.4rem; margin-top: 1rem;
+    }
+    .lb-arrow {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.18);
+      color: #fff;
+      font-size: 1.4rem;
+      width: 48px; height: 48px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .25s;
+    }
+    .lb-arrow:hover { background: rgba(255,255,255,.18); }
+    /* ── NO RESULTS ── */
+    .no-results {
+      text-align: center;
+      color: var(--text-muted);
+      padding: 3rem 0;
+      font-size: .95rem;
+    }
+  </style>
+</head>
+<body data-page="galleria">
+
+  <nav>
+    <div class="nav-wrap">
+      <a class="nav-logo" href="index.html">
+        <img src="./images/logo.png" alt="OriAntica">OriAntica
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" data-page="home">Home</a></li>
+        <li><a href="leggende.html" data-page="leggende">Leggende</a></li>
+        <li><a href="luoghi.html" data-page="luoghi">Luoghi</a></li>
+        <li><a href="storia.html" data-page="storia">Storia</a></li>
+        <li><a href="torneo.html" data-page="torneo">Torneo</a></li>
+        <li><a href="corteo.html" data-page="corteo">Corteo</a></li>
+        <li><a href="feedback.html" data-page="feedback">Contattaci</a></li>
+        <li><button class="theme-btn" id="theme-btn">☾</button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="content">
+    <div class="page-top">
+      <span class="page-kicker">Fotografie · Luoghi · Storia</span>
+      <h1>Galleria Fotografica</h1>
+      <p>Una raccolta visiva di Oria attraverso i secoli — il castello, il centro storico, le chiese, il torneo e i paesaggi della campagna messapica.</p>
+    </div>
+
+    <div class="sec">
+      <!-- Filtri categoria -->
+      <div class="gallery-filters" id="gallery-filters">
+        <button class="filter-btn active" data-cat="tutti">Tutti</button>
+        <button class="filter-btn" data-cat="castello">Castello</button>
+        <button class="filter-btn" data-cat="centro">Centro Storico</button>
+        <button class="filter-btn" data-cat="torneo">Torneo</button>
+        <button class="filter-btn" data-cat="chiese">Chiese</button>
+        <button class="filter-btn" data-cat="paesaggio">Paesaggio</button>
+      </div>
+
+      <div class="gallery-grid" id="gallery-grid"></div>
+      <p class="no-results" id="no-results" style="display:none">Nessuna foto in questa categoria.</p>
+    </div>
+
+    <!-- CONTRIBUISCI -->
+    <div class="sec" style="text-align:center; border-top: 1px solid rgba(255,255,255,.08); padding-top: 2.5rem; margin-top: 1rem;">
+      <span class="page-kicker">📸 Hai foto storiche di Oria?</span>
+      <h2 style="margin:.6rem 0 .8rem">Contribuisci alla Galleria</h2>
+      <p style="max-width:540px; margin:0 auto 1.4rem">Fotografie d'archivio, scatti del torneo, immagini del centro storico: ogni contributo aiuta a preservare la memoria di Oria.</p>
+      <a href="feedback.html" class="btn-primary">Invia le tue foto →</a>
+    </div>
+
+    <footer>
+      <div class="footer-inner">
+        <span>Oria (BR) — Puglia</span>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="leggende.html">Leggende</a></li>
+          <li><a href="luoghi.html">Luoghi</a></li>
+          <li><a href="storia.html">Storia</a></li>
+          <li><a href="torneo.html">Torneo</a></li>
+          <li><a href="corteo.html">Corteo</a></li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Visualizzazione immagine">
+    <button id="lb-close" aria-label="Chiudi">&times;</button>
+    <img id="lb-img" src="" alt="" />
+    <p id="lb-caption"></p>
+    <div id="lb-nav">
+      <button class="lb-arrow" id="lb-prev" aria-label="Precedente">&#8592;</button>
+      <button class="lb-arrow" id="lb-next" aria-label="Successivo">&#8594;</button>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="shared.js"></script>
+  <script>
+    var GALLERY = [
+      { cat:'castello', src:'https://upload.wikimedia.org/wikipedia/commons/9/9e/Castello_di_Oria_al_Tramonto.jpg', caption:'Castello Svevo di Oria al tramonto — XIII sec.' },
+      { cat:'castello', src:'https://upload.wikimedia.org/wikipedia/commons/b/b3/Panorama_di_Oria.jpg', caption:'Vista panoramica di Oria con il castello in evidenza' },
+      { cat:'paesaggio', src:'https://upload.wikimedia.org/wikipedia/commons/f/f8/Panorama_di_Oria_da_Nord.jpg', caption:'Panorama di Oria da Nord — la nebbia della leggenda' },
+      { cat:'paesaggio', src:'https://upload.wikimedia.org/wikipedia/commons/e/e6/Panorama_of_Oria.jpg', caption:'Veduta della piana messapica intorno a Oria' },
+      { cat:'paesaggio', src:'https://upload.wikimedia.org/wikipedia/commons/1/1b/Oria_panorama.jpg', caption:'Oria vista dall\'alto — il colle del Vaglio' },
+      { cat:'chiese', src:'https://upload.wikimedia.org/wikipedia/commons/7/7b/Statua_S_Barsanofio_Oria.jpg', caption:'Statua di San Barsanofio, patrono di Oria' },
+      { cat:'chiese', src:'https://www.qrtour.it/wp-content/uploads/2023/10/Oria-Chiesa-madonna-Gallana.jpeg', caption:'Chiesa rurale di Santa Maria di Gallana — XI-XII sec.' },
+      { cat:'chiese', src:'https://fai-platform.imgix.net/media/puglia/br/5073_chiesa-madonna-di-gallana.jpg', caption:'Facciata della Madonna di Gallana, meta del pellegrinaggio di Ferragosto' },
+      { cat:'chiese', src:'https://www.sigecweb.beniculturali.it/images/fullsize/ICCD1033054/ICCD11972818_SBAAASBA131485.jpg', caption:'Chiesa di San Francesco d\'Assisi — portale gotico XIII sec.' },
+      { cat:'centro', src:'https://catalogazione.cartapulia.it/resource/image/files/68258_SBAAASBA131243%20(1447868178).jpg', caption:'Porta Taranto — Porta degli Ebrei, Oria medievale' },
+      { cat:'chiese', src:'https://i0.wp.com/www.saralessandrini.it/wp-content/uploads/2019/10/Facciata-Santuario-San-Cosimo-alla-Macchia_.jpg?fit=896%2C600&ssl=1', caption:'Santuario dei Santi Cosma e Damiano — Bosco della Macchia' }
+    ];
+
+    var currentCat = 'tutti';
+    var visible = [];
+    var lbIndex = 0;
+
+    function renderGallery() {
+      visible = currentCat === 'tutti' ? GALLERY : GALLERY.filter(function(g){ return g.cat === currentCat; });
+      var grid = document.getElementById('gallery-grid');
+      var noRes = document.getElementById('no-results');
+      if (!visible.length) {
+        grid.innerHTML = '';
+        noRes.style.display = '';
+        return;
+      }
+      noRes.style.display = 'none';
+      grid.innerHTML = visible.map(function(g, i) {
+        return '<div class="gallery-item reveal" data-idx="' + i + '">'
+          + '<img src="' + g.src + '" alt="' + g.caption + '" loading="lazy">'
+          + '<div class="gallery-caption">' + g.caption + '</div>'
+          + '</div>';
+      }).join('');
+      grid.querySelectorAll('.gallery-item').forEach(function(el) {
+        el.addEventListener('click', function() { openLightbox(parseInt(el.dataset.idx)); });
+      });
+    }
+
+    document.getElementById('gallery-filters').addEventListener('click', function(e) {
+      var btn = e.target.closest('.filter-btn');
+      if (!btn) return;
+      document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      currentCat = btn.dataset.cat;
+      renderGallery();
+    });
+
+    function openLightbox(idx) {
+      lbIndex = idx;
+      updateLightbox();
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function updateLightbox() {
+      var g = visible[lbIndex];
+      document.getElementById('lb-img').src = g.src;
+      document.getElementById('lb-img').alt = g.caption;
+      document.getElementById('lb-caption').textContent = g.caption;
+    }
+    document.getElementById('lb-close').addEventListener('click', closeLightbox);
+    document.getElementById('lb-prev').addEventListener('click', function() {
+      lbIndex = (lbIndex - 1 + visible.length) % visible.length;
+      updateLightbox();
+    });
+    document.getElementById('lb-next').addEventListener('click', function() {
+      lbIndex = (lbIndex + 1) % visible.length;
+      updateLightbox();
+    });
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+      if (e.target === this) closeLightbox();
+    });
+    document.addEventListener('keydown', function(e) {
+      var lb = document.getElementById('lightbox');
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') { lbIndex = (lbIndex - 1 + visible.length) % visible.length; updateLightbox(); }
+      if (e.key === 'ArrowRight') { lbIndex = (lbIndex + 1) % visible.length; updateLightbox(); }
+    });
+
+    renderGallery();
+  </script>
+</body>
+</html>

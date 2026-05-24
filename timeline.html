@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <script>
+    (function() {
+      var ALLOWED = ['light', 'dark'];
+      try {
+        var t = localStorage.getItem('oria-theme');
+        if (ALLOWED.includes(t)) document.documentElement.dataset.theme = t;
+      } catch(_) {}
+    })();
+  </script>
+  <style id="theme-fix">
+    html, body, nav, footer { transition: none !important; }
+  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Timeline Storica di Oria — OriAntica</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── TIMELINE ── */
+    .tl-wrap {
+      position: relative;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    /* linea verticale centrale */
+    .tl-wrap::before {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      background: linear-gradient(to bottom, transparent, var(--accent) 5%, var(--accent) 95%, transparent);
+    }
+    /* ERA label */
+    .tl-era {
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      margin: 3rem 0 2rem;
+    }
+    .tl-era-label {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: .7rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: .35rem .9rem;
+      font-weight: 700;
+    }
+    /* singolo evento */
+    .tl-event {
+      display: flex;
+      width: 100%;
+      margin-bottom: 2.2rem;
+      position: relative;
+      align-items: flex-start;
+    }
+    .tl-event.left  { flex-direction: row-reverse; }
+    .tl-event.right { flex-direction: row; }
+    /* pallino centrale */
+    .tl-dot {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: .55rem;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--accent2);
+      border: 3px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--accent);
+      z-index: 3;
+      flex-shrink: 0;
+    }
+    /* contenuto card */
+    .tl-card {
+      width: calc(50% - 36px);
+      background: var(--card-bg, rgba(255,255,255,.04));
+      border: 1px solid rgba(255,255,255,.08);
+      padding: 1rem 1.2rem;
+      position: relative;
+      transition: border-color .3s;
+    }
+    .tl-card:hover { border-color: var(--accent); }
+    .tl-event.left  .tl-card { margin-right: auto; text-align: right; }
+    .tl-event.right .tl-card { margin-left: auto; }
+    .tl-year {
+      font-size: .72rem;
+      letter-spacing: .1em;
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: .3rem;
+    }
+    .tl-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0 0 .4rem;
+      line-height: 1.3;
+    }
+    .tl-desc {
+      font-size: .82rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin: 0;
+    }
+    .tl-icon {
+      font-size: 1.3rem;
+      margin-bottom: .3rem;
+      display: block;
+    }
+    /* link alla pagina storia */
+    .tl-link {
+      display: inline-block;
+      margin-top: .55rem;
+      font-size: .75rem;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: .05em;
+    }
+    .tl-link:hover { text-decoration: underline; }
+    /* RESPONSIVE: colonna singola sotto 640px */
+    @media (max-width: 640px) {
+      .tl-wrap::before { left: 18px; }
+      .tl-event, .tl-event.left, .tl-event.right { flex-direction: column; }
+      .tl-dot { left: 18px; }
+      .tl-card { width: calc(100% - 48px); margin-left: 48px !important; text-align: left !important; }
+    }
+  </style>
+</head>
+<body data-page="timeline">
+
+  <nav>
+    <div class="nav-wrap">
+      <a class="nav-logo" href="index.html">
+        <img src="./images/logo.png" alt="OriAntica">OriAntica
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" data-page="home">Home</a></li>
+        <li><a href="leggende.html" data-page="leggende">Leggende</a></li>
+        <li><a href="luoghi.html" data-page="luoghi">Luoghi</a></li>
+        <li><a href="storia.html" data-page="storia">Storia</a></li>
+        <li><a href="torneo.html" data-page="torneo">Torneo</a></li>
+        <li><a href="corteo.html" data-page="corteo">Corteo</a></li>
+        <li><a href="feedback.html" data-page="feedback">Contattaci</a></li>
+        <li><button class="theme-btn" id="theme-btn">☾</button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="content">
+    <div class="page-top">
+      <span class="page-kicker">Dalle origini ad oggi · 3000 anni di storia</span>
+      <h1>Timeline Storica di Oria</h1>
+      <p>Dalle tribù messapiche all'era moderna — ogni evento che ha segnato la città di Oria attraverso i millenni.</p>
+    </div>
+
+    <div class="sec">
+      <div class="tl-wrap" id="tl-wrap">
+        <!-- generato da JS -->
+      </div>
+    </div>
+
+    <div class="sec" style="text-align:center; border-top: 1px solid rgba(255,255,255,.08); padding-top: 2.5rem;">
+      <p style="color:var(--text-muted); font-size:.85rem">Per la narrazione completa della storia di Oria →</p>
+      <a href="storia.html" class="btn-primary">Leggi la Storia →</a>
+    </div>
+
+    <footer>
+      <div class="footer-inner">
+        <span>Oria (BR) — Puglia</span>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="leggende.html">Leggende</a></li>
+          <li><a href="luoghi.html">Luoghi</a></li>
+          <li><a href="storia.html">Storia</a></li>
+          <li><a href="torneo.html">Torneo</a></li>
+          <li><a href="corteo.html">Corteo</a></li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="shared.js"></script>
+  <script>
+    var EVENTI = [
+      { era:'Età del Bronzo & Messapi', anno:'XI sec. a.C.', icon:'⚓', title:'Fondazione di Hyrìa', desc:'Gruppi di Cretesi naufragati, impossibilitati a tornare in patria, si stabiliscono sul colle del Vaglio fondando Hyrìa — la futura Oria. Diventano Iapigi Messapi.', link:null },
+      { era:null, anno:'IV-III sec. a.C.', icon:'🏛️', title:'Fioritura messapica', desc:'Oria diventa una delle principali città messapiche della Puglia, con mura ciclopiche, necropoli monumentali e scambi commerciali con Greci e Romani.', link:null },
+      { era:'Roma & Tarda Antichità', anno:'88 a.C.', icon:'🦅', title:'Municipium Romanum', desc:'Oria ottiene il titolo di municipium romanum. La Via Appia passa per il suo territorio, rendendo la città un nodo cruciale nella rete viaria del Mezzogiorno.', link:'storia.html' },
+      { era:null, anno:'504 d.C.', icon:'✝️', title:'San Barsanofio — primo patronato', desc:'Il monaco anacoreta Barsanofio di Gaza è venerato come protettore di Oria. Le sue reliquie saranno trasferite in città, dando inizio a secoli di miracoli tramandati dalla tradizione.', link:'leggende.html' },
+      { era:null, anno:'547 d.C.', icon:'⚔️', title:'Assedio dei Goti', desc:'Oria cade sotto l\'assedio dei Goti di Totila, riducendosi a città quasi spopolata. Attorno alla città cresce la Foresta Oritana, rifugio e risorsa per i sopravvissuti.', link:null },
+      { era:'Medioevo', anno:'IX-XI sec.', icon:'✡️', title:'Comunità ebraica di Oria', desc:'Oria ospita una delle più importanti comunità ebraiche dell\'Italia meridionale. Shabbetai Donnolo, medico e astrologo nato qui nell\'913, ne è il figlio più illustre.', link:'storia.html' },
+      { era:null, anno:'1055', icon:'🗡️', title:'Conquista normanna', desc:'Il Conte Unfredo di Altavilla conquista Oria per i Normanni, iniziando una nuova era di dominazione feudale che trasformerà l\'assetto urbano della città.', link:null },
+      { era:null, anno:'1225 circa', icon:'👑', title:'Federico II e il Castello', desc:'Federico II di Svevia fa ricostruire il castello sul colle del Vaglio, conferendogli la planimetria triangolare con tre torri che ancora oggi lo caratterizza. Nasce la leggenda di Bianca Guiscardi.', link:'leggende.html' },
+      { era:null, anno:'XIII sec.', icon:'🌫️', title:'Leggenda di Oria Fumosa', desc:'Secondo la tradizione, il sacrificio della piccola Felicita per reggere le mura genera la maledizione della madre Matia: «Fuma città infame, fuma in eterno!». Da allora Oria è avvolta dalla nebbia.', link:'detail-leggenda.html?id=oria-fumosa' },
+      { era:null, anno:'1504', icon:'⚔️', title:'Assedio spagnolo respinto', desc:'Le truppe di Pedro de Paz assediano Oria, ma il comandante vede in sogno San Barsanofio armato e decide di ritirare l\'esercito. La città è salva per miracolo.', link:'detail-leggenda.html?id=san-barsanofio' },
+      { era:'Età Moderna', anno:'1743', icon:'🌊', title:'Terremoto del Salento', desc:'Il violentissimo terremoto del 20 febbraio 1743 distrugge gran parte della Cattedrale medievale. La ricostruzione barocca affidata a Giustino Lombardi durerà fino al 1769.', link:'storia.html' },
+      { era:null, anno:'1743-1769', icon:'⛪', title:'Ricostruzione della Cattedrale', desc:'La nuova Cattedrale di Santa Maria Assunta viene eretta in stile barocco pugliese. Sotto la navata viene realizzata la Cripta delle Mummie con i dodici confratelli imbalsamati.', link:'detail-luogo.html?id=cattedrale' },
+      { era:'Novecento', anno:'7 set. 1943', icon:'✈️', title:'Il mantello di Barsanofio', desc:'Nella Seconda Guerra Mondiale, aerei alleati puntano su Oria. Secondo la tradizione, un improvviso acquazzone miracoloso devia i bombardieri. La città è risparmiata.', link:'detail-leggenda.html?id=san-barsanofio' },
+      { era:null, anno:'1967', icon:'🏇', title:'Nascita del Torneo dei Rioni', desc:'Viene istituito il Torneo dei Rioni, la rievocazione medievale che ogni agosto trasforma Oria in un teatro storico vivente con il corteo, le gare equestri e la sfilata in costume.', link:'torneo.html' },
+      { era:'Oggi', anno:'Oggi', icon:'🏰', title:'Oria patrimonio medievale', desc:'Con il castello, le mura, le chiese e le tradizioni, Oria è oggi uno dei borghi medievali meglio conservati della Puglia, meta di turisti e studiosi da tutto il mondo.', link:'storia.html' }
+    ];
+
+    var wrap = document.getElementById('tl-wrap');
+    var html = '';
+    var lastEra = null;
+    var side = 'right';
+
+    EVENTI.forEach(function(ev) {
+      if (ev.era && ev.era !== lastEra) {
+        lastEra = ev.era;
+        html += '<div class="tl-era"><span class="tl-era-label">' + ev.era + '</span></div>';
+      }
+      var linkHtml = ev.link ? '<a class="tl-link" href="' + ev.link + '">Approfondisci →</a>' : '';
+      html += '<div class="tl-event ' + side + ' reveal">'
+        + '<div class="tl-dot"></div>'
+        + '<div class="tl-card">'
+        + '<span class="tl-icon">' + ev.icon + '</span>'
+        + '<div class="tl-year">' + ev.anno + '</div>'
+        + '<h3 class="tl-title">' + ev.title + '</h3>'
+        + '<p class="tl-desc">' + ev.desc + '</p>'
+        + linkHtml
+        + '</div>'
+        + '</div>';
+      side = side === 'right' ? 'left' : 'right';
+    });
+
+    wrap.innerHTML = html;
+  </script>
+</body>
+</html>

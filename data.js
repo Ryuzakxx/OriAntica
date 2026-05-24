@@ -83,6 +83,8 @@ const LEGGENDE = [
         <figcaption><i>Immagine generata da IA. Non è un'opera manuale né una fonte storica verificata</i></figcaption>
       </figure>
 
+      <br>
+
       <p>Secondo la tradizione, la giovane prese allora una decisione estrema: si gettò dalla torre, scegliendo la libertà della morte piuttosto che un destino che sentiva come una prigione. Da quel tragico gesto la torre prese il nome di <em>Torre del Salto</em>, che ancora oggi ricorda quella storia di dolore e ribellione.</p>
 
       <p>Con il passare dei secoli la vicenda è diventata leggenda. Molti abitanti del luogo raccontano che, nelle notti di luna piena, tra le antiche finestre del castello si possa intravedere l'ombra della giovane castellana, come se il suo spirito continuasse a vagare tra quelle mura di pietra, sospeso tra memoria e mistero.</p>

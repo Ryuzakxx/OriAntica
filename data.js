@@ -60,8 +60,8 @@ const LEGGENDE = [
     icon: '🗼',
     img: 'https://upload.wikimedia.org/wikipedia/commons/9/9e/Castello_di_Oria_al_Tramonto.jpg',
     imgAlt: 'Torre del Salto al tramonto',
-    img2: 'https://upload.wikimedia.org/wikipedia/commons/b/b3/Panorama_di_Oria.jpg',
-    imgAlt2: 'Vista del castello di Oria',
+    img2: '',
+    imgAlt2: '',
     excerpt: 'Una giovane nobildonna si getta dalla Torre del Salto del castello per sfuggire a un matrimonio imposto con un castellano anziano. Il suo spirito vaga ancora tra le antiche mura.',
     detailTag: 'Leggenda · Epoca Medievale',
     sideInfo: [
@@ -78,17 +78,31 @@ const LEGGENDE = [
 
       <p>La notte delle nozze, mentre il castello era immerso nel silenzio e illuminato dalla luce della luna, la ragazza si rifugiò nella torre più alta del maniero. Da lassù poteva vedere la città addormentata e le campagne che si estendevano fino all'orizzonte. In quel momento capì che non avrebbe mai accettato una vita imposta, accanto a un uomo che non amava.</p>
 
-      <blockquote>«Si suicidò gettandosi dall'omonima torre angioina per sfuggire al matrimonio forzato con un castellano molto più vecchio di lei»<br></blockquote>
+      <figure>
+        <img src="./images/leggende/bianca1.png" alt="Bianca Guiscardi nella torre">
+        <figcaption><i>Immagine generata da IA. Non è un'opera manuale né una fonte storica verificata</i></figcaption>
+      </figure>
 
       <p>Secondo la tradizione, la giovane prese allora una decisione estrema: si gettò dalla torre, scegliendo la libertà della morte piuttosto che un destino che sentiva come una prigione. Da quel tragico gesto la torre prese il nome di <em>Torre del Salto</em>, che ancora oggi ricorda quella storia di dolore e ribellione.</p>
 
       <p>Con il passare dei secoli la vicenda è diventata leggenda. Molti abitanti del luogo raccontano che, nelle notti di luna piena, tra le antiche finestre del castello si possa intravedere l'ombra della giovane castellana, come se il suo spirito continuasse a vagare tra quelle mura di pietra, sospeso tra memoria e mistero.</p>
 
+      <figure>
+        <img src="./images/leggende/bianca2.png" alt="Bianca Guiscardi che si lancia dalla torre">
+        <figcaption><i>Immagine generata da IA. Non è un'opera manuale né una fonte storica verificata</i></figcaption>
+      </figure>
+
       <h3>La Cripta dei Santi Crisante e Daria</h3>
       <p>Ai piedi della torre si trova ancora oggi l'antica cripta dei Santi Crisante e Daria, uno dei luoghi più antichi della città, che contribuisce a rendere questo angolo del castello ancora più suggestivo e carico di storia. Capitelli messapici, colonne e marmi dell'antico tempio bizantino segnano l'ingresso della cripta, interrata nel XIII secolo durante i lavori voluti da Federico II.</p>
 
       <p>La Torre del Salto non è quindi solo una parte dell'architettura del castello, ma anche il simbolo di una leggenda che continua ad affascinare visitatori e abitanti, ricordando come, tra le pietre dei luoghi antichi, possano vivere storie capaci di attraversare i secoli.</p>
-    `
+    
+      <figure>
+        <img src="./images/leggende/bianca3.png" alt="Cripta dei santi sotto la torre del salto">
+        <figcaption><i>Immagine generata da IA. Non è un'opera manuale né una fonte storica verificata</i></figcaption>
+      </figure>
+
+      `
   },
   {
     id: 'san-barsanofio',
@@ -117,7 +131,7 @@ const LEGGENDE = [
         <figcaption><i>Immagine generata da IA. Non è un'opera manuale né una fonte storica verificata</i></figcaption>
       </figure>
       <h3>Il Bombardamento del 7 Settembre 1943</h3>
-      <p>Nel pieno della Seconda Guerra Mondiale, il 7 settembre 1943 — giorno della Liberazione — aerei alleati puntarono sulla città. Secondo la tradizione, Barsanofio stese il suo mantello sul cielo di Oria: un improvviso acquazzone violentissimo costrinse gli aerei a deviare. La città fu risparmiata.</p>
+      <p>Nel pieno della Seconda Guerra Mondiale, il 7 settembre 1943 aerei alleati puntarono la città per dei bombardamenti. Secondo la tradizione, Barsanofio stese il suo mantello sul cielo di Oria: un improvviso acquazzone violentissimo costrinse gli aerei a deviare. La città fu risparmiata.</p>
       <figure>
         <img src="./images/leggende/san-barsanofio2.png" alt="San Barsanofio in azione">
         <figcaption><i>Immagine generata da IA. Non è un'opera manuale né una fonte storica verificata</i></figcaption>

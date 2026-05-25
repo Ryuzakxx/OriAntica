@@ -58,7 +58,7 @@ const LEGGENDE = [
     tag: 'Leggenda · Epoca Medievale',
     title: 'Bianca Guiscardi e la Torre del Salto',
     icon: '🗼',
-    img: 'https://upload.wikimedia.org/wikipedia/commons/9/9e/Castello_di_Oria_al_Tramonto.jpg',
+    img: './images/leggende/bianca_thumbnail.png',
     imgAlt: 'Torre del Salto al tramonto',
     img2: '',
     imgAlt2: '',

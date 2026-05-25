@@ -8,7 +8,7 @@ const LEGGENDE = [
     tag: 'Leggenda Popolare · XIII Secolo',
     title: 'Oria Fumosa — La Maledizione della Vergine',
     icon: '🌫️',
-    img: 'https://upload.wikimedia.org/wikipedia/commons/f/f8/Panorama_di_Oria_da_Nord.jpg',
+    img: './images/leggende/oria-fumosa_thumbnail.png',
     imgAlt: 'Mura di Oria nella nebbia',
     img2: '',
     imgAlt2: 'Panorama di Oria',
@@ -30,12 +30,26 @@ const LEGGENDE = [
 
       <p>Una mattina, nelle prime ore, i paesani furono svegliati da un rumoroso boato: le mura erano di nuovo completamente rase al suolo.</p>
 
+      <figure>
+        <img src="./images/leggende/oria_fumosa1.png" alt="Le mura">
+        <figcaption><i>Immagine generata da IA. Non è un'opera manuale né una fonte storica verificata</i></figcaption>
+      </figure>
+
+      <br>
+
       <p>Fu riunito d'urgenza il consiglio. Maica prese la parola:</p>
       <blockquote>«Quanto è avvenuto è stato un vero castigo degli dei, perché il lavoro è stato eseguito con attenta e abile maestria. Gli dei sono indignati e non sappiamo perché. Bisogna consultare la megera Laila, la quale abita in un antro situato in una delle nostre colline — solo una maga può risolvere l'enigma.»</blockquote>
 
       <p>Fu inviata una commissione. Arrivata alla tana della maga, la trovarono intenta a girare una grande palla sulla fiamma del focolare, in un antro infestato da un odore sgradevole. Dopo aver ascoltato il motivo della visita, Laila disse: <em>"Il crollo delle mura è avvenuto per volere degli dei, oppure è indignato lo stesso Giove. Io a mezzanotte mi incontrerò con l'oracolo e tutto sarà chiarito."</em> La delegazione andò via, perché nell'antro c'era un puzzo di zolfo che soffocava.</p>
 
       <p>Nel salone del Consiglio, da poco era trascorsa mezzanotte, quando la megera svegliò tutti i consiglieri con un grido: <em>"Non solo gli dei sono indignati — ma lo stesso Giove. E quello che si chiede è l'olocausto di una neonata di appena tre giorni."</em></p>
+
+      <figure>
+        <img src="./images/leggende/oria_fumosa2.png" alt="La riunione del consiglio">
+        <figcaption><i>Immagine generata da IA. Non è un'opera manuale né una fonte storica verificata</i></figcaption>
+      </figure>
+
+      <br>
 
       <p>La maga voleva vendicarsi di Matia, una sua paesana che una volta l'aveva cacciata a calci. Matia aveva da tre giorni dato alla luce una bella piccina, alla quale fu dato il nome di Felicita. Ecco perché Laila propose all'Amministrazione l'olocausto di quella bambina. Il consiglio si riunì il giorno dopo in una discussione accesa, e alla fine — per il saggio intervento di Maica — fu approvato l'olocausto della piccola Felicita.</p>
 
@@ -45,6 +59,13 @@ const LEGGENDE = [
 
       <p>Al colmo della disperazione, alzò le braccia al cielo e maledisse la città:</p>
       <blockquote>«FUMA CITTÀ INFAME / FUMA IN ETERNO — gridò — COME FUMA IL MIO CUORE / SCONVOLTO DALLE FURIE DELL'AVERNO.»</blockquote>
+
+      <figure>
+        <img src="./images/leggende/oria_fumosa3.png" alt="Matia maledice la città">
+        <figcaption><i>Immagine generata da IA. Non è un'opera manuale né una fonte storica verificata</i></figcaption>
+      </figure>
+
+      <br>
 
       <p>Da quel giorno, secondo la tradizione popolare, Oria è spesso avvolta da una nebbia fitta e misteriosa, insolita per una città del Salento battuta dal sole. Quando la nebbia scende sul colle del Vaglio, è il cuore di Matia che continua a fumare — eterno e inconsolabile.</p>
 

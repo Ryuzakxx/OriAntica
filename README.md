@@ -1,5 +1,7 @@
 # OriAntica 🏰
 
+
+![banner](./images/banner_github.jpeg)
 Sito web dedicato alla storia, alle leggende e alla cultura medievale di **Oria (BR)**, città messapica della Puglia meridionale. Un progetto per raccogliere e tramandare la memoria storica della città.
 
 🌐 **[ryuzakxx.github.io/OriAntica](https://ryuzakxx.github.io/OriAntica/)**

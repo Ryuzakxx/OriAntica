@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="it">
 <head>
-    <script>
+  <script>
   (function() {
     var ALLOWED = ['light', 'dark'];
     try {
@@ -10,202 +10,53 @@
     } catch(_) {}
   })();
   </script>
-  <style id="theme-fix">
-    html, body, nav, footer { transition: none !important; }
-  </style>
+  <style id="theme-fix">html, body, nav, footer { transition: none !important; }</style>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Leggende di Oria — Città Medievale di Puglia</title>
+  <title>Leggende di Oria - Città Medievale di Puglia</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    .leggende-alert {
-      position: fixed;
-      top: var(--nav-h);
-      left: 0;
-      right: 0;
-      background: linear-gradient(135deg, rgba(20,16,8,.96) 0%, rgba(30,23,13,.94) 100%);
-      color: #fff;
-      padding: 1rem 1.4rem 1rem 1.8rem;
-      z-index: 100;
-      animation: slideDown .4s cubic-bezier(.34,.1,.64,.1);
-      box-shadow: 0 8px 32px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.1);
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      border-bottom: 2px solid var(--accent2);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-    @keyframes slideDown {
-      from { transform: translateY(-100%); opacity: 0; }
-      to   { transform: translateY(0);     opacity: 1; }
-    }
-    .leggende-alert.hide {
-      animation: slideUp .3s cubic-bezier(.34,.1,.64,.1) forwards;
-    }
-    @keyframes slideUp {
-      to { transform: translateY(-100%); opacity: 0; }
-    }
-    .leggende-alert-body {
-      flex: 1;
-      min-width: 0;
-    }
-    .leggende-alert-text {
-      margin: 0;
-      line-height: 1.65;
-      font-size: 0.85rem;
-      white-space: normal;
-      word-break: break-word;
-      overflow-wrap: break-word;
-      font-weight: 300;
-      letter-spacing: 0.3px;
-    }
-    .leggende-alert-close {
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.15);
-      color: rgba(255,255,255,.8);
-      font-size: 1.2rem;
-      cursor: pointer;
-      padding: 0.3rem 0.4rem;
-      line-height: 1;
-      flex-shrink: 0;
-      margin-top: -0.15rem;
-      transition: all .3s ease;
-      border-radius: 2px;
-      min-width: 32px;
-      min-height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .leggende-alert-close:hover { 
-      color: #fff;
-      background: rgba(255,255,255,.15);
-      border-color: rgba(255,255,255,.3);
-      box-shadow: 0 2px 8px rgba(0,0,0,.3);
-      transform: scale(1.08);
-    }
-    .leggende-alert-bar {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: transparent;
-      overflow: hidden;
-    }
-    .leggende-alert-progress {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, var(--accent2), var(--accent), var(--accent2));
-      animation: deplete 15s linear forwards;
-      box-shadow: 0 0 8px rgba(192,88,40,.4);
-    }
-    @keyframes deplete {
-      from { width: 100%; }
-      to   { width: 0%;   }
-    }
-    @media (max-width: 768px) {
-      .leggende-alert {
-        padding: 0.8rem 1rem 0.8rem 1.2rem;
-        gap: 0.75rem;
-      }
-      .leggende-alert-text {
-        font-size: 0.78rem;
-      }
-      .leggende-alert-close {
-        min-width: 28px;
-        min-height: 28px;
-        font-size: 1rem;
-      }
-    }
+    .leggende-alert{position:fixed;top:var(--nav-h);left:0;right:0;background:linear-gradient(135deg,rgba(20,16,8,.96) 0%,rgba(30,23,13,.94) 100%);color:#fff;padding:1rem 1.4rem 1rem 1.8rem;z-index:100;animation:slideDown .4s cubic-bezier(.34,.1,.64,.1);box-shadow:0 8px 32px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.1);display:flex;align-items:flex-start;gap:1rem;border-bottom:2px solid var(--accent2);backdrop-filter:blur(12px)}
+    @keyframes slideDown{from{transform:translateY(-100%);opacity:0}to{transform:translateY(0);opacity:1}}
+    .leggende-alert.hide{animation:slideUp .3s cubic-bezier(.34,.1,.64,.1) forwards}
+    @keyframes slideUp{to{transform:translateY(-100%);opacity:0}}
+    .leggende-alert-body{flex:1;min-width:0}.leggende-alert-text{margin:0;line-height:1.65;font-size:.85rem}.leggende-alert-close{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.8);font-size:1.2rem;cursor:pointer;padding:.3rem .4rem;line-height:1;min-width:32px;min-height:32px;display:flex;align-items:center;justify-content:center}
+    .leggende-alert-close:hover{color:#fff;background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3)}
+    .leggende-alert-bar{position:absolute;bottom:0;left:0;right:0;height:2px;overflow:hidden}.leggende-alert-progress{width:100%;height:100%;background:linear-gradient(90deg,var(--accent2),var(--accent),var(--accent2));animation:deplete 15s linear forwards}
+    @keyframes deplete{from{width:100%}to{width:0}}
+    .leggende-top{max-width:var(--max-w);margin:0 auto;padding:clamp(2.8rem,7vw,4.5rem) var(--space-8) 2.2rem;border-bottom:1px solid var(--border);background:var(--bg)}
+    .leggende-top h1{font-size:clamp(2rem,4vw,3.3rem);margin-bottom:.5rem}
+    .leggende-intro{max-width:66ch;color:var(--text-dim)}
+    .leggende-sec{max-width:var(--max-w);margin:0 auto;padding:clamp(2rem,5vw,3rem) var(--space-8)}
+    .leggende-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(270px,100%),1fr));gap:1rem}
+    .leggenda-card{border:1px solid var(--border);padding:1rem;background:var(--bg);text-decoration:none;color:inherit;display:block;transition:transform .35s cubic-bezier(.22,.61,.36,1),box-shadow .35s,border-color .35s,background .35s}
+    .leggenda-card:hover{transform:translateY(-4px);border-color:var(--accent2);background:var(--bg-alt);box-shadow:0 14px 30px rgba(122,48,16,.12)}
+    .leggenda-card .card-kicker{color:var(--accent)}
+    @media (max-width:768px){.leggende-alert{padding:.8rem 1rem .8rem 1.2rem;gap:.75rem}.leggende-alert-text{font-size:.78rem}.leggende-alert-close{min-width:28px;min-height:28px;font-size:1rem}.leggende-top,.leggende-sec{padding-left:var(--space-4);padding-right:var(--space-4)}}
   </style>
 </head>
 <body data-page="leggende">
-
-  <nav>
-    <div class="nav-wrap">
-      <a class="nav-logo" href="index.html">
-        <img src="./images/logo.png" alt="OriAntica">OriAntica
-      </a>
-      <ul class="nav-links">
-        <li><a href="index.html" data-page="home">Home</a></li>
-        <li><a href="leggende.html" data-page="leggende">Leggende</a></li>
-        <li><a href="luoghi.html" data-page="luoghi">Luoghi</a></li>
-        <li><a href="storia.html" data-page="storia">Storia</a></li>
-        <li><a href="torneo.html" data-page="torneo">Torneo</a></li>
-        <li><a href="corteo.html" data-page="corteo">Corteo</a></li>
-        <li><a href="feedback.html" data-page="feedback">Contattaci</a></li>
-        <li><button class="theme-btn" id="theme-btn">☾</button></li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- LEGGENDE ACCURACY ALERT -->
-  <div class="leggende-alert" id="leggende-alert">
-    <div class="leggende-alert-body">
-      <p class="leggende-alert-text">Le leggende e i racconti storici presentati potrebbero non essere completamente accurati. Sono basati su tradizioni orali e reinterpretazioni storiche.</p>
-    </div>
-    <button class="leggende-alert-close" id="leggende-alert-close" aria-label="Chiudi avviso">&times;</button>
-    <div class="leggende-alert-bar">
-      <div class="leggende-alert-progress"></div>
-    </div>
-  </div>
-
+  <nav><div class="nav-wrap"><a class="nav-logo" href="index.html"><img src="./images/logo.png" alt="OriAntica">OriAntica</a><ul class="nav-links"><li><a href="index.html" data-page="home">Home</a></li><li><a href="leggende.html" data-page="leggende">Leggende</a></li><li><a href="luoghi.html" data-page="luoghi">Luoghi</a></li><li><a href="storia.html" data-page="storia">Storia</a></li><li><a href="torneo.html" data-page="torneo">Torneo</a></li><li><a href="corteo.html" data-page="corteo">Corteo</a></li><li><a href="feedback.html" data-page="feedback">Contattaci</a></li><li><button class="theme-btn" id="theme-btn">☾</button></li></ul></div></nav>
+  <div class="leggende-alert" id="leggende-alert"><div class="leggende-alert-body"><p class="leggende-alert-text">Le leggende e i racconti storici presentati potrebbero non essere completamente accurati. Sono basati su tradizioni orali e reinterpretazioni storiche.</p></div><button class="leggende-alert-close" id="leggende-alert-close" aria-label="Chiudi avviso">&times;</button><div class="leggende-alert-bar"><div class="leggende-alert-progress"></div></div></div>
   <div class="content">
-    <div class="page-top">
-      <span class="page-kicker">Leggende · Tradizioni · Racconti popolari</span>
-      <h1>Leggende e Tradizioni di Oria</h1>
-      <p>Storie tramandate durante i racconti degli anziani nelle notti di campagna e nelle piazze del paese, le abbiamo raccolte per preservarle e non disperderle.</p>
-    </div>
-
-    <div class="sec">
-      <div class="grid" id="leggende-grid"></div>
-    </div>
-
-    <footer>
-      <div class="footer-inner">
-        <span>Oria (BR) — Puglia</span>
-        <ul class="footer-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="leggende.html">Leggende</a></li>
-          <li><a href="luoghi.html">Luoghi</a></li>
-          <li><a href="storia.html">Storia</a></li>
-          <li><a href="torneo.html">Torneo</a></li>
-          <li><a href="corteo.html">Corteo</a></li>
-        </ul>
-      </div>
-    </footer>
+    <div class="leggende-top"><span class="page-kicker">Leggende · Tradizioni · Racconti popolari</span><h1>Leggende e Tradizioni di Oria</h1><p class="leggende-intro">Racconti tramandati nelle case e nelle piazze, raccolti in una galleria narrativa più leggibile e visiva, per non disperdere la memoria orale.</p></div>
+    <div class="leggende-sec"><div class="leggende-grid" id="leggende-grid"></div></div>
   </div>
-
   <script src="data.js"></script>
   <script src="shared.js"></script>
   <script>
-    /* Alert timer */
-    var alertEl = document.getElementById('leggende-alert');
-    var closeBtn = document.getElementById('leggende-alert-close');
-    function hideAlert() {
-      if (!alertEl) return;
-      alertEl.classList.add('hide');
-      setTimeout(function() { if (alertEl) alertEl.remove(); }, 350);
-    }
-    if (closeBtn) closeBtn.addEventListener('click', hideAlert);
-    setTimeout(hideAlert, 15000);
-
-    /* Popola la grid — data.js già caricato, nessun DOMContentLoaded */
-    var grid = document.getElementById('leggende-grid');
-    if (grid && typeof LEGGENDE !== 'undefined') {
-      grid.innerHTML = LEGGENDE.map(function(item) {
-        var thumb = item.img
-          ? '<img src="' + item.img + '" alt="' + item.title + '" loading="lazy">'
-          : '<span class="ph-icon">' + item.icon + '</span><span class="ph-txt">' + (item.imgAlt || '') + '</span>';
-        return '<a class="card reveal" href="detail-leggenda.html?id=' + item.id + '">'
-          + '<div class="card-thumb">' + thumb + '</div>'
-          + '<span class="card-kicker">' + item.tag + '</span>'
-          + '<h3>' + item.title + '</h3>'
-          + '<p>' + item.excerpt + '</p>'
-          + '<div class="card-more">Leggi la storia &rarr;</div>'
-          + '</a>';
+    var alertEl=document.getElementById('leggende-alert');
+    var closeBtn=document.getElementById('leggende-alert-close');
+    var alertDismissedKey='leggende-alert-dismissed';
+    try{if(localStorage.getItem(alertDismissedKey)==='1'&&alertEl){alertEl.remove();alertEl=null;}}catch(_){}
+    function hideAlert(){if(!alertEl)return;alertEl.classList.add('hide');try{localStorage.setItem(alertDismissedKey,'1');}catch(_){}setTimeout(function(){if(alertEl)alertEl.remove();},350)}
+    if(closeBtn)closeBtn.addEventListener('click',hideAlert);
+    if(alertEl)setTimeout(hideAlert,15000);
+    var grid=document.getElementById('leggende-grid');
+    if(grid&&typeof LEGGENDE!=='undefined'){
+      grid.innerHTML=LEGGENDE.map(function(item){
+        var thumb=item.img?'<img src="'+item.img+'" alt="'+item.title+'" loading="lazy">':'<span class="ph-icon">'+item.icon+'</span><span class="ph-txt">'+(item.imgAlt||'')+'</span>';
+        return '<a class="leggenda-card reveal" href="detail-leggenda.html?id='+item.id+'"><div class="card-thumb">'+thumb+'</div><span class="card-kicker">'+item.tag+'</span><h3>'+item.title+'</h3><p>'+item.excerpt+'</p><div class="card-more">Leggi la storia &rarr;</div></a>';
       }).join('');
     }
   </script>
